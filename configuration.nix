@@ -9,7 +9,8 @@
     ./nix.nix
     ./nixpkgs.nix
     ./hardware-configuration.nix
-    ./make-linux-fast-again.nix
+    ./kernel-params.nix
+    <musnix>
     <nixos-hardware/common/pc>
     <nixos-hardware/common/pc/ssd>
     <nixos-hardware/common/cpu/amd>
@@ -19,6 +20,9 @@
 
   # boot.kernelPackages = pkgs.linuxPackages_5_7;
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "owen" ];
+
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-emoji
@@ -34,11 +38,22 @@
     iosevka
     jost
     # monoid
+    virtualbox
     montserrat
     mononoki
     pecita
     overpass
   ];
+
+  musnix = {
+    enable = true;
+    # soundCardPciId = "0c:00.4";
+    kernel = {
+      optimize = false;
+      realtime = false;
+      # packages = pkgs.linuxPackages_latest_rt;
+    };
+  };
 
   networking = {
     networkmanager.enable = true;
@@ -105,11 +120,10 @@
       enable = true;
       layout = "gb";
       desktopManager = {
-        # xfce.enable = true;
         gnome3.enable = true;
       };
       displayManager = {
-        # defaultSession = "gnome";
+        defaultSession = "gnome";
         autoLogin = {
           enable = false;
           user = "owen";
@@ -125,6 +139,11 @@
     };
     keybase.enable = true;
     sshd.enable = true;
+    jack = {
+      jackd.enable = true;
+      alsa.enable = false;
+      loopback.enable = true;
+    };
   };
   hardware.enableRedistributableFirmware = true;
   hardware.cpu.amd.updateMicrocode = true;
@@ -132,9 +151,16 @@
 
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "audio" "video" "disk" "networkmanager" "adbusers" ];
+    extraGroups = [ "wheel" "docker" "audio" "video" "disk" "networkmanager" "adbusers" "tty" ];
     shell = "/run/current-system/sw/bin/zsh";
   };
+
+  # services.cassandra.enable = true;
+  # services.redis.enable = true;
+  # services.apache-kafka.enable = true;
+  virtualisation.docker.extraOptions = let file = pkgs.writeText "daemon.json"
+    (builtins.toJSON { default-address-pools = [ { base = "192.168.128.0/18"; size = 24; } ]; });
+  in "--config-file=${file}";
 
   system.stateVersion = "20.09";
 }
