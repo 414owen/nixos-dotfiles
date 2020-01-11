@@ -3,13 +3,13 @@
 let
   lib = pkgs.lib;
   unstable = import <unstable> { config = { allowUnfree = true; }; };
+  git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
 in
 {
   home.packages = with pkgs; [
     any-nix-shell
     asciinema
     bat
-    discord
     cabal2nix
     cabal-install
     cachix
@@ -18,6 +18,7 @@ in
     discord
     exa
     fasd
+    unstable.feeds
     fd
     ghc
     gimp
@@ -45,19 +46,25 @@ in
     multimc
     neofetch
     (netsurf.browser.override { uilib = "gtk"; })
+    non
     niv
     nix-index
     nix-prefetch-git
     nix-prefetch-github
     pciutils
-    pidgin
-    pidgin-window-merge
-    purple-hangouts
+    (pidgin.override {
+      plugins = [
+        pidgin-window-merge
+        purple-hangouts
+        telegram-purple
+      ];
+    })
     q-text-as-data
     ranger
     rawtherapee
     remarshal
     ripgrep
+    waveform-pro
     sd
     shotwell
     spotify
@@ -74,6 +81,7 @@ in
   ] ++ (with gitAndTools; [
     gh
     git-absorb
+    # git-change-author
     git-gone
     git-open
     git-recent
