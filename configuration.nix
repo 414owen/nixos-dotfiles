@@ -9,7 +9,7 @@
     ./nixpkgs.nix
     ./hardware-configuration.nix
     ./make-linux-fast-again.nix
-    <nixos-hardware/dell/xps-9370>
+    <nixos-hardware/dell/xps/13-9370>
   ];
 
   time.timeZone = "Europe/Dublin";
