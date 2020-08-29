@@ -3,6 +3,7 @@
 let
   lib = pkgs.lib;
   unstable = import <unstable> {};
+  obelisk = import (builtins.fetchTarball "https://github.com/obsidiansystems/obelisk/archive/master.tar.gz") {};
   # haskell-updates = pkgs.callPackage ./haskell-updates.nix {};
 in
 {
@@ -25,6 +26,7 @@ in
     gnome3.geary
     gnome3.gnome-tweaks
     gnupg
+    obelisk.command
     unstable.haskell.packages.ghc884.haskell-language-server
     htop
     gitAndTools.hub
