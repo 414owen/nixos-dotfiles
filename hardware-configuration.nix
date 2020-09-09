@@ -5,28 +5,22 @@
 
 {
   imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
+    [ <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/18d2b35e-abbc-4d6c-bfd8-5cae9fa4eddd";
+    { device = "/dev/disk/by-uuid/ba505f10-03a6-46c5-9f11-15304714e130";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."hd".device = "/dev/disk/by-uuid/e82f59e0-5d03-42e1-b906-45bfa56ce4ac";
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/347f3613-ee78-4e99-b02d-1c4e9e26c158"; }
+    ];
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C6E4-4C80";
-      fsType = "vfat";
-    };
-
-  swapDevices = [ ];
-
-  nix.maxJobs = lib.mkDefault 8;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  nix.maxJobs = lib.mkDefault 2;
 }

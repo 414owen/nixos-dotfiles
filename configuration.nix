@@ -1,108 +1,34 @@
-{ config, pkgs, options, ... }:
-
+{ config, pkgs, ... }:
+let unstable = import <unstable> { config.allowUnfree = true; };
+in
 {
-
-  imports = [
-    ./boot.nix
-    ./cachix.nix
-    ./nix.nix
-    ./nixpkgs.nix
-    ./hardware-configuration.nix
-    ./make-linux-fast-again.nix
-    <nixos-hardware/dell/xps/13-9370>
-  ];
-
-  time.timeZone = "Europe/Dublin";
-
-  # boot.kernelPackages = pkgs.linuxPackages_5_7;
-
-  networking = {
-    networkmanager.enable = true;
-    firewall.enable = false;
-  };
-
-  hardware = {
-    bluetooth.enable = true;
-    opengl = {
-      enable = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
-    pulseaudio = {
-      enable = true;
-      package = pkgs.pulseaudioFull;
-    };
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  environment = {
-
-    # for zsh completions of system packages
-    pathsToLink = [ "/share/zsh" ];
-
-    systemPackages = with pkgs; [
-      bind
-      file
-      fira-code
-      firmwareLinuxNonfree
-      numix-icon-theme
-      numix-icon-theme-circle
-      ntfs3g
-      paper-icon-theme
-      patchelf
-      python3Full
-      service-wrapper
-      steam
-      traceroute
-      tree
-      unzip
-      wget
-      wirelesstools
-      xf86_input_wacom
-      xorg.libxcb
-      xsel
-    ];
-  };
-
+  imports = [ ./hardware-configuration.nix ];
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/vda";
+  networking.useDHCP = false;
+  networking.interfaces.ens3.useDHCP = true;
+  networking.hostName = "vps";
+  services.openssh.enable = true;
+  system.stateVersion = "20.03";
   programs.zsh.enable = true;
   programs.command-not-found.enable = true;
-
-  sound.enable = true;
-
-  services = {
-    xserver = {
-      enable = true;
-      layout = "gb";
-      desktopManager = {
-        gnome3.enable = true;
-      };
-      displayManager = {
-        # defaultSession = "gnome";
-        gdm = {
-          enable = true;
-          autoLogin = {
-            enable = false;
-            user = "owen";
-          };
-        };
-      };
-      libinput = {
-        enable = true;
-        disableWhileTyping = false;
-      };
-      xkbOptions = "ctrl:swapcaps";
+  nixpkgs.config.allowUnfree = true;
+  services.minecraft-server = {
+    enable = true;
+    declarative = true;
+    eula = true;
+    serverProperties = {
+      motd = "frend!";
+      white-list = false;
     };
-    keybase.enable = true;
+    package = unstable.minecraft-server;
+    openFirewall = true;
   };
-
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "disk" "networkmanager" ];
+    extraGroups = [ "wheel" ];
     shell = "/run/current-system/sw/bin/zsh";
   };
-
-  system.stateVersion = "20.03";
 }
+
