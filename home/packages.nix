@@ -26,6 +26,7 @@ in
     gnome3.geary
     gnome3.gnome-tweaks
     gnupg
+    q-text-as-data
     unstable.haskell.packages.ghc884.haskell-language-server
     htop
     gitAndTools.hub
