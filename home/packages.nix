@@ -4,7 +4,6 @@ let
   lib = pkgs.lib;
   unstable = import <unstable> {};
   obelisk = import (builtins.fetchTarball "https://github.com/obsidiansystems/obelisk/archive/master.tar.gz") {};
-  # haskell-updates = pkgs.callPackage ./haskell-updates.nix {};
 in
 {
   home.packages = with pkgs; [
@@ -23,15 +22,16 @@ in
     firefox
     unstable.ghc
     gimp
+    gnumeric
     gnome3.geary
     gnome3.gnome-tweaks
     gnupg
-    obelisk.command
     unstable.haskell.packages.ghc884.haskell-language-server
     htop
     gitAndTools.hub
     imagemagick
     unstable.haskellPackages.implicit-hie
+    # unstable.ib-tws
     inkscape
     jq
     kak-lsp
@@ -48,6 +48,7 @@ in
     nix-index
     nixops
     nix-prefetch-git
+    obelisk.command
     pciutils
     pidgin
     pidgin-window-merge
