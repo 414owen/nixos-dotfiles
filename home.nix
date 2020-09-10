@@ -20,6 +20,7 @@ in
     ./kakoune.nix
     ./packages.nix
     ./readline.nix
+    ./ssh.nix
     ./starship.nix
     ./wtf.nix
     ./theme.nix
@@ -70,6 +71,7 @@ in
     kakoune.enable = true;
     readline.enable = true;
     starship.enable = true;
+    ssh.enable = true;
     tmux.enable = true;
     zsh.enable = true;
   };
