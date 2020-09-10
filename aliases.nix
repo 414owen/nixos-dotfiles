@@ -80,7 +80,6 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   o = "xdg-open";
   p = cat;
   pd = "pwd";
-  q = "exit";
   r = "ranger";
   reload = "source $DOTFILE";
   sl = ls;
