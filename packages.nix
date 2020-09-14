@@ -49,6 +49,7 @@ in
     nix-index
     nixops
     nix-prefetch-git
+    niv
     obelisk.command
     pciutils
     pidgin
