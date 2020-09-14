@@ -1,5 +1,9 @@
 { pkgs }:
 
+let tee = "${pkgs.coreutils}/bin/tee";
+    less = "${pkgs.less}/bin/less";
+in
+
 ''
 BUSYBOX=${pkgs.busybox}/bin
 TAR=$BUSYBOX/tar
@@ -59,6 +63,7 @@ teehist() {
   print -rs $1
   eval $1
 }
+
 firstArg() {
   for i in $@; do
     if [ ! -z "$i" ]; then
@@ -85,5 +90,21 @@ gph() {
 
 trim() {
   echo $1 | xargs
+}
+
+tee() {
+  if [[ -t 1 ]]; then
+    command ${tee} $@ | jq -Rr 'try fromjson // .'
+  else
+    command ${tee} $@
+  fi
+}
+
+less() {
+  if [[ -t 1 ]]; then
+    jq -CRr 'try fromjson // .' | command ${less} -R $@
+  else
+    command ${less} -R $@
+  fi
 }
 ''

@@ -1,8 +1,7 @@
 eval %sh{kak-lsp --kakoune -s $kak_session}
-# set global lsp_cmd "~/src/kak-lsp/target/debug/kak-lsp -s %val{session} -vvv --log /home/owen/kak-lsp.log"
-# eval %sh{kak-lsp --kakoune -s $kak_session}
  
 set-option global lsp_server_configuration haskellLanguageServer.hlintOn=true
+set-option global lsp_server_configuration haskellLanguageServer.formattingProvider=brittany
 
 hook global WinSetOption filetype=(haskell|ruby|rust|javascript|terraform|c|cpp) %{
   lsp-enable-window
@@ -34,3 +33,7 @@ hook global KakBegin .* %{
     done
   }
 }
+
+set-face global search +bi
+add-highlighter global/search dynregex '%reg{/}' 0:search
+add-highlighter global/ column '%opt{autowrap_column}' default,red

@@ -69,6 +69,7 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   h = "history";
   hs = "nix-build -E '(import <nixpkgs> {}).haskellPackages.callCabal2nix \"\" ./. {}'";
   hsd = "nix-shell -E '(import <nixpkgs> {}).haskellPackages.developPackage {root = ./.;}'";
+  json = "jq -Rr 'try fromjson // .'";
   k = "kill";
   less = "less -R";
   ll = ls + " -alF";
@@ -86,7 +87,6 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   sl = ls;
   sudo = "sudo ";
   t = "time";
-  tmuxrec = "mkdir -p ~/casts; asciinema rec ~/casts/$(date +'%m-%d-%Y-%H:%M.cast') -c tmux";
 }] ++ map (i: {
   "gd${i}" = "git diff HEAD~${i}";
   "gr${i}" = "git rebase --interactive HEAD~${i}";
