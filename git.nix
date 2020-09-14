@@ -4,6 +4,7 @@ let
   gitAndTools = pkgs.gitAndTools;
   delta = gitAndTools.delta;
   base-log = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) -";
+  common = import ./common.nix;
 in
 
 {
@@ -25,21 +26,21 @@ in
       "TAGS"
       ".c-lang-serv"
     ];
-    userName  = "Owen Shepherd";
-    userEmail = "owen@owen.cafe";
+    userName  = common.name;
+    userEmail = common.email;
      signing = {
-      key = "owen@owen.cafe";
+      key = common.email;
       signByDefault = true;
     };
     extraConfig = {
       core = {
         pager = "${delta}/bin/delta --plus-color='#226522'";
       };
-      hub = {
-        protocol = "https";
-      };
       interactive = {
         diffFilter = "${delta}/bin/delta";
+      };
+      hub = {
+        protocol = "https";
       };
     };
   };

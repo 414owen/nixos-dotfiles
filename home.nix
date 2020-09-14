@@ -11,8 +11,8 @@ in
 
 {
   imports = [
-    ./dconf.nix
     ./direnv.nix
+    ./dconf.nix
     ./firefox.nix
     ./git.nix
     ./gpg-agent.nix
@@ -21,7 +21,7 @@ in
     ./packages.nix
     ./readline.nix
     ./starship.nix
-    ./wtf.nix
+    ./stack.nix
     ./theme.nix
     ./tmux.nix
     ./zsh.nix
@@ -39,9 +39,6 @@ in
         };
         haskellPackages = pkgs.haskellPackages.override {
           overrides = hself: hsuper: { };
-        };
-        mpv = pkgs.mpv.override {
-          vapoursynthSupport = true;
         };
         kakoune = (pkgs.kakoune.override {
           configure = {

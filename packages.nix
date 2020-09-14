@@ -2,20 +2,16 @@
 
 let
   lib = pkgs.lib;
-  unstable = import <unstable> {};
-  obelisk = import (builtins.fetchTarball "https://github.com/obsidiansystems/obelisk/archive/master.tar.gz") {};
-  # haskell-updates = pkgs.callPackage ./haskell-updates.nix {};
+  unstable = import <unstable> { allowUnfree = true; };
 in
 {
   home.packages = with pkgs; [
     any-nix-shell
-    asciinema
     bat
     cabal2nix
     cachix
     cabal-install
     darktable
-    electrum
     unstable.ungoogled-chromium
     exa
     fasd
@@ -23,13 +19,13 @@ in
     firefox
     unstable.ghc
     gimp
+    gitAndTools.hub
+    gparted
     gnome3.geary
     gnome3.gnome-tweaks
     gnupg
-    obelisk.command
-    unstable.haskell.packages.ghc884.haskell-language-server
+    unstable.haskell.packages.ghc865.haskell-language-server
     htop
-    gitAndTools.hub
     imagemagick
     unstable.haskellPackages.implicit-hie
     inkscape
@@ -38,33 +34,28 @@ in
     killall
     libsecret
     lshw
-    mpv-with-scripts
-    multimc
-    (netsurf.browser.override { uilib = "gtk"; })
+    mpv
     neofetch
-    vapoursynth
-    vapoursynth-mvtools
     nix-prefetch-github
     nix-index
-    nixops
     nix-prefetch-git
+    nixops
     pciutils
     pidgin
     pidgin-window-merge
     purple-hangouts
     ranger
     rawtherapee
-    (unstable.haskell.lib.dontCheck unstable.haskellPackages.retrie)
+    remarshal
     ripgrep
     sd
     shotwell
     spotify
+    unstable.stack
+    unstable.zoom-us
     stdenv
     tmux
-    transmission-gtk
-    wtf
     xsel
-    unstable.zoom-us
     zsh-history-substring-search
     zsh-syntax-highlighting
   ] ++ (with gitAndTools; [
