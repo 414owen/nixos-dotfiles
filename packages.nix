@@ -2,7 +2,10 @@
 
 let
   lib = pkgs.lib;
-  unstable = import <unstable> { allowUnfree = true; };
+  unstable = import <unstable> { config = { allowUnfree = true; }; };
+  infra = builtins.fetchGit {
+    url = "https://git.hubteam.com/HubSpot/piesync-infra";
+  };
 in
 {
   home.packages = with pkgs; [
@@ -28,8 +31,10 @@ in
     htop
     imagemagick
     unstable.haskellPackages.implicit-hie
+    (import "${infra}/nix/hs-kubectl.nix")
     inkscape
     jq
+    kakoune
     kak-lsp
     killall
     libsecret
