@@ -9,12 +9,10 @@
     ./nixpkgs.nix
     ./hardware-configuration.nix
     ./make-linux-fast-again.nix
-    <nixos-hardware/dell/xps/13-9370>
+    <nixos-hardware/lenovo/thinkpad/t490>
   ];
 
   time.timeZone = "Europe/Dublin";
-
-  # boot.kernelPackages = pkgs.linuxPackages_5_7;
 
   networking = {
     networkmanager.enable = true;
@@ -23,20 +21,13 @@
 
   hardware = {
     bluetooth.enable = true;
-    opengl = {
-      enable = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
     pulseaudio = {
       enable = true;
       package = pkgs.pulseaudioFull;
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
+  virtualisation.docker.enable = true;
 
   environment = {
 
@@ -47,15 +38,12 @@
       bind
       file
       fira-code
-      firmwareLinuxNonfree
       numix-icon-theme
       numix-icon-theme-circle
-      ntfs3g
       paper-icon-theme
       patchelf
       python3Full
       service-wrapper
-      steam
       traceroute
       tree
       unzip
@@ -76,17 +64,13 @@
     xserver = {
       enable = true;
       layout = "gb";
-      desktopManager = {
-        gnome3.enable = true;
-      };
+      desktopManager.gnome3.enable = true;
       displayManager = {
-        # defaultSession = "gnome";
-        gdm = {
+        defaultSession = "gnome";
+        gdm.enable = true;
+        gdm.autoLogin = {
           enable = true;
-          autoLogin = {
-            enable = false;
-            user = "owen";
-          };
+          user = "oshepherd";
         };
       };
       libinput = {
@@ -95,14 +79,15 @@
       };
       xkbOptions = "ctrl:swapcaps";
     };
-    keybase.enable = true;
   };
 
-  users.users.owen = {
+  users.users.oshepherd = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "disk" "networkmanager" ];
+    extraGroups = [ "docker" "wheel" "audio" "video" "disk" "networkmanager" ];
     shell = "/run/current-system/sw/bin/zsh";
   };
 
   system.stateVersion = "20.03";
+  services.fprintd.enable = true;
+  security.pam.services.login.fprintAuth = true;
 }
