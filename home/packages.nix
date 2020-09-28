@@ -13,9 +13,11 @@ in
     cabal2nix
     cachix
     cabal-install
+    calibre
     darktable
-    electrum
     unstable.ungoogled-chromium
+    electrum
+    unstable.duf
     exa
     fasd
     fd
@@ -27,7 +29,7 @@ in
     gnome3.gnome-tweaks
     gnupg
     q-text-as-data
-    unstable.haskell.packages.ghc884.haskell-language-server
+    unstable.haskell.packages.ghc865.haskell-language-server
     htop
     gitAndTools.hub
     imagemagick
@@ -64,6 +66,7 @@ in
     spotify
     stdenv
     tmux
+    tor-browser-bundle-bin
     transmission-gtk
     wtf
     xsel
