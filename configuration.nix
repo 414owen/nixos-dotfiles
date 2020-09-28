@@ -5,16 +5,40 @@
   imports = [
     ./boot.nix
     ./cachix.nix
+    ./games.nix
     ./nix.nix
     ./nixpkgs.nix
     ./hardware-configuration.nix
     ./make-linux-fast-again.nix
-    <nixos-hardware/dell/xps/13-9370>
+    <nixos-hardware/common/pc>
+    <nixos-hardware/common/pc/ssd>
+    <nixos-hardware/common/cpu/amd>
   ];
 
   time.timeZone = "Europe/Dublin";
 
   # boot.kernelPackages = pkgs.linuxPackages_5_7;
+  virtualisation.docker.enable = true;
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-emoji
+    liberation_ttf
+    fira
+    fira-code
+    fira-code-symbols
+    ubuntu_font_family
+    roboto
+    inconsolata
+    cascadia-code
+    hermit
+    iosevka
+    jost
+    # monoid
+    montserrat
+    mononoki
+    pecita
+    overpass
+  ];
 
   networking = {
     networkmanager.enable = true;
@@ -77,6 +101,7 @@
       enable = true;
       layout = "gb";
       desktopManager = {
+        # xfce.enable = true;
         gnome3.enable = true;
       };
       displayManager = {
@@ -94,13 +119,14 @@
         disableWhileTyping = false;
       };
       xkbOptions = "ctrl:swapcaps";
+      # videoDrivers = [ "amdgpu" ];
     };
     keybase.enable = true;
   };
 
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "disk" "networkmanager" ];
+    extraGroups = [ "wheel" "docker" "audio" "video" "disk" "networkmanager" ];
     shell = "/run/current-system/sw/bin/zsh";
   };
 

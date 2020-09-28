@@ -8,25 +8,26 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/18d2b35e-abbc-4d6c-bfd8-5cae9fa4eddd";
+    { device = "/dev/disk/by-uuid/4ef277a6-9628-43e0-bb24-74accf47312a";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."hd".device = "/dev/disk/by-uuid/e82f59e0-5d03-42e1-b906-45bfa56ce4ac";
+  boot.initrd.luks.devices."env-pv".device = "/dev/disk/by-uuid/525bb864-f80f-4aad-81e0-6c5f3f693831";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C6E4-4C80";
+    { device = "/dev/disk/by-uuid/7573-45E5";
       fsType = "vfat";
     };
 
   swapDevices = [ ];
 
-  nix.maxJobs = lib.mkDefault 8;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  nix.maxJobs = lib.mkDefault 24;
+  # High-DPI console
+  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }
