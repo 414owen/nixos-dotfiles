@@ -65,6 +65,7 @@ in
     shotwell
     spotify
     stdenv
+    st
     tmux
     tor-browser-bundle-bin
     transmission-gtk
