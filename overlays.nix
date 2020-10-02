@@ -29,7 +29,8 @@
         #   sha256 = "0zl12xi8i10x3i2jy4lqg64vphkx77mjp7g1rc4kdd4q8saw7psx";
         # })
         ./st-patches/desktop-entry.diff
-        ./st-patches/theme.diff
+        ./st-patches/font.diff
+        ./st-patches/colors.diff
       ];
     };
   })
