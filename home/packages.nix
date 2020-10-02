@@ -3,7 +3,7 @@
 let
   lib = pkgs.lib;
   unstable = import <unstable> {};
-  # haskell-updates = pkgs.callPackage ./haskell-updates.nix {};
+  obelisk = import (builtins.fetchTarball "https://github.com/obsidiansystems/obelisk/archive/master.tar.gz") {};
 in
 {
   home.packages = with pkgs; [
@@ -13,23 +13,28 @@ in
     cabal2nix
     cachix
     cabal-install
+    calibre
     darktable
-    electrum
     unstable.ungoogled-chromium
+    electrum
+    unstable.duf
     exa
     fasd
     fd
     firefox
     unstable.ghc
     gimp
+    gnumeric
     gnome3.geary
     gnome3.gnome-tweaks
     gnupg
-    unstable.haskell.packages.ghc884.haskell-language-server
+    q-text-as-data
+    unstable.haskell.packages.ghc865.haskell-language-server
     htop
     gitAndTools.hub
     imagemagick
     unstable.haskellPackages.implicit-hie
+    # unstable.ib-tws
     inkscape
     jq
     kak-lsp
@@ -46,6 +51,8 @@ in
     nix-index
     nixops
     nix-prefetch-git
+    niv
+    obelisk.command
     pciutils
     pidgin
     pidgin-window-merge
@@ -58,7 +65,9 @@ in
     shotwell
     spotify
     stdenv
+    st
     tmux
+    tor-browser-bundle-bin
     transmission-gtk
     wtf
     xsel

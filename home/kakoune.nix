@@ -58,6 +58,11 @@ in
     };
     extraConfig = ''
       ${builtins.readFile ./config.kak}
+      declare-option str gray 'rgb:44475a'
+      face global MenuBackground gray
+      face global MenuForeground gray
+      set-face global PrimarySelection black,white
+      set-face global SecondarySelection black,gray
     '';
   };
 }
