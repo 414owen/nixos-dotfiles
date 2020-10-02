@@ -12,10 +12,10 @@
       	super.harfbuzz
       ];
       patches = [
-        (builtins.fetchurl {
-          url = "https://st.suckless.org/patches/dracula/st-dracula-0.8.2.diff";
-          sha256 = "0zpvhjg8bzagwn19ggcdwirhwc17j23y5avcn71p74ysbwvy1f2y";
-        })
+        # (builtins.fetchurl {
+        #   url = "https://st.suckless.org/patches/dracula/st-dracula-0.8.2.diff";
+        #   sha256 = "0zpvhjg8bzagwn19ggcdwirhwc17j23y5avcn71p74ysbwvy1f2y";
+        # })
         (builtins.fetchurl {
           url = "https://st.suckless.org/patches/boxdraw/st-boxdraw_v2-0.8.3.diff";
           sha256 = "0n4n83mffxp8i0c2hfaqabxbqz0as2yxx8v8ll76gxiihqa1hhd2";
@@ -24,7 +24,12 @@
           url = "https://st.suckless.org/patches/ligatures/0.8.3/st-ligatures-boxdraw-20200430-0.8.3.diff";
           sha256 = "1vyx8qz3qknsw7p1c2inv7pqsw4b7x2imnysac1nc0j15hfklhfb";
         })
-        ./st-patches/font.diff
+        # (builtins.fetchurl {
+        #   url = "https://st.suckless.org/patches/desktopentry/st-desktopentry-0.8.2.diff";
+        #   sha256 = "0zl12xi8i10x3i2jy4lqg64vphkx77mjp7g1rc4kdd4q8saw7psx";
+        # })
+        ./st-patches/desktop-entry.diff
+        ./st-patches/theme.diff
       ];
     };
   })
