@@ -64,6 +64,19 @@ in
       "search-filter-time-type" = "last_modified";
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      calculator = [ "<Super>c" ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+      email = [ "<Super>e" ];
+      home = [ "<Super>f" ];
+      www = [ "<Super>w" ];
+      "custom-keybindings/custom0" = {
+        binding = "<Super>t";
+        command = "st";
+        name = "Launch Terminal";
+      };
+    };
+
     "org/gnome/settings-daemon/plugins/power" = {
       "sleep-inactive-ac-type" = "nothing";
     };
