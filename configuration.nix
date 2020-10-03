@@ -5,6 +5,8 @@
   imports = [
     ./boot.nix
     ./cachix.nix
+    ./fonts.nix
+    ./games.nix
     ./nix.nix
     ./nixpkgs.nix
     ./hardware-configuration.nix
@@ -55,7 +57,6 @@
       patchelf
       python3Full
       service-wrapper
-      steam
       traceroute
       tree
       unzip
