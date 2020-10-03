@@ -16,4 +16,5 @@ in
   FZF_CTRL_T_COMMAND = "${fzf-command}";
   FZF_CTRL_R_OPTS = "--preview='' --preview-window 'right:0%'";
   MAKEFLAGS = "-j$(nproc)";
+  TERMINAL = "${pkgs.st}/bin/st";
 }
