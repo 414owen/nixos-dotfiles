@@ -54,6 +54,7 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   gm = "git merge --no-ff";
   gp = "git pull";
   gpr = "git pull --rebase";
+  gpu = "git push";
   grep = grep;
   gr = "git rebase";
   gra = "git rebase --abort";
