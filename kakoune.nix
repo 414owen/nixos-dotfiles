@@ -62,7 +62,9 @@ in
       face global MenuBackground gray
       face global MenuForeground gray
       set-face global PrimarySelection black,white
-      set-face global SecondarySelection black,gray
+      set-face global PrimaryCursor black,red
+      set-face global SecondarySelection white,black
+      set-face global SecondaryCursor black,blue
     '';
   };
 }
