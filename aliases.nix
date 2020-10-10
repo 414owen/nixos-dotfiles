@@ -67,6 +67,17 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   gstp = "git stash pop";
   gsts = "git stash save";
   h = "history";
+  hb = "hadrian/build -j$(($(ncpus) +1))";
+  hbq = "hb --flavour=quick";
+  hbqs = "hbq --skip='//*.mk' --skip='stage1:lib:rts'";
+  hbqf = "hbqs --freeze1";
+  hbv = "hb --flavour=validate --build-root=_validate";
+  hbvs = "hbv --skip='//*.mk' --skip='stage1:lib:rts'";
+  hbvf = "hbvs --freeze1";
+  hbt = "mkdir -p _ticky; [ -e _ticky/hadrian.settings ] || echo 'stage1.*.ghc.hs.opts += -ticky\\nstage1.ghc-bin.ghc.link.o
+pts += -ticky' > _ticky/hadrian.settings; hb --flavour=validate --build-root=_ticky";
+  hbts = "hbt --skip='//*.mk' --skip='stage1:lib:rts'";
+  hbtf = "hbts --freeze1";
   hs = "nix-build -E '(import <nixpkgs> {}).haskellPackages.callCabal2nix \"\" ./. {}'";
   hsd = "nix-shell -E '(import <nixpkgs> {}).haskellPackages.developPackage {root = ./.;}'";
   k = "kill";
