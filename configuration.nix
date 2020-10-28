@@ -110,13 +110,11 @@
       };
       displayManager = {
         # defaultSession = "gnome";
-        gdm = {
-          enable = true;
-          autoLogin = {
-            enable = false;
-            user = "owen";
-          };
+        autoLogin = {
+          enable = false;
+          user = "owen";
         };
+        gdm.enable = true;
       };
       libinput = {
         enable = true;
@@ -135,5 +133,5 @@
     shell = "/run/current-system/sw/bin/zsh";
   };
 
-  system.stateVersion = "20.03";
+  system.stateVersion = "20.09";
 }
