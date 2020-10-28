@@ -43,6 +43,7 @@
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
+    # nameservers = [ "1.0.0.1" "1.1.1.1" ];
   };
 
   hardware = {
@@ -85,14 +86,17 @@
       unzip
       wget
       wirelesstools
-      xf86_input_wacom
       xorg.libxcb
       xsel
     ];
   };
 
-  programs.zsh.enable = true;
-  programs.command-not-found.enable = true;
+  programs = {
+    zsh.enable = true;
+    mosh.enable = true;
+    command-not-found.enable = true;
+    adb.enable = true;
+  };
 
   sound.enable = true;
 
@@ -122,11 +126,12 @@
       # videoDrivers = [ "amdgpu" ];
     };
     keybase.enable = true;
+    sshd.enable = true;
   };
 
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "audio" "video" "disk" "networkmanager" ];
+    extraGroups = [ "wheel" "docker" "audio" "video" "disk" "networkmanager" "adbusers" ];
     shell = "/run/current-system/sw/bin/zsh";
   };
 
