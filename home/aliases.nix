@@ -68,7 +68,7 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   gsts = "git stash save";
   h = "history";
   hb = "hadrian/build -j$(($(ncpus) +1))";
-  hbq = "hb --flavour=quick";
+  hbq = "hb --flavour=quickest";
   hbqs = "hbq --skip='//*.mk' --skip='stage1:lib:rts'";
   hbqf = "hbqs --freeze1";
   hbv = "hb --flavour=validate --build-root=_validate";
