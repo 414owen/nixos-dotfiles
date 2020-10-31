@@ -51,7 +51,7 @@ in
       "idle-delay" = "uint32 0";
     };
 
-   "/org/gnome/desktop/peripherals/touchpad" = {
+   "org/gnome/desktop/peripherals/touchpad" = {
       click-method = "areas";
       disable-while-typing = false;
       speed = 0.34558823529411775;
@@ -72,30 +72,21 @@ in
       "search-filter-time-type" = "last_modified";
     };
 
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      calculator = [ "<Super>c" ];
-      custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"
-      ];
-      email = [ "<Super>e" ];
-      home = [ "<Super>f" ];
-      www = [ "<Super>w" ];
-    };
+    # "org/gnome/settings-daemon/plugins/media-keys" = {
+    #   calculator = [ "<Super>c" ];
+    #   custom-keybindings = [
+    #     "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"
+    #   ];
+    #   email = [ "<Super>e" ];
+    #   home = [ "<Super>f" ];
+    #   www = [ "<Super>w" ];
+    # };
 
-    "/org/gnome/shell/favorite-apps" = [
-      "firefox.desktop"
-      "st.desktop"
-      "org.gnome.Geary.desktop"
-      "spotify.desktop"
-      "org.gnome.Nautilus.desktop"
-      "transmission-gtk.desktop"
-    ];
-
-    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/" = {
-      binding = "<Super>t";
-      command = "st -n st";
-      name = "Launch Terminal";
-    };
+    # "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/" = {
+    #   binding = "<Super>t";
+    #   command = "st -n st";
+    #   name = "Launch Terminal";
+    # };
 
     "org/gnome/settings-daemon/plugins/power" = {
       "sleep-inactive-ac-type" = "nothing";
