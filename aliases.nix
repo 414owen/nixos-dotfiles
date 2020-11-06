@@ -1,5 +1,6 @@
+{pkgs}:
 let
-  lib = (import <nixpkgs> {}).lib;
+  lib = pkgs.lib;
   strhead = builtins.substring 0 1;
   tosed = str: " -e 's/ ${str}s\\? ago)/${strhead str})/' -e 's/ ${str}s\\?, /${strhead str}, /'";
   sedexprs = lib.concatMapStrings tosed ["second" "minute" "hour" "day" "week" "month" "year"];
@@ -68,7 +69,9 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   gstp = "git stash pop";
   gsts = "git stash save";
   h = "history";
-  hb = "hadrian/build -j$(($(ncpus) +1))";
+  # hb = "hadrian/build -j$(($(${pkgs.coreutils}/bin/nproc) +1))";
+  # hb = "hadrian/build -j$(($(nproc) +1))";
+  hb = "hadrian/build -j";
   hbq = "hb --flavour=quick";
   hbqs = "hbq --skip='//*.mk' --skip='stage1:lib:rts'";
   hbqf = "hbqs --freeze1";
