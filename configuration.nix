@@ -121,11 +121,14 @@
         disableWhileTyping = false;
       };
       xkbOptions = "ctrl:swapcaps";
-      # videoDrivers = [ "amdgpu" ];
+      videoDrivers = [ "amdgpu" ];
     };
     keybase.enable = true;
     sshd.enable = true;
   };
+  hardware.enableRedistributableFirmware = true;
+  hardware.cpu.amd.updateMicrocode = true;
+
 
   users.users.owen = {
     isNormalUser = true;
