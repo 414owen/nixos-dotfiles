@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  gitAndTools = pkgs.gitAndTools;
+  gitAndTools = (import <unstable> {}).gitAndTools;
   delta = gitAndTools.delta;
   base-log = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) -";
 in
@@ -39,7 +39,7 @@ in
         protocol = "https";
       };
       interactive = {
-        diffFilter = "${delta}/bin/delta";
+        diffFilter = "${delta}/bin/delta --color-only";
       };
     };
   };
