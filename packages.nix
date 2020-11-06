@@ -15,6 +15,7 @@ in
     cabal-install
     calibre
     darktable
+    discord
     unstable.ungoogled-chromium
     electrum
     unstable.duf
