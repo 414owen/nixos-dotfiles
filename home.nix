@@ -2,10 +2,6 @@
 
 let
   sysconfig = (import <nixpkgs/nixos> {}).system;
-  utdemir = builtins.fetchGit {
-    url = https://github.com/utdemir/dotfiles.git;
-    rev = "ce5205f03b03872a9032b5b15d7f2b417bfd3dec";
-  };
   callPackage = pkgs.callPackage;
 in
 
@@ -28,35 +24,10 @@ in
     ./zsh.nix
   ];
 
-  home.stateVersion = "20.03";
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowBroken = true;
-      packageOverrides = pkgs: {
-        nur = import (builtins.fetchTarball https://github.com/nix-community/NUR/archive/master.tar.gz) {
-          inherit pkgs;
-        };
-        haskellPackages = pkgs.haskellPackages.override {
-          overrides = hself: hsuper: { };
-        };
-        mpv = pkgs.mpv.override {
-          vapoursynthSupport = true;
-        };
-        kakoune = (pkgs.kakoune.override {
-          configure = {
-            plugins = with pkgs.kakounePlugins; [
-              (callPackage "${utdemir}/packages/kakoune-surround.nix" { })
-              (callPackage "${utdemir}/packages/kakoune-rainbow.nix" { })
-              kak-auto-pairs
-              kak-fzf
-              pkgs.kak-lsp
-            ];
-          };
-        });
-      };
-    };
+  home = {
+    username = "owen";
+    homeDirectory = "/home/owen";
+    stateVersion = "20.09";
   };
 
   programs = {
