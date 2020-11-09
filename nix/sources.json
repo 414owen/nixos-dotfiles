@@ -1,0 +1,38 @@
+{
+    "utdemir-dotfiles": {
+        "branch": "master",
+        "description": "Comprehensive configuration of my NixOS workstation",
+        "homepage": "",
+        "owner": "utdemir",
+        "repo": "dotfiles",
+        "rev": "629582f848da8fa51b761542c74d761fc7e9387e",
+        "sha256": "198lqqqbdvrxy3q1im2y6m1gn74vz3l8fxfp1vazmizxygpq2x55",
+        "type": "tarball",
+        "url": "https://github.com/utdemir/dotfiles/archive/629582f848da8fa51b761542c74d761fc7e9387e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "ba57d5a29b4e0f2085917010380ef3ddc3cf380f",
+        "sha256": "1kpsvc53x821cmjg1khvp1nz7906gczq8mp83664cr15h94sh8i4",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "self": {
+        "branch": "main",
+        "description": "dotfiles",
+        "homepage": "",
+        "owner": "arqv",
+        "repo": "self",
+        "rev": "f34797ae84bb702cca6b749f985cc2fb49bb8dd3",
+        "sha256": "111nmzg32bp1xy336xg1q68k9a0ag81xq84zcn9gd17h3r46mhjf",
+        "type": "tarball",
+        "url": "https://github.com/arqv/self/archive/f34797ae84bb702cca6b749f985cc2fb49bb8dd3.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
