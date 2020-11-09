@@ -30,14 +30,6 @@ in
       "xkb-options" = [ "ctrl:swapcaps" ];
     };
 
-    "org/gnome/mutter" = {
-      "attach-modal-dialogs" = true;
-      "dynamic-workspaces" = true;
-      "edge-tiling" = true;
-      "focus-change-on-pointer-rest" = true;
-      "workspaces-only-on-primary" = true;
-    };
-
     # "org/gnome/desktop/peripherals/touchpad" = {
     #   "disable-while-typing" = false;
     #   "two-finger-scrolling-enabled" = true;

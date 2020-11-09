@@ -11,13 +11,11 @@ hook global WinSetOption filetype=(haskell|ruby|rust|javascript|terraform|c|cpp)
   map global lsp t ':lsp-type-definition<ret>'
 }
 
+hook global WinCreate .* %{ kakboard-enable }
+
 hook global InsertChar j %{ try %{
   exec -draft hH <a-k>kj<ret> d
   exec <esc>
-}}
-
-hook global NormalKey y|d|c %{ nop %sh{
-  printf %s "$kak_main_reg_dquote" | xsel --input --clipboard
 }}
 
 hook global KakBegin .* %{
