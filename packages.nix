@@ -2,6 +2,7 @@
 
 let
   lib = pkgs.lib;
+<<<<<<< HEAD
   unstable = import <unstable> { config = { allowUnfree = true; }; };
   infra = builtins.fetchGit {
     url = "https://git.hubteam.com/HubSpot/piesync-infra";
@@ -14,19 +15,24 @@ in
     cabal2nix
     cachix
     cabal-install
+    calibre
     darktable
-    unstable.ungoogled-chromium
+    ungoogled-chromium
+    electrum
+    unstable.duf
     exa
     fasd
     fd
     firefox
-    unstable.ghc
+    ghc
     gimp
     gitAndTools.hub
-    gparted
     gnome3.geary
     gnome3.gnome-tweaks
+    gnumeric
     gnupg
+    gparted
+    q-text-as-data
     unstable.haskell.packages.ghc865.haskell-language-server
     htop
     imagemagick
@@ -44,7 +50,7 @@ in
     nix-prefetch-github
     nix-index
     nix-prefetch-git
-    nixops
+    niv
     pciutils
     pidgin
     pidgin-window-merge
@@ -59,6 +65,7 @@ in
     unstable.stack
     unstable.zoom-us
     stdenv
+    st
     tmux
     xsel
     zsh-history-substring-search
