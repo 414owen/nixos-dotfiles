@@ -5,6 +5,7 @@
   imports = [
     ./boot.nix
     ./cachix.nix
+    ./fonts.nix
     ./nix.nix
     ./nixpkgs.nix
     ./hardware-configuration.nix
