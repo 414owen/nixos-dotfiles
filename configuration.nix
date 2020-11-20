@@ -18,6 +18,7 @@
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
+    # nameservers = [ "1.0.0.1" "1.1.1.1" ];
   };
 
   hardware = {
@@ -50,14 +51,15 @@
       unzip
       wget
       wirelesstools
-      xf86_input_wacom
       xorg.libxcb
       xsel
     ];
   };
 
-  programs.zsh.enable = true;
-  programs.command-not-found.enable = true;
+  programs = {
+    zsh.enable = true;
+    command-not-found.enable = true;
+  };
 
   sound.enable = true;
 
@@ -69,7 +71,7 @@
       displayManager = {
         defaultSession = "gnome";
         gdm.enable = true;
-        gdm.autoLogin = {
+        autoLogin = {
           enable = true;
           user = "oshepherd";
         };
@@ -81,6 +83,7 @@
       xkbOptions = "ctrl:swapcaps";
     };
   };
+  hardware.enableRedistributableFirmware = true;
 
   users.users.oshepherd = {
     isNormalUser = true;
@@ -88,7 +91,7 @@
     shell = "/run/current-system/sw/bin/zsh";
   };
 
-  system.stateVersion = "20.03";
   services.fprintd.enable = true;
   security.pam.services.login.fprintAuth = true;
+  system.stateVersion = "20.09";
 }
