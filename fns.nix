@@ -84,10 +84,6 @@ gpu() {
   git push --set-upstream $(firstArg "$upstream" "origin") $@
 }
 
-gph() {
-  gpu $(firstArg "$1" "origin") HEAD
-}
-
 trim() {
   echo $1 | xargs
 }
