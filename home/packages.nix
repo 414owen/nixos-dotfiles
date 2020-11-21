@@ -2,11 +2,10 @@
 
 let
   lib = pkgs.lib;
-<<<<<<< HEAD
   unstable = import <unstable> { config = { allowUnfree = true; }; };
-  infra = builtins.fetchGit {
-    url = "https://git.hubteam.com/HubSpot/piesync-infra";
-  };
+  # infra = builtins.fetchGit {
+  #   url = "https://git.hubteam.com/HubSpot/piesync-infra";
+  # };
 in
 {
   home.packages = with pkgs; [
@@ -15,10 +14,6 @@ in
     cabal2nix
     cachix
     cabal-install
-    calibre
-    darktable
-    ungoogled-chromium
-    electrum
     unstable.duf
     exa
     fasd
@@ -33,11 +28,11 @@ in
     gnupg
     gparted
     q-text-as-data
-    unstable.haskell.packages.ghc865.haskell-language-server
+    haskell.packages.ghc865.haskell-language-server
     htop
     imagemagick
-    unstable.haskellPackages.implicit-hie
-    (import "${infra}/nix/hs-kubectl.nix")
+    haskellPackages.implicit-hie
+    # (import "${infra}/nix/hs-kubectl.nix")
     inkscape
     jq
     kakoune
@@ -62,8 +57,8 @@ in
     sd
     shotwell
     spotify
-    unstable.stack
-    unstable.zoom-us
+    stack
+    zoom-us
     stdenv
     st
     tmux
