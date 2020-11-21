@@ -35,7 +35,6 @@ in
     # (import "${infra}/nix/hs-kubectl.nix")
     inkscape
     jq
-    kakoune
     kak-lsp
     killall
     libsecret
