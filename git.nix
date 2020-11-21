@@ -42,6 +42,9 @@ in
       hub = {
         protocol = "https";
       };
+      push = {
+        default = "current";
+      };
     };
   };
 }

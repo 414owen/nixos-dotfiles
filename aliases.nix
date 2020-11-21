@@ -86,7 +86,6 @@ pts += -ticky' > _ticky/hadrian.settings; hb --flavour=validate --build-root=_ti
   hsd = "nix-shell -E '(import <nixpkgs> {}).haskellPackages.developPackage {root = ./.;}'";
   json = "jq -Rr 'try fromjson // .'";
   k = "kill";
-  less = "less -R";
   ll = ls + " -alF";
   l = ls + " -lah";
   lsl = ls + " -lah";
