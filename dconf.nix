@@ -82,15 +82,6 @@ in
       www = [ "<Super>w" ];
     };
 
-    "/org/gnome/shell/favorite-apps" = [
-      "firefox.desktop"
-      "st.desktop"
-      "org.gnome.Geary.desktop"
-      "spotify.desktop"
-      "org.gnome.Nautilus.desktop"
-      "transmission-gtk.desktop"
-    ];
-
     "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/" = {
       binding = "<Super>t";
       command = "st -n st";
