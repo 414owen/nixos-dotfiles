@@ -84,8 +84,8 @@ pts += -ticky' > _ticky/hadrian.settings; hb --flavour=validate --build-root=_ti
   hbtf = "hbts --freeze1";
   hs = "nix-build -E '(import <nixpkgs> {}).haskellPackages.callCabal2nix \"\" ./. {}'";
   hsd = "nix-shell -E '(import <nixpkgs> {}).haskellPackages.developPackage {root = ./.;}'";
+  json = "jq -Rr 'try fromjson // .'";
   k = "kill";
-  less = "less -R";
   ll = ls + " -alF";
   l = ls + " -lah";
   lsl = ls + " -lah";
@@ -100,7 +100,6 @@ pts += -ticky' > _ticky/hadrian.settings; hb --flavour=validate --build-root=_ti
   sl = ls;
   sudo = "sudo ";
   t = "time";
-  tmuxrec = "mkdir -p ~/casts; asciinema rec ~/casts/$(date +'%m-%d-%Y-%H:%M.cast') -c tmux";
 }] ++ map (i: {
   "gd${i}" = "git diff HEAD~${i}";
   "gr${i}" = "git rebase --interactive HEAD~${i}";

@@ -1,10 +1,17 @@
 { pkgs }:
 
+let tee = "${pkgs.coreutils}/bin/tee";
+    jq = "${pkgs.jq}/bin/jq";
+    less = "${pkgs.less}/bin/less";
+in
+
 ''
-BUSYBOX=${pkgs.busybox}/bin
+BUSYBOX="${pkgs.busybox}/bin"
 TAR=$BUSYBOX/tar
 SEVENZ="${pkgs.p7zip}/bin/7z"
-CURL=${pkgs.curlFull}/bin/curl
+CURL="${pkgs.curlFull}/bin/curl"
+JSON="${jq}"
+LESSCMD="${less}"
 
 add-rpaths() {
   if [ $# -eq 0 ]; then
@@ -59,6 +66,7 @@ teehist() {
   print -rs $1
   eval $1
 }
+
 firstArg() {
   for i in $@; do
     if [ ! -z "$i" ]; then
@@ -79,5 +87,21 @@ trim() {
 
 rgb() {
   rg "\b$@\b"
+}
+
+tee() {
+  if [[ -t 1 ]]; then
+    ${tee} $@ | $JSON -Rr 'try fromjson // .'
+  else
+    ${tee} $@
+  fi
+}
+
+less() {
+  if [[ -t 1 ]]; then
+    $JSON -CRr 'try fromjson // .' | $LESSCMD -R $@
+  else
+    $LESSCMD -R $@
+  fi
 }
 ''
