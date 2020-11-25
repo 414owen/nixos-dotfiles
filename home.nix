@@ -7,8 +7,8 @@ in
 
 {
   imports = [
-    ./dconf.nix
     ./direnv.nix
+    ./dconf.nix
     ./firefox.nix
     ./git.nix
     ./gpg-agent.nix
@@ -18,11 +18,11 @@ in
     ./readline.nix
     ./ssh.nix
     ./starship.nix
-    ./wtf.nix
     ./theme.nix
     ./tmux.nix
     ./zsh.nix
   ];
+
 
   home = {
     username = "owen";
