@@ -76,4 +76,8 @@ gsu() {
 trim() {
   echo $1 | xargs
 }
+
+rgb() {
+  rg "\b$@\b"
+}
 ''
