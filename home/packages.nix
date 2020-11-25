@@ -2,8 +2,10 @@
 
 let
   lib = pkgs.lib;
-  unstable = import <unstable> {};
-  obelisk = import (builtins.fetchTarball "https://github.com/obsidiansystems/obelisk/archive/master.tar.gz") {};
+  unstable = import <unstable> { config = { allowUnfree = true; }; };
+  # infra = builtins.fetchGit {
+  #   url = "https://git.hubteam.com/HubSpot/piesync-infra";
+  # };
 in
 {
   home.packages = with pkgs; [
@@ -11,68 +13,61 @@ in
     asciinema
     bat
     cabal2nix
-    cachix
     cabal-install
+    cachix
     calibre
     darktable
     discord
-    unstable.ungoogled-chromium
-    electrum
-    unstable.duf
     exa
     fasd
     fd
     firefox
-    unstable.ghc
+    ghc
     gimp
-    gnumeric
+    gitAndTools.hub
     gnome3.geary
     gnome3.gnome-tweaks
+    gnumeric
     gnupg
-    q-text-as-data
-    unstable.haskell.packages.ghc865.haskell-language-server
+    gparted
+    haskell.packages.ghc865.haskell-language-server
+    haskellPackages.implicit-hie
+    haskellPackages.retrie
     htop
-    gitAndTools.hub
     imagemagick
-    unstable.haskellPackages.implicit-hie
-    # unstable.ib-tws
     inkscape
     jq
     kak-lsp
     killall
     libsecret
     lshw
-    mpv-with-scripts
+    mpv
     multimc
-    (netsurf.browser.override { uilib = "gtk"; })
     neofetch
-    vapoursynth
-    vapoursynth-mvtools
-    nix-prefetch-github
-    nix-index
-    nixops
-    nix-prefetch-git
+    (netsurf.browser.override { uilib = "gtk"; })
     niv
-    obelisk.command
+    nix-index
+    nix-prefetch-git
+    nix-prefetch-github
     pciutils
     pidgin
     pidgin-window-merge
     purple-hangouts
+    q-text-as-data
     ranger
     rawtherapee
-    (unstable.haskell.lib.dontCheck unstable.haskellPackages.retrie)
+    remarshal
     ripgrep
     sd
     shotwell
     spotify
-    stdenv
     st
+    stdenv
     tmux
-    tor-browser-bundle-bin
     transmission-gtk
-    wtf
+    unstable.duf
     xsel
-    unstable.zoom-us
+    zoom-us
     zsh-history-substring-search
     zsh-syntax-highlighting
   ] ++ (with gitAndTools; [

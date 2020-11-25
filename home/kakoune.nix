@@ -31,7 +31,8 @@ in
         { mode = "normal"; key = "<c-j>"; effect = "glEs\\s<ret>d"; }
         { mode = "normal"; key = "<c-J>"; effect = "<a-J>"; }
         { mode = "goto"; key = "m"; effect = "<esc>m;"; }
-        { mode = "normal"; key = "<c-p>"; effect = ":fzf-mode<ret>"; }
+        { mode = "normal"; key = "<c-p>"; effect = ": fzf-mode<ret>"; }
+
       ];
       numberLines = {
         enable = true;
