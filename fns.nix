@@ -73,12 +73,6 @@ gsu() {
   git branch "--set-upstream-to=$(firstArg "$1" origin)/$(firstArg "$2" $branch)" "$branch"
 }
 
-gpu() {
-  local upstream="$1"
-  shift
-  git push --set-upstream $(firstArg "$upstream" "origin") $@
-}
-
 trim() {
   echo $1 | xargs
 }
