@@ -13,6 +13,7 @@ let
   );
   kakImport = name: ''source "${name}"'';
   allKakImports = dir: builtins.concatStringsSep "\n" (map kakImport (allKakFiles dir));
+  utdemir = (import ./nix/sources.nix).utdemir-dotfiles;
 in
 
 {
@@ -24,8 +25,6 @@ in
       keyMappings = [
         { mode = "insert"; key = "<tab>"; effect = "<a-;><gt>"; }
         { mode = "insert"; key = "<s-tab>"; effect = "<a-;><lt>"; }
-        { mode = "normal"; key = "p"; effect = "<a-!>xsel --output --clipboard<ret>"; }
-        { mode = "normal"; key = "P"; effect = "!xsel --output --clipboard<ret>"; }
         { mode = "normal"; key = "'#'"; effect = ":comment-line<ret>"; }
         { mode = "normal"; key = "'<a-#>'"; effect = ":comment-block<ret>"; }
         # I use the default for navigating tmux panes
@@ -62,7 +61,18 @@ in
       face global MenuBackground gray
       face global MenuForeground gray
       set-face global PrimarySelection black,white
-      set-face global SecondarySelection black,gray
+      set-face global PrimaryCursor black,red
+      set-face global SecondarySelection white,black
+      set-face global SecondaryCursor black,blue
     '';
+    plugins = with pkgs.kakounePlugins; [
+      (pkgs.callPackage "${utdemir}/nix/packages/kakoune-surround.nix" { })
+      (pkgs.callPackage "${utdemir}/nix/packages/kakoune-rainbow.nix" { })
+      kak-auto-pairs
+      kak-fzf
+      pkgs.kak-lsp
+      kakboard
+      smarttab
+    ];
   };
 }

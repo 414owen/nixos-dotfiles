@@ -18,12 +18,6 @@ in
       "secondary-color" = "#000000";
     };
 
-    "org/gnome/desktop/input-sources" = {
-      "current" = "uint32 0";
-      "sources" = [ (mkTuple [ "xkb" "gb" ]) ];
-      "xkb-options" = [ "ctrl:swapcaps" ];
-    };
-
     "org/gnome/desktop/interface" = {
       "cursor-theme" = "Paper";
       "gtk-im-module" = "gtk-im-context-simple";
@@ -31,66 +25,39 @@ in
       "icon-theme" = "Paper-Mono-Dark";
     };
 
-    "org/gnome/desktop/lockdown" = {
-      "disable-lock-screen" = true;
+
+    "org/gnome/desktop/input-sources" = {
+      "sources" = [ (mkTuple [ "xkb" "gb" ]) ];
+      "xkb-options" = [ "ctrl:swapcaps" ];
     };
 
-    "org/gnome/desktop/privacy" = {
-      "report-technical-problems" = true;
-    };
-
-    "org/gnome/desktop/screensaver" = {
-      "idle-activation-enabled" = false;
-      "picture-options" = "zoom";
-      "picture-uri" = wallpaper-uri;
-      "primary-color" = "#ffffff";
-      "secondary-color" = "#000000";
-    };
-
-    "org/gnome/desktop/session" = {
-      "idle-delay" = "uint32 0";
-    };
-
-   "org/gnome/desktop/peripherals/touchpad" = {
-      click-method = "areas";
-      disable-while-typing = false;
-      speed = 0.34558823529411775;
-      tap-to-click = true;
-      two-finger-scrolling-enabled = true;
-    };
-
-    "org/gnome/mutter" = {
-      "attach-modal-dialogs" = true;
-      "dynamic-workspaces" = true;
-      "edge-tiling" = true;
-      "focus-change-on-pointer-rest" = true;
-      "workspaces-only-on-primary" = true;
-    };
+    # "org/gnome/desktop/peripherals/touchpad" = {
+    #   "disable-while-typing" = false;
+    #   "two-finger-scrolling-enabled" = true;
+    # };
 
     "org/gnome/nautilus/preferences" = {
       "default-folder-viewer" = "icon-view";
       "search-filter-time-type" = "last_modified";
     };
 
-    # "org/gnome/settings-daemon/plugins/media-keys" = {
-    #   calculator = [ "<Super>c" ];
-    #   custom-keybindings = [
-    #     "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"
-    #   ];
-    #   email = [ "<Super>e" ];
-    #   home = [ "<Super>f" ];
-    #   www = [ "<Super>w" ];
-    # };
-
-    # "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/" = {
-    #   binding = "<Super>t";
-    #   command = "st -n st";
-    #   name = "Launch Terminal";
-    # };
-
-    "org/gnome/settings-daemon/plugins/power" = {
-      "sleep-inactive-ac-type" = "nothing";
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      "calculator" = [ "<Super>c" ];
+      "custom-keybindings" = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+      "email" = [ "<Super>e" ];
+      "home" = [ "<Super>f" ];
+      "www" = [ "<Super>w" ];
     };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      "binding" = "<Super>t";
+      "command" = "st -n st";
+      "name" = "Launch Terminal";
+    };
+
+    # "org/gnome/settings-daemon/plugins/power" = {
+    #   "sleep-inactive-ac-type" = "nothing";
+    # };
 
     "org/gnome/settings-daemon/plugins/xsettings" = {
       "antialiasing" = "rgba";
@@ -99,18 +66,6 @@ in
 
     "org/gnome/system/location" = {
       "enabled" = true;
-    };
-
-    "org/gtk/settings/file-chooser" = {
-      "date-format" = "regular";
-      "location-mode" = "path-bar";
-      "show-hidden" = false;
-      "show-size-column" = true;
-      "show-type-column" = true;
-      "sort-column" = "name";
-      "sort-directories-first" = false;
-      "sort-order" = "ascending";
-      "type-format" = "category";
     };
   };
 }
