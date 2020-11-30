@@ -12,6 +12,7 @@ in
     any-nix-shell
     asciinema
     bat
+    discord
     cabal2nix
     cabal-install
     cachix
