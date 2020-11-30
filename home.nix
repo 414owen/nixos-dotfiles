@@ -10,6 +10,7 @@ in
     ./direnv.nix
     ./dconf.nix
     ./firefox.nix
+    ./ghci.nix
     ./git.nix
     ./gpg-agent.nix
     ./kak-lsp.nix
