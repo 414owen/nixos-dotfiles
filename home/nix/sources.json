@@ -1,14 +1,14 @@
 {
-    "utdemir-dotfiles": {
+    "vkleen": {
         "branch": "master",
-        "description": "Comprehensive configuration of my NixOS workstation",
+        "description": "Using NixOS to configure some of my machines",
         "homepage": "",
-        "owner": "utdemir",
-        "repo": "dotfiles",
-        "rev": "629582f848da8fa51b761542c74d761fc7e9387e",
-        "sha256": "198lqqqbdvrxy3q1im2y6m1gn74vz3l8fxfp1vazmizxygpq2x55",
+        "owner": "vkleen",
+        "repo": "machines",
+        "rev": "97e8fbed07dbaaa63d7ce96ef481cfd6130388d7",
+        "sha256": "1jxlm10vjcxf1pyais79xawqkwjzmmrjmlpmiqj33klkxm5ifazm",
         "type": "tarball",
-        "url": "https://github.com/utdemir/dotfiles/archive/629582f848da8fa51b761542c74d761fc7e9387e.tar.gz",
+        "url": "https://github.com/vkleen/machines/archive/97e8fbed07dbaaa63d7ce96ef481cfd6130388d7.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -33,6 +33,18 @@
         "sha256": "111nmzg32bp1xy336xg1q68k9a0ag81xq84zcn9gd17h3r46mhjf",
         "type": "tarball",
         "url": "https://github.com/arqv/self/archive/f34797ae84bb702cca6b749f985cc2fb49bb8dd3.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "utdemir-dotfiles": {
+        "branch": "master",
+        "description": "Comprehensive configuration of my NixOS workstation",
+        "homepage": "",
+        "owner": "utdemir",
+        "repo": "dotfiles",
+        "rev": "629582f848da8fa51b761542c74d761fc7e9387e",
+        "sha256": "198lqqqbdvrxy3q1im2y6m1gn74vz3l8fxfp1vazmizxygpq2x55",
+        "type": "tarball",
+        "url": "https://github.com/utdemir/dotfiles/archive/629582f848da8fa51b761542c74d761fc7e9387e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
