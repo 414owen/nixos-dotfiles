@@ -1,4 +1,16 @@
 {
+    "vkleen": {
+        "branch": "master",
+        "description": "Using NixOS to configure some of my machines",
+        "homepage": "",
+        "owner": "vkleen",
+        "repo": "machines",
+        "rev": "97e8fbed07dbaaa63d7ce96ef481cfd6130388d7",
+        "sha256": "1jxlm10vjcxf1pyais79xawqkwjzmmrjmlpmiqj33klkxm5ifazm",
+        "type": "tarball",
+        "url": "https://github.com/vkleen/machines/archive/97e8fbed07dbaaa63d7ce96ef481cfd6130388d7.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",

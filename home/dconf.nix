@@ -25,6 +25,7 @@ in
       "icon-theme" = "Paper-Mono-Dark";
     };
 
+
     "org/gnome/desktop/input-sources" = {
       "sources" = [ (mkTuple [ "xkb" "gb" ]) ];
       "xkb-options" = [ "ctrl:swapcaps" ];

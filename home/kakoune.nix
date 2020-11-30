@@ -14,6 +14,7 @@ let
   kakImport = name: ''source "${name}"'';
   allKakImports = dir: builtins.concatStringsSep "\n" (map kakImport (allKakFiles dir));
   utdemir = (import ./nix/sources.nix).utdemir-dotfiles;
+  vkleen = (import ./nix/sources.nix).vkleen;
 in
 
 {
@@ -32,7 +33,7 @@ in
         { mode = "normal"; key = "<c-J>"; effect = "<a-J>"; }
         { mode = "goto"; key = "m"; effect = "<esc>m;"; }
         { mode = "normal"; key = "<c-p>"; effect = ": fzf-mode<ret>"; }
-
+        { mode = "normal"; key = "<c-\\>"; effect = ": idris-ide<ret>"; }
       ];
       numberLines = {
         enable = true;
@@ -69,6 +70,7 @@ in
     plugins = with pkgs.kakounePlugins; [
       (pkgs.callPackage "${utdemir}/nix/packages/kakoune-surround.nix" { })
       (pkgs.callPackage "${utdemir}/nix/packages/kakoune-rainbow.nix" { })
+      (pkgs.callPackage "${vkleen}/bohrium/vkleen/kakoune/kakoune-idris.nix" { })
       kak-auto-pairs
       kak-fzf
       pkgs.kak-lsp
