@@ -13,6 +13,7 @@ in
     ./ghci.nix
     ./git.nix
     ./gpg-agent.nix
+    ./haskeline.nix
     ./kak-lsp.nix
     ./kakoune.nix
     ./packages.nix
