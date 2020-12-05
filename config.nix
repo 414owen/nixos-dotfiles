@@ -1,1 +1,4 @@
-{ allowBroken = true; allowUnfree = true; }
+{
+  allowUnfree = true;
+  allowBroken = true;
+}
