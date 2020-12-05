@@ -7,22 +7,24 @@ in
 
 {
   imports = [
-    ./dconf.nix
     ./direnv.nix
+    ./dconf.nix
     ./firefox.nix
+    ./ghci.nix
     ./git.nix
     ./gpg-agent.nix
+    ./haskeline.nix
     ./kak-lsp.nix
     ./kakoune.nix
     ./packages.nix
     ./readline.nix
     ./ssh.nix
     ./starship.nix
-    ./wtf.nix
     ./theme.nix
     ./tmux.nix
     ./zsh.nix
   ];
+
 
   home = {
     username = "owen";
