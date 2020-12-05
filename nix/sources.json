@@ -23,6 +23,18 @@
         "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "pretty-ghci": {
+        "branch": "master",
+        "description": "Functionality for beautifying GHCi",
+        "homepage": "",
+        "owner": "harpocrates",
+        "repo": "pretty-ghci",
+        "rev": "179e8453d8af84a2c64fd4dc506c119fa4f971df",
+        "sha256": "00mqxdndyzv3xy1s2pv607cj4mibwjhrsybvzxg6fsckwaa1izif",
+        "type": "tarball",
+        "url": "https://github.com/harpocrates/pretty-ghci/archive/179e8453d8af84a2c64fd4dc506c119fa4f971df.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "self": {
         "branch": "main",
         "description": "dotfiles",
