@@ -1,14 +1,14 @@
 {
-    "vkleen": {
+    "firefox-gnome-theme": {
         "branch": "master",
-        "description": "Using NixOS to configure some of my machines",
+        "description": "A GNOME👣 theme for Firefox🔥",
         "homepage": "",
-        "owner": "vkleen",
-        "repo": "machines",
-        "rev": "97e8fbed07dbaaa63d7ce96ef481cfd6130388d7",
-        "sha256": "1jxlm10vjcxf1pyais79xawqkwjzmmrjmlpmiqj33klkxm5ifazm",
+        "owner": "rafaelmardojai",
+        "repo": "firefox-gnome-theme",
+        "rev": "dfa1bc5cc289484449b6d09e0d17ec165a8e5aba",
+        "sha256": "1k93ll1262pgf13gh228al1hc74x7r1nf3v8l07q94qxpgnsz4xa",
         "type": "tarball",
-        "url": "https://github.com/vkleen/machines/archive/97e8fbed07dbaaa63d7ce96ef481cfd6130388d7.tar.gz",
+        "url": "https://github.com/rafaelmardojai/firefox-gnome-theme/archive/dfa1bc5cc289484449b6d09e0d17ec165a8e5aba.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -57,6 +57,18 @@
         "sha256": "198lqqqbdvrxy3q1im2y6m1gn74vz3l8fxfp1vazmizxygpq2x55",
         "type": "tarball",
         "url": "https://github.com/utdemir/dotfiles/archive/629582f848da8fa51b761542c74d761fc7e9387e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vkleen": {
+        "branch": "master",
+        "description": "Using NixOS to configure some of my machines",
+        "homepage": "",
+        "owner": "vkleen",
+        "repo": "machines",
+        "rev": "97e8fbed07dbaaa63d7ce96ef481cfd6130388d7",
+        "sha256": "1jxlm10vjcxf1pyais79xawqkwjzmmrjmlpmiqj33klkxm5ifazm",
+        "type": "tarball",
+        "url": "https://github.com/vkleen/machines/archive/97e8fbed07dbaaa63d7ce96ef481cfd6130388d7.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

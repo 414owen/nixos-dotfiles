@@ -3,9 +3,6 @@
 let
   lib = pkgs.lib;
   unstable = import <unstable> { config = { allowUnfree = true; }; };
-  # infra = builtins.fetchGit {
-  #   url = "https://git.hubteam.com/HubSpot/piesync-infra";
-  # };
 in
 {
   home.packages = with pkgs; [
@@ -22,7 +19,6 @@ in
     exa
     fasd
     fd
-    firefox
     ghc
     gimp
     gitAndTools.hub
