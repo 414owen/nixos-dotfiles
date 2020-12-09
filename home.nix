@@ -35,6 +35,7 @@ in
   programs = {
     command-not-found.enable = true;
     direnv.enable = true;
+    firefox.enable = true;
     fzf = {
       enable = true;
       enableZshIntegration = true;
