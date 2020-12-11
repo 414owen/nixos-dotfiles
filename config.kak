@@ -35,3 +35,4 @@ hook global KakBegin .* %{
 set-face global search +bi
 add-highlighter global/search dynregex '%reg{/}' 0:search
 add-highlighter global/ column '%opt{autowrap_column}' default,red
+add-highlighter global/trailing-whitespace regex '\h+$' 0:Error
