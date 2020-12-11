@@ -18,15 +18,11 @@ in {
   # adwaita theme
   home.file.".mozilla/firefox/default/chrome" = {
     recursive = false;
-    source = (pkgs.fetchgit {
-      url = "https://github.com/414owen/firefox-gnome-theme.git";
-      rev = "8ce2e3a12bfaf41498baef99ca687caa148501fa";
-      sha256 = "14fnffxvswrcbcm39s7w1rjr3il8qaafsrffs5aj815xzx9qa81n";
-    });
+    source = (import ./nix/sources.nix).firefox-gnome-theme;
   };
 
   programs.firefox = {
-    enable = true;
+    package = pkgs.firefox-wayland;
     profiles = {
       default = {
         settings = {
@@ -67,6 +63,10 @@ in {
           "view_source.editor.args" = "${pkgs.gnome3.gnome-terminal}/bin/gnome-terminal ${(import ./defaults.nix).editor}";
           "view_source.editor.external" = true;
           "view_source.editor.path" = "${viewSource}/bin/view-source";
+
+          "gnomeTheme.hideSingleTab" = true;
+          "gnomeTheme.systemIcons" = false;
+          "gnomeTheme.symbolicTabIcons" = true;
         };
       };
     };
