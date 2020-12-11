@@ -31,6 +31,9 @@ in
     haskellPackages.implicit-hie
     haskellPackages.retrie
     htop
+    (ib-tws.override (old: {
+      jdk = openjdk;
+    }))
     imagemagick
     inkscape
     jq
