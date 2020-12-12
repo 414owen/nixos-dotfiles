@@ -1,10 +1,10 @@
-{ stdenv, fetchurl, bash, jre }:
 let
-  mcVersion = "1.16.2";
-  buildNum = "141";
+  inherit (import <unstable> {}) stdenv fetchurl bash jre;
+  mcVersion = "1.16.3";
+  buildNum = "204";
   jar = fetchurl {
     url = "https://papermc.io/api/v1/paper/${mcVersion}/${buildNum}/download";
-    sha256 = "1qhhnaysw9r73fpvj9qcmjah722a6a4s6g4cblna56n1hpz4lw1s";
+    sha256 = "0nb3dci2z7w4hvjmnq0kwmv6iv9vivcs8q5r82ni1ikadlcnblb6";
   };
 in stdenv.mkDerivation {
   pname = "papermc";

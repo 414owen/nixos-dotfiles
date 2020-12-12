@@ -137,7 +137,8 @@ in {
 
       package = mkOption {
         type = types.package;
-        default = unstable.papermc;
+        default = import ./paper-package.nix;
+        # default = "${import ./paper-package.nix {}}/bin/minecraft-server";
         defaultText = "unstable.papermc";
         description = "Version of paper to run.";
       };

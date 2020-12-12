@@ -92,6 +92,8 @@ in
     };
   };
 
+  programs.mosh.enable = true;
+
   users.users.owen = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
