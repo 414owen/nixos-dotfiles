@@ -11,6 +11,18 @@
         "url": "https://github.com/rafaelmardojai/firefox-gnome-theme/archive/dfa1bc5cc289484449b6d09e0d17ec165a8e5aba.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "kakoune-easymotion": {
+        "branch": "master",
+        "description": "kakoune plugin for navigating like the easymotion vim mode",
+        "homepage": null,
+        "owner": "danr",
+        "repo": "kakoune-easymotion",
+        "rev": "0ca75450023a149efc70e8e383e459b571355c70",
+        "sha256": "15czvl0qj2k767pysr6xk2v31mkhvcbmv76xs2a8yrslchms70b5",
+        "type": "tarball",
+        "url": "https://github.com/danr/kakoune-easymotion/archive/0ca75450023a149efc70e8e383e459b571355c70.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",
