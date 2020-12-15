@@ -47,6 +47,9 @@ in
         { mode = "normal"; key = "<minus>"; effect = ": enter-user-mode idris-ide<ret>"; }
         { mode = "normal"; key = "<c-\\>"; effect = ": idris-ide<ret>"; }
         { mode = "normal"; key = "<c-w>"; effect = "|fmt --width 80<ret>"; }
+        { mode = "normal"; key = "w"; effect = " :easy-motion-w<ret>"; }
+        { mode = "normal"; key = "W"; effect = " :easy-motion-W<ret>"; }
+        { mode = "normal"; key = "j"; effect = " :easy-motion-j<ret>"; }
       ];
       numberLines = {
         enable = true;
@@ -87,8 +90,7 @@ in
       kak-auto-pairs
       kak-fzf
       pkgs.kak-lsp
-      kakboard
-      smarttab
+      kakoune-easymotion
     ];
   };
 }
