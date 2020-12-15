@@ -65,6 +65,7 @@ in
     stdenv
     tmux
     transmission-gtk
+    usbutils
     unstable.duf
     xsel
     zoom-us
