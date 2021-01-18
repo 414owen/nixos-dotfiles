@@ -19,6 +19,7 @@ in
     exa
     fasd
     unstable.feeds
+    signal-desktop
     fd
     ghc
     gimp
@@ -32,9 +33,9 @@ in
     haskellPackages.implicit-hie
     haskellPackages.retrie
     htop
-    (ib-tws.override (old: {
-      jdk = openjdk;
-    }))
+    # (ib-tws.override (old: {
+    #   jdk = openjdk;
+    # }))
     imagemagick
     inkscape
     jq

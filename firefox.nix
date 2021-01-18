@@ -1,6 +1,6 @@
 { pkgs, home, ... }:
 
-let 
+let
   viewSource = pkgs.writeTextFile {
     name = "view-firefox-source-script";
     destination = "/bin/view-source";
