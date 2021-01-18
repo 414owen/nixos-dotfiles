@@ -87,7 +87,7 @@ in
       kak-fzf
       pkgs.kak-lsp
       kakboard
-      smarttab
+      # smarttab
     ];
   };
 }
