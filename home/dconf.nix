@@ -19,10 +19,10 @@ in
     };
 
     "org/gnome/desktop/interface" = {
-      "cursor-theme" = "Paper";
+      # "cursor-theme" = "Paper";
       "gtk-im-module" = "gtk-im-context-simple";
       "gtk-theme" = "Adwaita-dark";
-      "icon-theme" = "Paper-Mono-Dark";
+      # "icon-theme" = "Paper-Mono-Dark";
     };
 
 

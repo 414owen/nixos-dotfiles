@@ -8,7 +8,7 @@ in
 {
   imports = [
     ./direnv.nix
-    ./dconf.nix
+    # ./dconf.nix
     ./firefox.nix
     ./ghci.nix
     ./git.nix
