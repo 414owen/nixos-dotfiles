@@ -18,7 +18,6 @@ in
     discord
     exa
     fasd
-    unstable.feeds
     signal-desktop
     fd
     ghc
@@ -45,6 +44,7 @@ in
     lshw
     mpv
     multimc
+    newsflash
     neofetch
     (netsurf.browser.override { uilib = "gtk"; })
     non
@@ -79,6 +79,7 @@ in
     zoom-us
     zsh-history-substring-search
     zsh-syntax-highlighting
+    ungoogled-chromium
   ] ++ (with gitAndTools; [
     gh
     git-absorb
