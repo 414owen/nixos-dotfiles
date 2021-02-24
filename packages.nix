@@ -50,6 +50,7 @@ in
     non
     niv
     nix-index
+    unstable.nix-output-monitor
     nix-prefetch-git
     nix-prefetch-github
     pciutils
