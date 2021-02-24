@@ -17,6 +17,7 @@ in
     darktable
     discord
     exa
+    expect
     fasd
     signal-desktop
     fd
