@@ -4,4 +4,5 @@
   permittedInsecurePackages = [
     "libsixel-1.8.6"
   ];
+  allowUnsupportedSystem = true;
 }

@@ -20,6 +20,7 @@ in
     ./readline.nix
     ./ssh.nix
     ./starship.nix
+    ./taskwarrior.nix
     ./theme.nix
     ./tmux.nix
     ./zsh.nix
@@ -46,6 +47,7 @@ in
     readline.enable = true;
     starship.enable = true;
     ssh.enable = true;
+    taskwarrior.enable = true;
     tmux.enable = true;
     zsh.enable = true;
   };

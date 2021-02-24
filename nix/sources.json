@@ -23,6 +23,18 @@
         "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "obelisk": {
+        "branch": "master",
+        "description": "Functional reactive web and mobile applications, with batteries included.",
+        "homepage": "https://reflex-frp.org",
+        "owner": "obsidiansystems",
+        "repo": "obelisk",
+        "rev": "7ad33cbe3e84b209e83c505ce25486445bbd602e",
+        "sha256": "0dlk8y6rxc87crw7764zq2py7nqn38lw496ca1y893m9gdq8qdkz",
+        "type": "tarball",
+        "url": "https://github.com/obsidiansystems/obelisk/archive/7ad33cbe3e84b209e83c505ce25486445bbd602e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "pretty-ghci": {
         "branch": "master",
         "description": "Functionality for beautifying GHCi",
