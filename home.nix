@@ -23,6 +23,7 @@ in
     ./taskwarrior.nix
     ./theme.nix
     ./tmux.nix
+    ./zoom.nix
     ./zsh.nix
   ];
 
