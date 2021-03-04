@@ -29,9 +29,6 @@ in
     gnumeric
     gnupg
     gparted
-    haskell.packages.ghc865.haskell-language-server
-    haskellPackages.implicit-hie
-    haskellPackages.retrie
     htop
     # (ib-tws.override (old: {
     #   jdk = openjdk;
@@ -47,7 +44,7 @@ in
     multimc
     newsflash
     neofetch
-    (netsurf.browser.override { uilib = "gtk"; })
+    (netsurf.browser.override { uilib = "gtk3"; })
     non
     niv
     nix-index
@@ -73,6 +70,7 @@ in
     spotify
     st
     stdenv
+    tmate
     tmux
     transmission-gtk
     usbutils
