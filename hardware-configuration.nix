@@ -25,7 +25,7 @@
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
+  swapDevices = [ { device = "/swapfile"; size = 2048; } ];
 
   nix.maxJobs = lib.mkDefault 24;
   # High-DPI console

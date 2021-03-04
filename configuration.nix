@@ -46,7 +46,7 @@
   ];
 
   musnix = {
-    enable = true;
+    enable = false;
     # soundCardPciId = "0c:00.4";
     kernel = {
       optimize = false;
@@ -70,13 +70,12 @@
         libvdpau-va-gl
       ];
     };
-    pulseaudio = {
-      enable = true;
-      package = pkgs.pulseaudioFull;
-    };
+    pulseaudio.enable = false;
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   environment = {
 
@@ -94,6 +93,7 @@
       paper-icon-theme
       patchelf
       python3Full
+      patchage
       service-wrapper
       steam
       traceroute
@@ -113,6 +113,16 @@
     adb.enable = true;
   };
 
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    # Compatibility shims, adjust according to your needs
+    # alsa.enable = true;
+    # alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
   sound.enable = true;
 
   services = {
@@ -125,29 +135,22 @@
       displayManager = {
         defaultSession = "gnome";
         autoLogin = {
-          enable = false;
+          enable = true;
           user = "owen";
         };
         gdm.enable = true;
       };
-      libinput = {
-        enable = true;
-        disableWhileTyping = false;
-      };
+      libinput.enable = true;
       xkbOptions = "ctrl:swapcaps";
       videoDrivers = [ "amdgpu" ];
     };
     keybase.enable = true;
     sshd.enable = true;
-    jack = {
-      jackd.enable = true;
-      alsa.enable = false;
-      loopback.enable = true;
-    };
   };
   hardware.enableRedistributableFirmware = true;
   hardware.cpu.amd.updateMicrocode = true;
 
+  console.useXkbConfig = true;
 
   users.users.owen = {
     isNormalUser = true;
