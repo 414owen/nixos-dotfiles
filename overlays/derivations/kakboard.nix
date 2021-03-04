@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, ... }:
+{ stdenv, lib, fetchFromGitHub, ... }:
 
 stdenv.mkDerivation {
   name = "kak-kakboard";
@@ -18,7 +18,7 @@ stdenv.mkDerivation {
     cp -r kakboard.kak $out/share/kak/autoload/plugins/kakboard
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Kakoune kakboard";
     homepage = "https://github.com/lePerdu/kakboard";
     licence = licenses.MIT;

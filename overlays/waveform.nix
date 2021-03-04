@@ -1,4 +1,4 @@
-self: { alsaLib, patchelf, freetype, curlFull, libGL, xorg, stdenv, dpkg, glibc, autoPatchelfHook, ... }: {
+self: { alsaLib, patchelf, freetype, curlFull, libGL, xorg, stdenv, lib, dpkg, glibc, autoPatchelfHook, ... }: {
   waveform-pro = let
 
       # Please keep the version x.y.0.z and do not update to x.y.76.z because the
@@ -52,7 +52,7 @@ self: { alsaLib, patchelf, freetype, curlFull, libGL, xorg, stdenv, dpkg, glibc,
         patchelf --add-needed libcurl.so.4 $out/bin/Waveform11
       '';
 
-      meta = with stdenv.lib; {
+      meta = with lib; {
         description = "Tracktion Waveform Pro";
         homepage = https://www.tracktion.com/products/waveform-pro;
         license = licenses.unfree;
