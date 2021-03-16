@@ -11,6 +11,18 @@
         "url": "https://github.com/rafaelmardojai/firefox-gnome-theme/archive/dfa1bc5cc289484449b6d09e0d17ec165a8e5aba.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "kakboard": {
+        "branch": "master",
+        "description": "Clipboard integration for Kakoune",
+        "homepage": null,
+        "owner": "lePerdu",
+        "repo": "kakboard",
+        "rev": "2f13f5cd99591b76ad5cba230815b80138825120",
+        "sha256": "1kvnbsv20y09rlnyar87qr0h26i16qsq801krswvxcwhid7ijlvd",
+        "type": "tarball",
+        "url": "https://github.com/lePerdu/kakboard/archive/2f13f5cd99591b76ad5cba230815b80138825120.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "kakoune-easymotion": {
         "branch": "master",
         "description": "kakoune plugin for navigating like the easymotion vim mode",
