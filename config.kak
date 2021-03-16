@@ -50,3 +50,4 @@ add-highlighter global/ column '%opt{autowrap_column}' default,red
 
 colorscheme default # your colorscheme
 set-face global EasyMotionForeground rgb:fdf6e3,rgb:268bd2+fg
+add-highlighter global/trailing-whitespace regex '\h+$' 0:Error
