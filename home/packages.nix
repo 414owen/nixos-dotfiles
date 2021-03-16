@@ -67,6 +67,7 @@ in
     zoom-us
     zsh-history-substring-search
     zsh-syntax-highlighting
+    unrar
   ] ++ (with gitAndTools; [
     gh
     git-absorb
