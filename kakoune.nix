@@ -24,7 +24,6 @@ let
       rev = "16d3313de1bee9bfe0e2c29e51165db2c76f9cc4";
       hash = "sha256:18phc3wnrwih4hxjzdqkmpq90zw2r0sfflhmafdjbxbr6m1ihnzf";
     };
-    # src = /home/owen/src/kakoune-idris;
   });
 in
 

@@ -55,31 +55,7 @@ in
     ":def! rr \\_ -> return \":script ~/.ghci\""
 
     # Typing `:pretty` will turn on the pretty-printing
-    ''
-    :set -package process
-    :{
-    :def pretty \_ ->  pure $ unlines $
-      [ ":{"
-      , "let pprint x = System.Process.withCreateProcess cp' $ \\(Just i) _ _ ph -> do"
-      , "        System.IO.hPutStrLn i (show x)"
-      , "        System.IO.hClose i"
-      , "        _ <- System.Process.waitForProcess ph"
-      , "        pure ()"
-      , "      where cp = System.Process.proc \"${pkgs.pp-ghci}/bin/pp-ghci\" [\"--value\", \"--smarter-layout\"]"
-      , "            cp' = cp{ System.Process.std_out = System.Process.Inherit"
-      , "                    , System.Process.std_err = System.Process.Inherit"
-      , "                    , System.Process.std_in  = System.Process.CreatePipe }"
-      , ":}"
-      , ":set -interactive-print pprint"
-      ]
-    :}
-    ''
-
-     # Typing `:no-pretty` will turn off the pretty-printing
-    ":def no-pretty \\_ -> pure (\":set -interactive-print System.IO.print\")"
-
-    # Make things pretty by default!
-    ":pretty"
+    ":set -package process"
 
     # Turn on output of types.  This line should be last.
     ":set +t"

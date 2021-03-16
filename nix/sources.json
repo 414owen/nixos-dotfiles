@@ -47,6 +47,18 @@
         "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "obelisk": {
+        "branch": "master",
+        "description": "Functional reactive web and mobile applications, with batteries included.",
+        "homepage": "https://reflex-frp.org",
+        "owner": "obsidiansystems",
+        "repo": "obelisk",
+        "rev": "7ad33cbe3e84b209e83c505ce25486445bbd602e",
+        "sha256": "0dlk8y6rxc87crw7764zq2py7nqn38lw496ca1y893m9gdq8qdkz",
+        "type": "tarball",
+        "url": "https://github.com/obsidiansystems/obelisk/archive/7ad33cbe3e84b209e83c505ce25486445bbd602e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "pretty-ghci": {
         "branch": "master",
         "description": "Functionality for beautifying GHCi",
@@ -57,18 +69,6 @@
         "sha256": "00mqxdndyzv3xy1s2pv607cj4mibwjhrsybvzxg6fsckwaa1izif",
         "type": "tarball",
         "url": "https://github.com/harpocrates/pretty-ghci/archive/179e8453d8af84a2c64fd4dc506c119fa4f971df.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "self": {
-        "branch": "main",
-        "description": "dotfiles",
-        "homepage": "",
-        "owner": "arqv",
-        "repo": "self",
-        "rev": "f34797ae84bb702cca6b749f985cc2fb49bb8dd3",
-        "sha256": "111nmzg32bp1xy336xg1q68k9a0ag81xq84zcn9gd17h3r46mhjf",
-        "type": "tarball",
-        "url": "https://github.com/arqv/self/archive/f34797ae84bb702cca6b749f985cc2fb49bb8dd3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "utdemir-dotfiles": {
