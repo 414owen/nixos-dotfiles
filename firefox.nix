@@ -16,14 +16,14 @@ let
 in {
 
   # adwaita theme
-  home.file.".mozilla/firefox/default/chrome" = {
-    recursive = false;
-    source = builtins.fetchGit {
-      url = "https://github.com/414owen/firefox-gnome-theme.git";
-      rev = "32b51bab0d621469218cdb5f5116137de3da55da";
-      ref = "fix-webextension-background";
-    };
-  };
+  # home.file.".mozilla/firefox/default/chrome" = {
+  #   recursive = false;
+  #   source = builtins.fetchGit {
+  #     url = "https://github.com/414owen/firefox-gnome-theme.git";
+  #     rev = "32b51bab0d621469218cdb5f5116137de3da55da";
+  #     ref = "fix-webextension-background";
+  #   };
+  # };
 
   programs.firefox = {
     package = pkgs.firefox-wayland;

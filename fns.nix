@@ -104,4 +104,11 @@ less() {
     $LESSCMD -R $@
   fi
 }
+
+try() {
+  if [ -z "$2" ]; then
+    2="$1"
+  fi
+  nix-shell -p "$1" --run "$2"
+}
 ''

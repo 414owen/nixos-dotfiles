@@ -20,7 +20,6 @@ in
       fi
     '';
     initExtra = ''
-      eval "$(${pkgs.fasd}/bin/fasd --init auto)"
       . ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       ${builtins.readFile (./shell.zsh)}
       ${import ./fns.nix { pkgs = pkgs; }}

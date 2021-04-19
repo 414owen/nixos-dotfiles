@@ -18,7 +18,6 @@ in
     discord
     exa
     expect
-    fasd
     signal-desktop
     fd
     ghc
@@ -40,11 +39,13 @@ in
     killall
     libsecret
     lshw
+    unstable.macchina
     mpv
     multimc
     newsflash
     neofetch
-    (netsurf.browser.override { uilib = "gtk3"; })
+    # (netsurf.browser.override { uilib = "gtk3"; })
+    nnn
     non
     niv
     nix-index
@@ -59,8 +60,8 @@ in
         telegram-purple
       ];
     })
+    platformio
     q-text-as-data
-    ranger
     rawtherapee
     remarshal
     ripgrep
