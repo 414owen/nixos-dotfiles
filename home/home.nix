@@ -24,6 +24,7 @@ in
     ./theme.nix
     ./tmux.nix
     ./zoom.nix
+    ./zoxide.nix
     ./zsh.nix
   ];
 
@@ -50,6 +51,7 @@ in
     ssh.enable = true;
     taskwarrior.enable = true;
     tmux.enable = true;
+    zoxide.enable = true;
     zsh.enable = true;
   };
 
