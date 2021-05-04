@@ -4,6 +4,7 @@ let
   lib = pkgs.lib;
   unstable = import <unstable> { config = { allowUnfree = true; }; };
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
+  scripts = import ./scripts.nix { inherit pkgs; };
 in
 {
   home.packages = with pkgs; [
@@ -15,6 +16,7 @@ in
     cachix
     calibre
     darktable
+    dateutils
     discord
     exa
     expect
@@ -91,5 +93,6 @@ in
     git-standup
     git-test
     git-fame
+    scripts.git-weekend
   ]);
 }
