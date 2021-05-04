@@ -10,6 +10,7 @@ let
 in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   cat = cat;
   c  =  "clear";
+  cf = "cd $(fd -t d | fzf)";
   copy = "xsel -b";
   cs = "clear;ls";
   debug = "set -o nounset; set -o xtrace";
