@@ -7,11 +7,12 @@ in
 
 {
   imports = [
+    ./alacritty.nix
     ./direnv.nix
-    # ./dconf.nix
     ./firefox.nix
     ./ghci.nix
     ./git.nix
+    ./theme.nix
     ./gpg-agent.nix
     ./haskeline.nix
     ./kak-lsp.nix
@@ -32,10 +33,12 @@ in
   home = {
     username = "owen";
     homeDirectory = "/home/owen";
+    sessionVariables = import ./env.nix { pkgs = pkgs; };
     stateVersion = "20.09";
   };
 
   programs = {
+    alacritty.enable = true;
     command-not-found.enable = true;
     direnv.enable = true;
     firefox.enable = true;

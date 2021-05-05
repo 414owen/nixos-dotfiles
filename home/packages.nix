@@ -71,7 +71,6 @@ in
     sd
     shotwell
     spotify
-    st
     stdenv
     tmate
     tmux

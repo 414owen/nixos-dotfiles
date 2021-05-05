@@ -18,4 +18,5 @@ in
   LS_COLORS = "di=33:ow=33:ln=target:ex=35:fi=34";
   MAKEFLAGS = "-j$(nproc)";
   TERMINAL = "${pkgs.st}/bin/st";
+  # XCURSOR_THEME = "Quogir-dark";
 }
