@@ -2,17 +2,20 @@
 
 {
   gtk = {
+    enable = true;
     iconTheme = {
-      package = pkgs.numix-icon-theme-circle;
-      name = "Numix Circle";
+      name = "Qogir-dark";
+      package = pkgs.qogir-icon-theme;
     };
     theme = {
-      name = "Adwaita-dark";
+      name = "Arc-Dark";
+      package = pkgs.arc-theme;
     };
-    gtk3 = {
-      bookmarks = [
-        "~/src"
-      ];
+  };
+  xsession = {
+    pointerCursor = {
+      name = "Qogir-dark";
+      package = pkgs.qogir-theme;
     };
   };
 }
