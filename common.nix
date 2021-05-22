@@ -1,4 +1,4 @@
 {
   name = "Owen Shepherd";
-  email = "owen@owen.cafe";
+  email = "oshepherd@symmetryinvestments.com";
 }
