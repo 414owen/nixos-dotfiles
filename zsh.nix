@@ -23,6 +23,8 @@ in
       . ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       ${builtins.readFile (./shell.zsh)}
       ${import ./fns.nix { pkgs = pkgs; }}
+
+      NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
     '';
     sessionVariables = import ./env.nix { pkgs = pkgs; };
     shellAliases = aliases;
