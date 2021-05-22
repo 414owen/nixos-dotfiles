@@ -24,7 +24,7 @@ in
     ./taskwarrior.nix
     ./theme.nix
     ./tmux.nix
-    ./zoom.nix
+    # ./zoom.nix
     ./zoxide.nix
     ./zsh.nix
   ];
@@ -36,6 +36,8 @@ in
     sessionVariables = import ./env.nix { pkgs = pkgs; };
     stateVersion = "20.09";
   };
+
+  fonts.fontconfig.enable = true;
 
   programs = {
     alacritty.enable = true;
@@ -59,4 +61,5 @@ in
   };
 
   services.lorri.enable = true;
+  targets.genericLinux.enable = true;
 }

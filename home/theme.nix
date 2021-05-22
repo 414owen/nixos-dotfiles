@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, home, ... }:
 
 {
   gtk = {
@@ -14,8 +14,9 @@
   };
   xsession = {
     pointerCursor = {
-      name = "Qogir-dark";
-      package = pkgs.qogir-theme;
+      name = "Vanilla-DMZ";
+      package = pkgs.vanilla-dmz;
     };
   };
+  home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
 }

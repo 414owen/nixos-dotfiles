@@ -11,77 +11,43 @@ in
     any-nix-shell
     asciinema
     bat
-    cabal2nix
-    cabal-install
+    brave
     cachix
-    calibre
-    darktable
     dateutils
-    discord
     exa
     expect
-    signal-desktop
     fd
-    ghc
-    gimp
-    gitAndTools.hub
-    gnome3.geary
-    gnome3.gnome-tweaks
-    gnumeric
+    fira
+    fira-mono
     gnupg
-    gparted
     htop
-    # (ib-tws.override (old: {
-    #   jdk = openjdk;
-    # }))
     imagemagick
-    inkscape
     jq
     kak-lsp
     killall
     libsecret
     lshw
     unstable.macchina
-    mpv
-    multimc
-    newsflash
-    neofetch
-    # (netsurf.browser.override { uilib = "gtk3"; })
     nnn
-    non
     niv
     nix-index
     unstable.nix-output-monitor
     nix-prefetch-git
     nix-prefetch-github
     pciutils
-    (pidgin.override {
-      plugins = [
-        pidgin-window-merge
-        purple-hangouts
-        telegram-purple
-      ];
-    })
-    platformio
     q-text-as-data
-    rawtherapee
     remarshal
     ripgrep
-    waveform-pro
     sd
-    shotwell
     spotify
     stdenv
     tmate
     tmux
-    transmission-gtk
     usbutils
     unstable.duf
     xsel
-    zoom-us
     zsh-history-substring-search
     zsh-syntax-highlighting
-    ungoogled-chromium
   ] ++ (with gitAndTools; [
     gh
     git-absorb
@@ -92,6 +58,5 @@ in
     git-standup
     git-test
     git-fame
-    scripts.git-weekend
   ]);
 }
