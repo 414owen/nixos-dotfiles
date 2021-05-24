@@ -2,7 +2,6 @@
 
 let
   lib = pkgs.lib;
-  unstable = import <unstable> { config = { allowUnfree = true; }; };
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
   scripts = import ./scripts.nix { inherit pkgs; };
 in
@@ -27,11 +26,11 @@ in
     killall
     libsecret
     lshw
-    unstable.macchina
+    macchina
     nnn
     niv
     nix-index
-    unstable.nix-output-monitor
+    nix-output-monitor
     nix-prefetch-git
     nix-prefetch-github
     pciutils
@@ -44,7 +43,7 @@ in
     tmate
     tmux
     usbutils
-    unstable.duf
+    duf
     xsel
     zsh-history-substring-search
     zsh-syntax-highlighting

@@ -18,9 +18,11 @@ in
     ./kak-lsp.nix
     ./kakoune.nix
     ./packages.nix
+    # ./profile.nix
     ./readline.nix
     ./ssh.nix
     ./starship.nix
+    ./sway.nix
     ./taskwarrior.nix
     ./theme.nix
     ./tmux.nix
@@ -35,6 +37,12 @@ in
     homeDirectory = "/home/owen";
     sessionVariables = import ./env.nix { pkgs = pkgs; };
     stateVersion = "20.09";
+    keyboard = {
+      layout = "gb";
+      options = [
+        "ctrl:swapcaps"
+      ];
+    };
   };
 
   fonts.fontconfig.enable = true;
@@ -60,6 +68,7 @@ in
     zsh.enable = true;
   };
 
-  services.lorri.enable = true;
+  wayland.windowManager.sway.enable = true;
   targets.genericLinux.enable = true;
+
 }
