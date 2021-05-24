@@ -7,6 +7,10 @@ let
 in
 {
   home.packages = with pkgs; [
+
+    jetbrains-mono
+    font-awesome
+
     any-nix-shell
     asciinema
     bat
