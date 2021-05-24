@@ -39,6 +39,12 @@ in
 
       defaultWorkspace = "workspace number 1";
 
+      fonts = {
+        names = [ "Jetbrains Mono" "FontAwesome" ];
+        # style = "Bold Semi-Condensed";
+        size = 11.0;
+      };
+
       gaps = {
         inner = 5;
         outer = 5;
@@ -54,11 +60,15 @@ in
         };
       };
 
+      bars = [{
+        command = "${pkgs.waybar}/bin/waybar";
+      }];
+
       keybindings = {
 
         "Ctrl+Alt+l" = "exec ${lock} --clock --indicator -f -i ${wallpaper} --scaling fill";
         "${modifier}+Return" = "exec ${term}";
-        "${modifier}+d" = "exec ${menu}";
+        "${modifier}+Space" = "exec ${menu}";
         "${modifier}+w" = "exec ${pkgs.brave}/bin/brave";
         "${modifier}+q" = "kill";
 
