@@ -15,6 +15,7 @@ in
     cabal-install
     cachix
     calibre
+    coq
     darktable
     dateutils
     discord
@@ -77,6 +78,7 @@ in
     transmission-gtk
     usbutils
     unstable.duf
+    xournal
     xsel
     zoom-us
     zsh-history-substring-search
