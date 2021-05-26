@@ -18,7 +18,9 @@
 
   time.timeZone = "Europe/Dublin";
 
-  # boot.kernelPackages = pkgs.linuxPackages_5_7;
+  boot.kernelPackages = pkgs.linuxPackages_5_10;
+
+  fonts.enableFontDir = true;
   virtualisation.docker.enable = true;
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "owen" ];
@@ -70,7 +72,7 @@
         libvdpau-va-gl
       ];
     };
-    pulseaudio.enable = false;
+    pulseaudio.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -85,23 +87,16 @@
     systemPackages = with pkgs; [
       bind
       file
-      fira-code
       firmwareLinuxNonfree
-      numix-icon-theme
-      numix-icon-theme-circle
       ntfs3g
-      paper-icon-theme
       patchelf
       python3Full
-      patchage
       service-wrapper
-      steam
       traceroute
       tree
       unzip
       wget
       wirelesstools
-      xorg.libxcb
       xsel
     ];
   };
@@ -110,18 +105,19 @@
     zsh.enable = true;
     mosh.enable = true;
     command-not-found.enable = true;
-    adb.enable = true;
   };
 
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    # Compatibility shims, adjust according to your needs
-    # alsa.enable = true;
-    # alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
+  # security.rtkit.enable = true;
+
+  # services.pipewire = {
+  #   enable = true;
+  #   package = nixos-unstable.pipewire;
+  #   alsa = {
+  #     enable = true;
+  #     support32Bit = true;
+  #   };
+  #   pulse.enable = true;
+  # };
 
   sound.enable = true;
 
@@ -138,13 +134,14 @@
           enable = true;
           user = "owen";
         };
-        gdm.enable = true;
+        gdm = {
+          enable = true;
+        };
       };
       libinput.enable = true;
       xkbOptions = "ctrl:swapcaps";
       videoDrivers = [ "amdgpu" ];
     };
-    keybase.enable = true;
     sshd.enable = true;
   };
   hardware.enableRedistributableFirmware = true;
@@ -154,7 +151,7 @@
 
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "audio" "video" "disk" "networkmanager" "adbusers" "tty" ];
+    extraGroups = [ "wheel" "docker" "audio" "video" "disk" "networkmanager" "adbusers" "tty" "dialout" ];
     shell = "/run/current-system/sw/bin/zsh";
   };
 
