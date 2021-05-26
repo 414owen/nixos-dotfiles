@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 let
-  lib = pkgs.lib;
   writeScript = pkgs.writeScript;
   git-weekend = pkgs.writeShellScriptBin "git-weekend" ''
     FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch --env-filter 'at="$(git log --no-walk --pretty=format:%ai $GIT_COMMIT)" \
