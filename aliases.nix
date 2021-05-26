@@ -1,6 +1,7 @@
 {pkgs}:
 let
   lib = pkgs.lib;
+  mylib = import ./lib.nix { inherit lib; };
   strhead = builtins.substring 0 1;
   tosed = str: " -e 's/ ${str}s\\? ago)/${strhead str})/' -e 's/ ${str}s\\?, /${strhead str}, /'";
   sedexprs = lib.concatMapStrings tosed ["second" "minute" "hour" "day" "week" "month" "year"];
@@ -9,10 +10,7 @@ let
 in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   cat = cat;
   c  =  "clear";
-  "....." = "cd ../../../../";
-  "...." = "cd ../../../../";
-  "..." = "cd ../../../";
-  ".." = "cd ..";
+  cf = "cd $(fd -t d | fzf)";
   copy = "xsel -b";
   cs = "clear;ls";
   debug = "set -o nounset; set -o xtrace";
@@ -100,7 +98,8 @@ pts += -ticky' > _ticky/hadrian.settings; hb --flavour=validate --build-root=_ti
   sl = ls;
   sudo = "sudo ";
   t = "time";
-}] ++ map (i: {
-  "gd${i}" = "git diff HEAD~${i}";
-  "gr${i}" = "git rebase --interactive HEAD~${i}";
-}) (map toString (lib.range 1 9)))
+}] ++ map (i: let a = toString i; in {
+  "gd${a}" = "git diff HEAD~${a}";
+  "gr${a}" = "git rebase --interactive HEAD~${a}";
+  ".${mylib.repeatStr "." i}" = "cd ${mylib.repeatStr "../" i}";
+}) (lib.range 1 9))

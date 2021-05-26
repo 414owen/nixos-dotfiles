@@ -1,3 +1,5 @@
+macchina --no-ascii --no-box --no-separator -S -U -p -H WindowManager DesktopEnvironment Packages Battery OperatingSystem
+
 setopt HIST_IGNORE_ALL_DUPS
 
 any-nix-shell zsh --info-right | source /dev/stdin
@@ -12,8 +14,6 @@ zle -N zle-keymap-select
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 autoload -Uz compinit
 compinit
-
-neofetch
 
 # bindkey '^[[A' history-substring-search-up
 # bindkey '^[[B' history-substring-search-down

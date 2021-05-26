@@ -3,6 +3,7 @@
 let
   lib = pkgs.lib;
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
+  scripts = import ./scripts.nix { inherit pkgs; };
 in
 {
   home.packages = with pkgs; [
@@ -14,10 +15,10 @@ in
     cachix
     calibre
     darktable
+    dateutils
     discord
     exa
     expect
-    fasd
     signal-desktop
     fd
     ghc
@@ -39,10 +40,13 @@ in
     killall
     libsecret
     lshw
+    macchina
     mpv
     multimc
     # newsflash
     neofetch
+    # (netsurf.browser.override { uilib = "gtk3"; })
+    nnn
     non
     niv
     nix-index
@@ -58,7 +62,6 @@ in
       ];
     })
     q-text-as-data
-    ranger
     rawtherapee
     remarshal
     ripgrep
@@ -66,7 +69,6 @@ in
     sd
     shotwell
     spotify
-    st
     stdenv
     tmate
     tmux
@@ -87,5 +89,6 @@ in
     git-standup
     git-test
     git-fame
+    scripts.git-weekend
   ]);
 }
