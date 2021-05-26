@@ -12,6 +12,7 @@ in
 {
   programs.direnv = {
     enableZshIntegration = true;
+    enableNixDirenvIntegration = true;
     stdlib = ''
       source ${nixDirenv}/direnvrc;
     '';

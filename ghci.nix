@@ -32,7 +32,7 @@ in
     ":set -XOverloadedStrings -XScopedTypeVariables -XFlexibleContexts -XDataKinds"
 
     # run all debug and assert cpp vars
-    ":set -cpp -DASSERTS -DDEBUG"
+    # ":set -cpp -DASSERTS -DDEBUG"
 
     # don't warn about shadowing
     ":set -Wno-name-shadowing"
