@@ -2,7 +2,6 @@
 
 let
   lib = pkgs.lib;
-  unstable = import <unstable> { config = { allowUnfree = true; }; };
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
 in
 {
@@ -42,12 +41,12 @@ in
     lshw
     mpv
     multimc
-    newsflash
+    # newsflash
     neofetch
     non
     niv
     nix-index
-    unstable.nix-output-monitor
+    nix-output-monitor
     nix-prefetch-git
     nix-prefetch-github
     pciutils
@@ -73,7 +72,7 @@ in
     tmux
     transmission-gtk
     usbutils
-    unstable.duf
+    duf
     xsel
     zoom-us
     zsh-history-substring-search
