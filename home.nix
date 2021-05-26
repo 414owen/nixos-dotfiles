@@ -20,13 +20,15 @@ in
     ./kak-lsp.nix
     ./kakoune.nix
     ./packages.nix
+    # ./profile.nix
     ./readline.nix
     ./ssh.nix
     ./starship.nix
+    # ./sway.nix
     ./taskwarrior.nix
     ./theme.nix
     ./tmux.nix
-    ./zoom.nix
+    # ./zoom.nix
     ./zoxide.nix
     ./zsh.nix
   ];
@@ -36,8 +38,16 @@ in
     username = "owen";
     homeDirectory = "/home/owen";
     sessionVariables = import ./env.nix { pkgs = pkgs; };
-    stateVersion = "20.09";
+    stateVersion = "21.05";
+    keyboard = {
+      layout = "gb";
+      options = [
+        "ctrl:swapcaps"
+      ];
+    };
   };
+
+  fonts.fontconfig.enable = true;
 
   programs = {
     alacritty.enable = true;
@@ -58,5 +68,5 @@ in
     zsh.enable = true;
   };
 
-  services.lorri.enable = true;
+  # wayland.windowManager.sway.enable = true;
 }
