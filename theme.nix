@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, home, ... }:
 
 {
   gtk = {
@@ -18,4 +18,5 @@
       package = pkgs.qogir-theme;
     };
   };
+  fonts.fontconfig.enable = true;
 }

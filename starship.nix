@@ -6,20 +6,18 @@
     enableZshIntegration = true;
     settings = {
       character = {
-        symbol = " ^_^";
-        error_symbol = " o_O";
-        use_symbol_for_status = true;
-        style_success = "green";
-        style_failure = "red";
+        success_symbol = " [^_^](green)";
+        error_symbol = " [o_O](red)";
+        # use_symbol_for_status = true;
       };
       git_status = {
-        conflicted_count = { enabled = true; };
-        untracked_count = { enabled = true; };
-        stashed_count = { enabled = true; };
-        modified_count = { enabled = true; };
-        renamed_count = { enabled = true; };
-        staged_count = { enabled = true; };
-        deleted_count = { enabled = true; };
+        conflicted = { enabled = true; };
+        untracked = { enabled = true; };
+        stashed = { enabled = true; };
+        modified = { enabled = true; };
+        renamed = { enabled = true; };
+        staged = { enabled = true; };
+        deleted = { enabled = true; };
       };
       aws = { disabled = true; };
       battery = { disabled = true; };
@@ -27,7 +25,7 @@
       dotnet = { disabled = true; };
       env_var = { disabled = true; };
       golang = { disabled = true; };
-      haskell = { disabled = true; };
+      # haskell = { disabled = true; };
       hg_branch = { disabled = true; };
       java = { disabled = true; };
       memory_usage = { disabled = true; };
