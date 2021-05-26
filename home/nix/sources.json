@@ -47,6 +47,30 @@
         "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nord-alacritty": {
+        "branch": "develop",
+        "description": "An arctic, north-bluish clean and elegant Alacritty color scheme.",
+        "homepage": "https://git.io/nord-alacritty",
+        "owner": "arcticicestudio",
+        "repo": "nord-alacritty",
+        "rev": "940c88a6e424ca3c7b62c8e7acc6b389f70a1b64",
+        "sha256": "1dcar7q99p42c12sr13zxah3n9hc4g7bkq9nyhjssncd1788bnq4",
+        "type": "tarball",
+        "url": "https://github.com/arcticicestudio/nord-alacritty/archive/940c88a6e424ca3c7b62c8e7acc6b389f70a1b64.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nord-dircolors": {
+        "branch": "develop",
+        "description": "An arctic, north-bluish clean and elegant dircolors theme.",
+        "homepage": "https://www.nordtheme.com/ports/dircolors",
+        "owner": "arcticicestudio",
+        "repo": "nord-dircolors",
+        "rev": "35166d328992213194d7d02cd034e39da962f19e",
+        "sha256": "1kg0xabg1wz61z1f23i4b5yzfhm5s4dv554bqb19d4by3pay23g8",
+        "type": "tarball",
+        "url": "https://github.com/arcticicestudio/nord-dircolors/archive/35166d328992213194d7d02cd034e39da962f19e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "obelisk": {
         "branch": "master",
         "description": "Functional reactive web and mobile applications, with batteries included.",

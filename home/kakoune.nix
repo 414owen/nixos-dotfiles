@@ -4,7 +4,7 @@ let
   # from Ben Kolera's dotfiles https://github.com/benkolera/nix/
   isKakFile = name: type: type == "regular" && lib.hasSuffix ".kak" name;
   isDir     = name: type: type == "directory";
-  allKakFiles = (dir: 
+  allKakFiles = (dir:
     let fullPath = p: "${dir}/${p}";
         files = builtins.readDir dir;
         subdirs  = lib.concatMap (p: allKakFiles (fullPath p)) (lib.attrNames (lib.filterAttrs isDir files));
@@ -25,6 +25,8 @@ let
       hash = "sha256:18phc3wnrwih4hxjzdqkmpq90zw2r0sfflhmafdjbxbr6m1ihnzf";
     };
   });
+
+  env = import ./env.nix { inherit pkgs; };
 in
 
 {
@@ -70,16 +72,35 @@ in
         word = true;
         marker = "-";
       };
+      hooks = [
+        {
+          name = "ModuleLoaded";
+          option = "fzf-grep";
+          once = true;
+          commands = ''
+            set-option global fzf_grep_command rg
+          '';
+        }
+        {
+          name = "ModuleLoaded";
+          option = "fzf-file";
+          once = true;
+          commands = ''
+            set-option global fzf_file_command fd
+          '';
+        }
+        {
+          name = "ModuleLoaded";
+          option = "fzf";
+          once = true;
+          commands = ''
+            set-option global fzf_implementation "${pkgs.fzf}/bin/fzf"
+          '';
+        }
+      ];
     };
     extraConfig = ''
       ${builtins.readFile ./config.kak}
-      declare-option str gray 'rgb:44475a'
-      face global MenuBackground gray
-      face global MenuForeground gray
-      set-face global PrimarySelection black,white
-      set-face global PrimaryCursor black,red
-      set-face global SecondarySelection white,black
-      set-face global SecondaryCursor black,blue
     '';
     plugins = with pkgs.kakounePlugins; [
       (pkgs.callPackage "${utdemir}/nix/packages/kakoune-surround.nix" { })
