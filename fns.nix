@@ -135,4 +135,35 @@ function bd(){
     done
   fi
 }
+
+function scratch-sil {
+    if [ -v BASH_SOURCE ]; then
+        # Make all setting changes local to this function, bash version
+        local -
+        local THIS=''${BASH_SOURCE[0]}
+    elif [ -v ZSH_VERSION ]; then
+        # Make all setting changes local to this function, zsh version
+        set -o localoptions
+        local THIS=''${(%):-%x}
+    else
+        echo "Unsupported shell, run under bash or zsh." >&2
+        return 1
+    fi
+
+    git clean -dfx
+
+    if command -v pacman &> /dev/null; then
+        sudo kalcore/extern_deps/provision-arch.sh
+    elif command -v apt &> /dev/null; then
+        sudo kalcore/extern_deps/provision-apt.sh
+    else
+        echo "Unsupported distro"
+        return 1
+    fi
+
+    kalcore/extern_deps/build_and_cache_libs.sh
+    source ./setup_ci_env.sh
+    (cd tools/registry-login && dub)
+    ./mkrepl.sh
+}
 ''

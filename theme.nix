@@ -18,6 +18,6 @@
       package = pkgs.vanilla-dmz;
     };
   };
-  home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
+  # home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
   fonts.fontconfig.enable = true;
 }
