@@ -12,6 +12,8 @@ hook global WinSetOption filetype=(haskell|rust|c|cpp) %{
 
 hook global WinCreate .* %{ kakboard-enable }
 
+hook global WinCreate ^[^*]+$ %{ editorconfig-load }
+
 hook global InsertChar j %{ try %{
   exec -draft hH <a-k>kj<ret> d
   exec <esc>

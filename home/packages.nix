@@ -8,6 +8,9 @@ in
 {
   home.packages = with pkgs; [
 
+    fira
+    fira-mono
+    editorconfig-core-c
     jetbrains-mono
     font-awesome
 
@@ -17,11 +20,10 @@ in
     brave
     cachix
     dateutils
+    evince
     exa
     expect
     fd
-    fira
-    fira-mono
     gnupg
     htop
     imagemagick
@@ -48,7 +50,6 @@ in
     tmux
     usbutils
     duf
-    xsel
     zsh-history-substring-search
     zsh-syntax-highlighting
   ] ++ (with gitAndTools; [
