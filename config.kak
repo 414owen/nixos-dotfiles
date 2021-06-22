@@ -3,7 +3,7 @@ eval %sh{kak-lsp --kakoune -s $kak_session}
 set-option global lsp_server_configuration haskellLanguageServer.hlintOn=true
 set-option global lsp_server_configuration haskellLanguageServer.formattingProvider=brittany
 
-hook global WinSetOption filetype=(haskell|rust|c|cpp) %{
+hook global WinSetOption filetype=(haskell|rust|c|cpp|d) %{
   lsp-enable-window
   lsp-auto-hover-enable
   map global normal <c-l> ':enter-user-mode lsp<ret>'
