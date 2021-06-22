@@ -48,6 +48,7 @@ in
     stdenv
     tmate
     tmux
+    tree
     usbutils
     duf
     zsh-history-substring-search
