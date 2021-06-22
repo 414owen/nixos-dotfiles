@@ -48,7 +48,7 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
-    alacritty.enable = true;
+    alacritty.enable = false;
     command-not-found.enable = true;
     direnv.enable = true;
     firefox.enable = true;

@@ -70,5 +70,10 @@
     roots = [".c-lang-serv", "makefile", "Makefile"]
     command = "clangd"
     args = []
+
+    [language.d]
+    filetypes = ["d", "di"]
+    roots = [".git", "dub.sdl", "dub.json"]
+    command = "serve-d"
   '';
 }
