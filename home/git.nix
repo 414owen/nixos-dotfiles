@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
 let
-  gitAndTools = pkgs.gitAndTools;
-  delta = gitAndTools.delta;
+  delta = pkgs.gitAndTools.delta;
   base-log = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) -";
   common = import ./common.nix;
 in
@@ -44,6 +43,9 @@ in
       };
       push = {
         default = "current";
+      };
+      blame = {
+        # ignoreRevsFile = ".blameignore";
       };
     };
   };

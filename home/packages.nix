@@ -4,6 +4,9 @@ let
   lib = pkgs.lib;
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
   scripts = import ./scripts.nix { inherit pkgs; };
+  unstable = import <unstable> {};
+  sources = import ./nix/sources.nix;
+  nixpkgs-update = import sources.nixpkgs-update {};
 in
 {
   home.packages = with pkgs; [
@@ -30,6 +33,7 @@ in
     gnumeric
     gnupg
     gparted
+    nixpkgs-update
     htop
     # (ib-tws.override (old: {
     #   jdk = openjdk;
@@ -69,8 +73,9 @@ in
     # waveform-pro
     sd
     shotwell
-    spotify
+    unstable.spot
     stdenv
+    wl-clipboard
     tmate
     tmux
     tree

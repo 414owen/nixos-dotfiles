@@ -47,6 +47,18 @@
         "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nixpkgs-update": {
+        "branch": "master",
+        "description": "Updating nixpkgs packages since 2018",
+        "homepage": "",
+        "owner": "ryantm",
+        "repo": "nixpkgs-update",
+        "rev": "0c36c9b59719e14c3ee02fa7019063425e422e70",
+        "sha256": "0v71k9xq742x43dp384jvwylhpc2m76x4lygz7c07ws7d7jxd2x2",
+        "type": "tarball",
+        "url": "https://github.com/ryantm/nixpkgs-update/archive/0c36c9b59719e14c3ee02fa7019063425e422e70.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nord-alacritty": {
         "branch": "develop",
         "description": "An arctic, north-bluish clean and elegant Alacritty color scheme.",
