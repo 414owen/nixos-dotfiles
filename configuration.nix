@@ -4,7 +4,7 @@
 
   imports = [
     ./boot.nix
-    ./cachix.nix
+    # ./cachix.nix
     ./games.nix
     ./nixpkgs.nix
     ./hardware-configuration.nix
