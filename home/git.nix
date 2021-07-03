@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  gitAndTools = (import <unstable> {}).gitAndTools;
+  gitAndTools = pkgs.gitAndTools;
   delta = gitAndTools.delta;
   base-log = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) -";
   common = import ./common.nix;

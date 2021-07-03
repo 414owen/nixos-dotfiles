@@ -3,12 +3,14 @@
 let
   sysconfig = (import <nixpkgs/nixos> {}).system;
   callPackage = pkgs.callPackage;
+  enableZsh = { enable = true; enableZshIntegration = true; };
 in
 
 {
   imports = [
     ./alacritty.nix
     ./direnv.nix
+    ./dircolors.nix
     ./firefox.nix
     ./ghci.nix
     ./git.nix
@@ -41,11 +43,9 @@ in
     alacritty.enable = true;
     command-not-found.enable = true;
     direnv.enable = true;
+    dircolors = enableZsh;
     firefox.enable = true;
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    fzf = enableZsh;
     git.enable = true;
     home-manager.enable = true;
     kakoune.enable = true;

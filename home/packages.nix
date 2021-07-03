@@ -2,7 +2,6 @@
 
 let
   lib = pkgs.lib;
-  unstable = import <unstable> { config = { allowUnfree = true; }; };
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
   scripts = import ./scripts.nix { inherit pkgs; };
 in
@@ -42,7 +41,7 @@ in
     killall
     libsecret
     lshw
-    unstable.macchina
+    macchina
     mpv
     multimc
     newsflash
@@ -52,7 +51,7 @@ in
     non
     niv
     nix-index
-    unstable.nix-output-monitor
+    nix-output-monitor
     nix-prefetch-git
     nix-prefetch-github
     pciutils
@@ -63,27 +62,25 @@ in
         telegram-purple
       ];
     })
-    platformio
     q-text-as-data
     rawtherapee
     remarshal
     ripgrep
-    waveform-pro
+    # waveform-pro
     sd
     shotwell
     spotify
     stdenv
     tmate
     tmux
+    tree
     transmission-gtk
     usbutils
-    unstable.duf
-    xournal
+    duf
     xsel
     zoom-us
     zsh-history-substring-search
     zsh-syntax-highlighting
-    ungoogled-chromium
   ] ++ (with gitAndTools; [
     gh
     git-absorb
