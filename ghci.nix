@@ -29,7 +29,7 @@ in
 
     # turn on common ghci extensions
     ":set -XNumericUnderscores -XTupleSections -XPartialTypeSignatures"
-    ":set -XOverloadedStrings -XScopedTypeVariables -XFlexibleContexts -XDataKinds"
+    ":set -XScopedTypeVariables -XFlexibleContexts -XDataKinds"
 
     # run all debug and assert cpp vars
     # ":set -cpp -DASSERTS -DDEBUG"

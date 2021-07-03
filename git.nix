@@ -44,6 +44,9 @@ in
       push = {
         default = "current";
       };
+      blame = {
+        # ignoreRevsFile = ".blameignore";
+      };
     };
   };
 }
