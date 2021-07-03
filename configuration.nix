@@ -162,5 +162,5 @@
     (builtins.toJSON { default-address-pools = [ { base = "192.168.128.0/18"; size = 24; } ]; });
   in "--config-file=${file}";
 
-  system.stateVersion = "20.09";
+  system.stateVersion = "21.05";
 }
