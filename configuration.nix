@@ -6,7 +6,6 @@
     ./boot.nix
     ./cachix.nix
     ./games.nix
-    ./nix.nix
     ./nixpkgs.nix
     ./hardware-configuration.nix
     ./kernel-params.nix
@@ -20,7 +19,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_5_10;
 
-  fonts.enableFontDir = true;
+  fonts.fontDir.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "owen" ];
@@ -126,7 +125,7 @@
       enable = true;
       layout = "gb";
       desktopManager = {
-        gnome3.enable = true;
+        gnome.enable = true;
       };
       displayManager = {
         defaultSession = "gnome";
