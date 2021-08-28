@@ -25,6 +25,7 @@ in
     expect
     fd
     gnupg
+    ghc
     htop
     imagemagick
     jq
