@@ -10,6 +10,7 @@ in
     ./alacritty.nix
     ./direnv.nix
     ./firefox.nix
+    ./gdb.nix
     ./ghci.nix
     ./git.nix
     ./theme.nix
