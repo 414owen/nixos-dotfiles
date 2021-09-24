@@ -4,6 +4,7 @@ let
   lib = pkgs.lib;
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
   scripts = import ./scripts.nix { inherit pkgs; };
+  nixpkgs-update = import (import ./nix/sources.nix).nixpkgs-update {};
 in
 {
   home.packages = with pkgs; [
@@ -13,7 +14,6 @@ in
     editorconfig-core-c
     jetbrains-mono
     font-awesome
-
     any-nix-shell
     asciinema
     bat
@@ -27,6 +27,7 @@ in
     gnupg
     ghc
     htop
+    hub
     imagemagick
     jq
     kak-lsp
@@ -34,12 +35,13 @@ in
     libsecret
     lshw
     macchina
-    nnn
     niv
     nix-index
     nix-output-monitor
     nix-prefetch-git
     nix-prefetch-github
+    nixpkgs-update
+    nnn
     pciutils
     q-text-as-data
     remarshal

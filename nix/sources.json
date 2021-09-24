@@ -1,4 +1,16 @@
 {
+    "dlang-debug": {
+        "branch": "master",
+        "description": "dlang pretty printers for GDB & LLDB for various standard types",
+        "homepage": "",
+        "owner": "Pure-D",
+        "repo": "dlang-debug",
+        "rev": "39d8851249e297e0a0b8716cd3ffdc29711dd85c",
+        "sha256": "0a0h0phk6pwcmihanlk6xcg872cb05h36dq5dyz1djbgf1h2fznk",
+        "type": "tarball",
+        "url": "https://github.com/Pure-D/dlang-debug/archive/39d8851249e297e0a0b8716cd3ffdc29711dd85c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "firefox-gnome-theme": {
         "branch": "master",
         "description": "A GNOME👣 theme for Firefox🔥",
@@ -21,6 +33,18 @@
         "sha256": "1kpsvc53x821cmjg1khvp1nz7906gczq8mp83664cr15h94sh8i4",
         "type": "tarball",
         "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs-update": {
+        "branch": "master",
+        "description": "Updating nixpkgs packages since 2018",
+        "homepage": "",
+        "owner": "ryantm",
+        "repo": "nixpkgs-update",
+        "rev": "0009a801ef8aa880946ac1d8072159782f1e6c47",
+        "sha256": "13i4hf7q23q15fcayni50rhq0gdbmjaf8yjgzpmngwn68qnysssm",
+        "type": "tarball",
+        "url": "https://github.com/ryantm/nixpkgs-update/archive/0009a801ef8aa880946ac1d8072159782f1e6c47.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "obelisk": {
