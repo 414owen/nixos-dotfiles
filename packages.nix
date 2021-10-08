@@ -17,7 +17,6 @@ in
     any-nix-shell
     asciinema
     bat
-    brave
     cachix
     dateutils
     evince
@@ -29,6 +28,7 @@ in
     htop
     hub
     imagemagick
+    inkscape
     jq
     kak-lsp
     killall
