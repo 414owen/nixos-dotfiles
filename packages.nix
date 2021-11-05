@@ -10,6 +10,7 @@ let
 in
 {
   home.packages = with pkgs; [
+    gnome.devhelp
     any-nix-shell
     asciinema
     bat
@@ -17,13 +18,18 @@ in
     cabal-install
     cachix
     calibre
+    coreutils
+    clang
     darktable
     dateutils
     discord
     exa
     expect
+    file
     signal-desktop
     fd
+    gnumake
+    gdb
     ghc
     gimp
     gitAndTools.hub
@@ -33,6 +39,7 @@ in
     gnupg
     gparted
     nixpkgs-update
+    unstable.helix
     htop
     # (ib-tws.override (old: {
     #   jdk = openjdk;
@@ -50,6 +57,7 @@ in
     # newsflash
     neofetch
     # (netsurf.browser.override { uilib = "gtk3"; })
+    nix-bundle
     nnn
     non
     niv
@@ -75,13 +83,14 @@ in
     unstable.spot
     stdenv
     wl-clipboard
+    tree
     tmate
     tmux
+    zoom-us
     transmission-gtk
     usbutils
     duf
     xsel
-    zoom-us
     zsh-history-substring-search
     zsh-syntax-highlighting
   ] ++ (with gitAndTools; [

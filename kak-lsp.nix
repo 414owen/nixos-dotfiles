@@ -51,7 +51,7 @@
     [language.rust]
     filetypes = ["rust"]
     roots = ["Cargo.toml"]
-    command = "rls"
+    command = "rust-analyzer"
 
     [language.javascript]
     filetypes = ["javascript"]
@@ -69,6 +69,12 @@
     filetypes = ["c", "cpp"]
     roots = [".c-lang-serv", "makefile", "Makefile"]
     command = "clangd"
+    args = []
+
+    [language.idris]
+    filetypes = ["idris"]
+    roots = [".ipkg"]
+    command = "idris2-lsp"
     args = []
   '';
 }
