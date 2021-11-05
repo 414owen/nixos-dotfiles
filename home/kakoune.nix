@@ -38,16 +38,18 @@ in
       keyMappings = [
         { mode = "insert"; key = "<tab>"; effect = "<a-;><gt>"; }
         { mode = "insert"; key = "<s-tab>"; effect = "<a-;><lt>"; }
-        { mode = "normal"; key = "'#'"; effect = ":comment-line<ret>"; }
-        { mode = "normal"; key = "'<a-#>'"; effect = ":comment-block<ret>"; }
+        { mode = "normal"; key = "'#'"; effect = ": comment-line<ret>"; }
+        { mode = "normal"; key = "'<a-#>'"; effect = ": comment-block<ret>"; }
         # I use the default for navigating tmux panes
         { mode = "normal"; key = "<c-j>"; effect = "glEs\\s<ret>d"; }
         { mode = "normal"; key = "<c-J>"; effect = "<a-J>"; }
         { mode = "goto"; key = "m"; effect = "<esc>m;"; }
         { mode = "normal"; key = "<c-p>"; effect = ": fzf-mode<ret>"; }
-        { mode = "normal"; key = "<c-\\>"; effect = ": idris-ide<ret>"; }
+        # { mode = "normal"; key = "<minus>"; effect = ": enter-user-mode idris-ide<ret>"; }
+        # { mode = "normal"; key = "<c-\\>"; effect = ": idris-ide<ret>"; }
         { mode = "normal"; key = "<c-w>"; effect = "|fmt --width 80<ret>"; }
-        { mode = "normal"; key = "<minus>"; effect = ":enter-user-mode idris-ide<ret>"; }
+        { mode = "normal"; key = "<c-w>"; effect = " :easy-motion-w<ret>"; }
+        { mode = "normal"; key = "<c-W>"; effect = " :easy-motion-W<ret>"; }
       ];
       numberLines = {
         enable = true;
@@ -103,12 +105,12 @@ in
     plugins = with pkgs.kakounePlugins; [
       (pkgs.callPackage "${utdemir}/nix/packages/kakoune-surround.nix" { })
       (pkgs.callPackage "${utdemir}/nix/packages/kakoune-rainbow.nix" { })
-      kak-idr'
+      # kak-idr'
       kak-auto-pairs
       kak-fzf
       pkgs.kak-lsp
+      kakoune-easymotion
       kakboard
-      # smarttab
     ];
   };
 }
