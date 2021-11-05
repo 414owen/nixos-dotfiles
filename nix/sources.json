@@ -1,16 +1,4 @@
 {
-    "nur": {
-        "branch": "master",
-        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
-        "homepage": "https://nur.nix-community.org/",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "24bd2cb7ed374bd0a5369415cb58d6113c68df49",
-        "sha256": "0y0qcn2dgrzff0ych4k7gkmwmzpqmjpq3b1j9c7r7b86acnxm60r",
-        "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/24bd2cb7ed374bd0a5369415cb58d6113c68df49.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "dlang-debug": {
         "branch": "master",
         "description": "dlang pretty printers for GDB & LLDB for various standard types",
@@ -89,16 +77,10 @@
         "homepage": "",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-<<<<<<< HEAD
         "rev": "0009a801ef8aa880946ac1d8072159782f1e6c47",
         "sha256": "13i4hf7q23q15fcayni50rhq0gdbmjaf8yjgzpmngwn68qnysssm",
         "type": "tarball",
         "url": "https://github.com/ryantm/nixpkgs-update/archive/0009a801ef8aa880946ac1d8072159782f1e6c47.tar.gz",
-=======
-        "rev": "0c36c9b59719e14c3ee02fa7019063425e422e70",
-        "sha256": "0v71k9xq742x43dp384jvwylhpc2m76x4lygz7c07ws7d7jxd2x2",
-        "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update/archive/0c36c9b59719e14c3ee02fa7019063425e422e70.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nord-alacritty": {
@@ -123,7 +105,18 @@
         "sha256": "1kg0xabg1wz61z1f23i4b5yzfhm5s4dv554bqb19d4by3pay23g8",
         "type": "tarball",
         "url": "https://github.com/arcticicestudio/nord-dircolors/archive/35166d328992213194d7d02cd034e39da962f19e.tar.gz",
->>>>>>> non-work/laptop
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nur": {
+        "branch": "master",
+        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
+        "homepage": "https://nur.nix-community.org/",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "37d64f81eca83c914c2842182e01217d81cf81f1",
+        "sha256": "0f48qs8p8ipfz5ajwhs03ibsxf255zaj3hv2abvd0z449phdlma4",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/NUR/archive/37d64f81eca83c914c2842182e01217d81cf81f1.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "obelisk": {
