@@ -4,6 +4,14 @@ let
   sources = import ./nix/sources.nix;
   nur = import sources.nur { pkgs = null; };
   tree-sitter = sources.elisp-tree-sitter;
+  lib = pkgs.lib;
+
+  treeSitterGrammars = pkgs.runCommandLocal "tree-sitter-grammars-bundle" {} ''
+    mkdir -p $out/bin
+    ${lib.concatStringsSep "\n"
+    (lib.mapAttrsToList (name: src: "ln -s ${src}/parser $out/bin/${(builtins.replaceStrings [ "tree-sitter-" ] [ "" ] name)}.so") pkgs.tree-sitter.builtGrammars)};
+  '';
+
   package = pkgs.emacs;
 in
 
@@ -155,7 +163,6 @@ in
 
       ;; It may not exist yet
       (ignore-errors (load custom-file))
-      (load custom-file)
 
       ;; When finding file in non-existing directory, offer to create the
       ;; parent directory.
@@ -317,7 +324,9 @@ in
       (add-to-list 'load-path "${tree-sitter}/lisp")
       (add-to-list 'load-path "${tree-sitter}/langs")
 
+      (setq tree-sitter-langs--testing t)
       (setq tsc-dyn-dir (expand-file-name "tree-sitter/" user-emacs-directory))
+      (setq tree-sitter-load-path '("${treeSitterGrammars}/bin"))
     '';
 
     usePackage = {
@@ -379,10 +388,10 @@ in
          (define-key ivy-switch-buffer-map (kbd "C-k") #'ivy-previous-line)
          (define-key ivy-switch-buffer-map (kbd "C-d") #'ivy-switch-buffer-kill)
 
-         (define-key ivy-reverse-i-search (kbd "C-l") #'ivy-done)
-         (define-key ivy-reverse-i-search (kbd "C-j") #'ivy-next-line)
-         (define-key ivy-reverse-i-search (kbd "C-k") #'ivy-previous-line)
-         (define-key ivy-reverse-i-search (kbd "C-d") #'ivy-reverse-i-search-kill)
+         ; (define-key ivy-reverse-i-search (kbd "C-l") #'ivy-done)
+         ; (define-key ivy-reverse-i-search (kbd "C-j") #'ivy-next-line)
+         ; (define-key ivy-reverse-i-search (kbd "C-k") #'ivy-previous-line)
+         ; (define-key ivy-reverse-i-search (kbd "C-d") #'ivy-reverse-i-search-kill)
 
          (ivy-mode 1)
        '';
@@ -407,14 +416,12 @@ in
       meow = {
         enable = true;
         demand = true;
-        init = ''
-          (meow-global-mode 1)
-        '';
         config = ''
           (meow-setup)
           ;; If you want relative line number in NORMAL state(for display-line-numbers-mode)
           (meow-setup-line-number)
           ;; If you need setup indicator, see `meow-indicator' for customizing by hand.
+          (meow-global-mode 1)
           (meow-setup-indicator)
         '';
       };
