@@ -1,6 +1,6 @@
 {
   cat = "bat";
-  editor = "kak";
+  editor = "emacs";
   fuzzy = "fzf";
   find = "fd";
   grep = "rg";
