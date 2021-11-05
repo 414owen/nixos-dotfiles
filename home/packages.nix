@@ -4,7 +4,7 @@ let
   lib = pkgs.lib;
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
   scripts = import ./scripts.nix { inherit pkgs; };
-  unstable = import <unstable> {};
+  # unstable = import <unstable> {};
   sources = import ./nix/sources.nix;
   nixpkgs-update = import sources.nixpkgs-update {};
 in
@@ -49,7 +49,7 @@ in
     gnupg
     gparted
     nixpkgs-update
-    unstable.helix
+    # unstable.helix
     htop
     imagemagick
     inkscape
@@ -87,7 +87,7 @@ in
     # waveform-pro
     sd
     shotwell
-    unstable.spot
+    # unstable.spot
     stdenv
     wl-clipboard
     tree
