@@ -87,6 +87,7 @@ in
     # waveform-pro
     sd
     shotwell
+    spotify
     # unstable.spot
     stdenv
     wl-clipboard
