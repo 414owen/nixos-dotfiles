@@ -12,7 +12,7 @@ let
     (lib.mapAttrsToList (name: src: "ln -s ${src}/parser $out/bin/${(builtins.replaceStrings [ "tree-sitter-" ] [ "" ] name)}.so") pkgs.tree-sitter.builtGrammars)};
   '';
 
-  package = pkgs.emacs;
+  package = pkgs.emacsGcc;
 in
 
 
@@ -58,8 +58,8 @@ in
       ;; Set up fonts early.
       (set-face-attribute 'default
                           nil
-                          :height 80
-                          :family "Fantasque Sans Mono")
+                          :height 100
+                          :family "Fira Code")
       (set-face-attribute 'variable-pitch
                           nil
                           :family "DejaVu Sans")
@@ -112,6 +112,9 @@ in
       ;; Always show line and column number in the mode line.
       (line-number-mode)
       (column-number-mode)
+
+      ;; Display line number in-buffer
+      (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
       ;; Enable some features that are disabled by default.
       (put 'narrow-to-region 'disabled nil)
@@ -206,99 +209,130 @@ in
 
 
       (defun meow-setup ()
+
         (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+
         (meow-motion-overwrite-define-key
-         '("j" . meow-next)
-         '("k" . meow-prev))
+          '("j" . meow-next)
+          '("k" . meow-prev))
+
         (meow-leader-define-key
-         ;; SPC j/k will run the original command in MOTION state.
-         '("j" . meow-motion-origin-command)
-         '("k" . meow-motion-origin-command)
-         ;; Use SPC (0-9) for digit arguments.
-         '("1" . meow-digit-argument)
-         '("2" . meow-digit-argument)
-         '("3" . meow-digit-argument)
-         '("4" . meow-digit-argument)
-         '("5" . meow-digit-argument)
-         '("6" . meow-digit-argument)
-         '("7" . meow-digit-argument)
-         '("8" . meow-digit-argument)
-         '("9" . meow-digit-argument)
-         '("0" . meow-digit-argument)
-         '("/" . meow-keypad-describe-key)
-         '("?" . meow-cheatsheet))
+          ;; SPC j/k will run the original command in MOTION state.
+          '("j" . meow-motion-origin-command)
+          '("k" . meow-motion-origin-command)
+          ;; Use SPC (0-9) for digit arguments.
+          '("1" . meow-digit-argument)
+          '("2" . meow-digit-argument)
+          '("3" . meow-digit-argument)
+          '("4" . meow-digit-argument)
+          '("5" . meow-digit-argument)
+          '("6" . meow-digit-argument)
+          '("7" . meow-digit-argument)
+          '("8" . meow-digit-argument)
+          '("9" . meow-digit-argument)
+          '("0" . meow-digit-argument)
+          '("/" . meow-keypad-describe-key)
+          '("?" . meow-cheatsheet))
+
+        (meow-leader-define-key
+
+          ;; reverse command query
+          '("^" . meow-keypad-describe-key)
+
+          ;; cheatsheet
+          '("?" . meow-cheatsheet)
+
+          ;; high frequency keybindings
+          ;; window management
+          '("w" . other-window)
+          '("o" . delete-other-windows)
+
+          ;; high frequency commands
+          '(";" . comment-dwim)
+          '("k" . kill-this-buffer)
+          '("g" . magit-status)
+          '("p" . project-find-file)
+          '("j" . project-switch-to-buffer)
+          '("d" . dired)
+          '("d" . dired)
+          '("b" . switch-to-buffer)
+          '("r" . deadgrep)
+          '("f" . find-file)
+          '("i" . imenu)
+          '("a" . "M-x"))
+
         (meow-normal-define-key
-         '("0" . meow-expand-0)
-         '("9" . meow-expand-9)
-         '("8" . meow-expand-8)
-         '("7" . meow-expand-7)
-         '("6" . meow-expand-6)
-         '("5" . meow-expand-5)
-         '("4" . meow-expand-4)
-         '("3" . meow-expand-3)
-         '("2" . meow-expand-2)
-         '("1" . meow-expand-1)
-         '("-" . negative-argument)
-         '(";" . meow-reverse)
-         '("," . meow-inner-of-thing)
-         '("." . meow-bounds-of-thing)
-         '("[" . meow-beginning-of-thing)
-         '("]" . meow-end-of-thing)
-         '("a" . meow-append)
-         '("A" . meow-open-below)
-         '("b" . meow-back-word)
-         '("B" . meow-back-symbol)
-         '("c" . meow-change)
-         '("C" . meow-change-save)
-         '("d" . meow-kill)
-         '("D" . meow-backward-delete)
-         '("e" . meow-next-word)
-         '("E" . meow-next-symbol)
-         '("f" . meow-find)
-         '("F" . meow-find-expand)
-         '("g" . meow-cancel)
-         '("G" . meow-grab)
-         '("h" . meow-left)
-         '("H" . meow-left-expand)
-         '("i" . meow-insert)
-         '("I" . meow-open-above)
-         '("j" . meow-next)
-         '("J" . meow-next-expand)
-         '("k" . meow-prev)
-         '("K" . meow-prev-expand)
-         '("l" . meow-right)
-         '("L" . meow-right-expand)
-         '("m" . meow-join)
-         '("n" . meow-search)
-         '("N" . meow-pop-search)
-         '("o" . meow-open-below)
-         '("O" . meow-open-above)
-         '("p" . meow-clipboard-yank)
-         '("P" . meow-clipboard-yank)
-         '("q" . meow-quit)
-         '("Q" . meow-goto-line)
-         '("r" . meow-replace)
-         '("R" . meow-swap-grab)
-         '("s" . meow-save)
-         '("t" . meow-till)
-         '("T" . meow-till-expand)
-         '("u" . meow-undo)
-         '("U" . undo-tree-redo)
-         '("v" . meow-visit)
-         '("V" . meow-kmacro-matches)
-         '("w" . meow-next-word)
-         '("W" . meow-next-symbol)
-         '("x" . meow-line)
-         '("X" . meow-kmacro-lines)
-         '("y" . meow-save)
-         '("Y" . meow-sync-grab)
-         '("z" . meow-pop-selection)
-         '("Z" . meow-pop-all-selection)
-         '("&" . meow-query-replace)
-         '("%" . meow-query-replace-regexp)
-         '("'" . repeat)
-         '("\\" . quoted-insert)
-         '("<escape>" . meow-last-buffer)))
+          '("0" . meow-expand-0)
+          '("9" . meow-expand-9)
+          '("8" . meow-expand-8)
+          '("7" . meow-expand-7)
+          '("6" . meow-expand-6)
+          '("5" . meow-expand-5)
+          '("4" . meow-expand-4)
+          '("3" . meow-expand-3)
+          '("2" . meow-expand-2)
+          '("1" . meow-expand-1)
+          '("-" . negative-argument)
+          '(";" . meow-reverse)
+          '("," . meow-inner-of-thing)
+          '("." . meow-bounds-of-thing)
+          '("[" . meow-beginning-of-thing)
+          '("]" . meow-end-of-thing)
+          '("a" . meow-append)
+          '("A" . meow-open-below)
+          '("b" . meow-back-word)
+          '("B" . meow-back-symbol)
+          '("c" . meow-change)
+          '("C" . meow-change-save)
+          '("d" . meow-kill)
+          '("D" . meow-backward-delete)
+          '("e" . meow-next-word)
+          '("E" . meow-next-symbol)
+          '("f" . meow-find)
+          '("F" . meow-find-expand)
+          '("g" . meow-cancel)
+          '("G" . meow-grab)
+          '("h" . meow-left)
+          '("H" . meow-left-expand)
+          '("i" . meow-insert)
+          '("I" . meow-open-above)
+          '("j" . meow-next)
+          '("J" . meow-next-expand)
+          '("k" . meow-prev)
+          '("K" . meow-prev-expand)
+          '("l" . meow-right)
+          '("L" . meow-right-expand)
+          '("m" . meow-join)
+          '("n" . meow-search)
+          '("N" . meow-pop-search)
+          '("o" . meow-open-below)
+          '("O" . meow-open-above)
+          '("p" . meow-clipboard-yank)
+          '("P" . meow-clipboard-yank)
+          '("q" . meow-quit)
+          '("Q" . meow-goto-line)
+          '("r" . meow-replace)
+          '("R" . meow-swap-grab)
+          '("s" . meow-save)
+          '("t" . meow-till)
+          '("T" . meow-till-expand)
+          '("u" . meow-undo)
+          '("U" . undo-tree-redo)
+          '("v" . meow-visit)
+          '("V" . meow-kmacro-matches)
+          '("w" . meow-next-word)
+          '("W" . meow-next-symbol)
+          '("x" . meow-line)
+          '("X" . meow-kmacro-lines)
+          '("y" . meow-save)
+          '("Y" . meow-sync-grab)
+          '("z" . meow-pop-selection)
+          '("Z" . meow-pop-all-selection)
+          '("&" . meow-query-replace)
+          '("%" . meow-query-replace-regexp)
+          '("'" . repeat)
+          '("\\" . quoted-insert)))
+          ; '("<escape>" . meow-last-buffer)))
 
       ; ;; Connect M-x to ivy-rich
       ; (use-package counsel
@@ -327,6 +361,8 @@ in
       (setq tree-sitter-langs--testing t)
       (setq tsc-dyn-dir (expand-file-name "tree-sitter/" user-emacs-directory))
       (setq tree-sitter-load-path '("${treeSitterGrammars}/bin"))
+
+      (add-to-list 'auto-mode-alist '("\\.sil\\'" . sil-mode))
     '';
 
     usePackage = {
@@ -368,33 +404,40 @@ in
       };
 
       ivy = {
-       enable = true;
-       diminish = [ "ivy-mode" ];
-       command = [ "ivy-mode" ];
-       config = ''
-         (setq ivy-use-virtual-buffers t
-               ivy-wrap t
-               ivy-count-format "%d/%d "
-               enable-recursive-minibuffers t
-               ivy-virtual-abbreviate 'full)
+        enable = true;
+        diminish = [ "ivy-mode" ];
+        command = [ "ivy-mode" ];
+        bind = {
+          "/"  = "swiper";
+        };
+        config = ''
+          (setq ivy-use-virtual-buffers t
+                ivy-wrap t
+                ivy-count-format "%d/%d "
+                enable-recursive-minibuffers t
+                ivy-virtual-abbreviate 'full)
 
-         (define-key ivy-minibuffer-map (kbd "TAB") #'ivy-alt-done)
-         (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
-         (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-next-line)
-         (define-key ivy-minibuffer-map (kbd "C-k") #'ivy-previous-line)
+          (define-key ivy-minibuffer-map (kbd "TAB") #'ivy-alt-done)
+          (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
+          (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-next-line)
+          (define-key ivy-minibuffer-map (kbd "C-k") #'ivy-previous-line)
 
-         (define-key ivy-switch-buffer-map (kbd "C-l") #'ivy-done)
-         (define-key ivy-switch-buffer-map (kbd "C-j") #'ivy-next-line)
-         (define-key ivy-switch-buffer-map (kbd "C-k") #'ivy-previous-line)
-         (define-key ivy-switch-buffer-map (kbd "C-d") #'ivy-switch-buffer-kill)
+          (define-key ivy-switch-buffer-map (kbd "C-l") #'ivy-done)
+          (define-key ivy-switch-buffer-map (kbd "C-j") #'ivy-next-line)
+          (define-key ivy-switch-buffer-map (kbd "C-k") #'ivy-previous-line)
+          (define-key ivy-switch-buffer-map (kbd "C-d") #'ivy-switch-buffer-kill)
+          (define-key ivy-switch-buffer-map (kbd "C-q") #'ivy-switch-buffer-kill)
 
-         ; (define-key ivy-reverse-i-search (kbd "C-l") #'ivy-done)
-         ; (define-key ivy-reverse-i-search (kbd "C-j") #'ivy-next-line)
-         ; (define-key ivy-reverse-i-search (kbd "C-k") #'ivy-previous-line)
-         ; (define-key ivy-reverse-i-search (kbd "C-d") #'ivy-reverse-i-search-kill)
+          ; (define-key ivy-reverse-i-search (kbd "C-l") #'ivy-done)
+          ; (define-key ivy-reverse-i-search (kbd "C-j") #'ivy-next-line)
+          ; (define-key ivy-reverse-i-search (kbd "C-k") #'ivy-previous-line)
+          ; (define-key ivy-reverse-i-search (kbd "C-q") #'ivy-reverse-i-search-kill)
 
-         (ivy-mode 1)
-       '';
+          (setq ivy-re-builders-alist
+            '((swiper . ivy--regex-plus)
+              (t      . ivy--regex-fuzzy)))
+              (ivy-mode 1)
+         '';
       };
 
       magit = {
