@@ -1,4 +1,16 @@
 {
+    "elisp-tree-sitter": {
+        "branch": "master",
+        "description": "Tree-sitter bindings for Emacs Lisp",
+        "homepage": "https://emacs-tree-sitter.github.io",
+        "owner": "emacs-tree-sitter",
+        "repo": "elisp-tree-sitter",
+        "rev": "401f7fb7421185f0e442b989f8ed2d15315f04aa",
+        "sha256": "0hy0ak3bqq48bzr3j4i6xg3934db6d1x9g5vw1yvxbhcal4hi79q",
+        "type": "tarball",
+        "url": "https://github.com/emacs-tree-sitter/elisp-tree-sitter/archive/401f7fb7421185f0e442b989f8ed2d15315f04aa.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "firefox-gnome-theme": {
         "branch": "master",
         "description": "A GNOME👣 theme for Firefox🔥",

@@ -11,6 +11,7 @@ in
     ./alacritty.nix
     ./direnv.nix
     ./dircolors.nix
+    ./emacs.nix
     ./firefox.nix
     ./ghci.nix
     ./git.nix
