@@ -1,4 +1,16 @@
 {
+    "nur": {
+        "branch": "master",
+        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
+        "homepage": "https://nur.nix-community.org/",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "24bd2cb7ed374bd0a5369415cb58d6113c68df49",
+        "sha256": "0y0qcn2dgrzff0ych4k7gkmwmzpqmjpq3b1j9c7r7b86acnxm60r",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/NUR/archive/24bd2cb7ed374bd0a5369415cb58d6113c68df49.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "dlang-debug": {
         "branch": "master",
         "description": "dlang pretty printers for GDB & LLDB for various standard types",
