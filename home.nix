@@ -3,12 +3,15 @@
 let
   sysconfig = (import <nixpkgs/nixos> {}).system;
   callPackage = pkgs.callPackage;
+  enableZsh = { enable = true; enableZshIntegration = true; };
 in
 
 {
   imports = [
     ./alacritty.nix
     ./direnv.nix
+    ./dircolors.nix
+    ./emacs.nix
     ./firefox.nix
     ./gdb.nix
     ./ghci.nix
@@ -23,7 +26,7 @@ in
     ./readline.nix
     ./ssh.nix
     ./starship.nix
-    ./sway.nix
+    # ./sway.nix
     ./taskwarrior.nix
     ./theme.nix
     ./tmux.nix
@@ -37,7 +40,7 @@ in
     username = "owen";
     homeDirectory = "/home/owen";
     sessionVariables = import ./env.nix { pkgs = pkgs; };
-    stateVersion = "20.09";
+    stateVersion = "21.05";
     keyboard = {
       layout = "gb";
       options = [
@@ -52,11 +55,9 @@ in
     alacritty.enable = false;
     command-not-found.enable = true;
     direnv.enable = true;
+    dircolors = enableZsh;
     firefox.enable = true;
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    fzf = enableZsh;
     git.enable = true;
     home-manager.enable = true;
     kakoune.enable = true;
@@ -69,7 +70,5 @@ in
     zsh.enable = true;
   };
 
-  wayland.windowManager.sway.enable = true;
-  targets.genericLinux.enable = true;
-
+  # wayland.windowManager.sway.enable = true;
 }

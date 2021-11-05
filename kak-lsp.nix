@@ -67,7 +67,7 @@
     [language.rust]
     filetypes = ["rust"]
     roots = ["Cargo.toml"]
-    command = "rls"
+    command = "rust-analyzer"
 
     [language.javascript]
     filetypes = ["javascript"]
@@ -91,5 +91,11 @@
     filetypes = ["d", "di"]
     roots = [".git", "dub.sdl", "dub.json"]
     command = "serve-d"
+
+    [language.idris]
+    filetypes = ["idris"]
+    roots = [".ipkg"]
+    command = "idris2-lsp"
+    args = []
   '';
 }
