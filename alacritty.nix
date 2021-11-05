@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 let
-  famObj = { family = "Fira Mono"; };
+  util = import ./util.nix { inherit pkgs; };
+  theme = util.fromYAML (builtins.readFile "${(import ./nix/sources.nix).nord-alacritty}/src/nord.yml");
 in
 
 {
@@ -13,13 +14,6 @@ in
       };
       background_opacity = 0.9;
       live_config_reload = false;
-      font = {
-        normal = famObj;
-        bold = famObj;
-        italic = famObj;
-        bold_italic = famObj;
-        size = 14;
-      };
-    };
+    } // theme;
   };
 }

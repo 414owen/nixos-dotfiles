@@ -14,10 +14,9 @@
   };
   xsession = {
     pointerCursor = {
-      name = "Vanilla-DMZ";
-      package = pkgs.vanilla-dmz;
+      name = "Qogir-dark";
+      package = pkgs.qogir-theme;
     };
   };
-  # home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
   fonts.fontconfig.enable = true;
 }
