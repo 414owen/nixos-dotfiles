@@ -27,6 +27,7 @@ in
     ghc
     htop
     hub
+    helix
     imagemagick
     inkscape
     jq
