@@ -12,10 +12,8 @@ let
     (lib.mapAttrsToList (name: src: "ln -s ${src}/parser $out/bin/${(builtins.replaceStrings [ "tree-sitter-" ] [ "" ] name)}.so") pkgs.tree-sitter.builtGrammars)};
   '';
 
-  package = pkgs.emacsGcc;
+  package = pkgs.emacsPgtk;
 in
-
-
 
 {
   imports = [
@@ -183,12 +181,12 @@ in
       (defun rah-disable-trailing-whitespace-mode ()
         (setq show-trailing-whitespace nil))
 
-      ;; Shouldn't highlight trailing spaces in terminal mode.
+      ;; Shouldn't highlight trailing spaces in various mods
       (add-hook 'term-mode #'rah-disable-trailing-whitespace-mode)
       (add-hook 'term-mode-hook #'rah-disable-trailing-whitespace-mode)
-
-      ;; Ignore trailing white space in compilation mode.
       (add-hook 'compilation-mode-hook #'rah-disable-trailing-whitespace-mode)
+      (add-hook 'undo-tree-visualizer-mode-hook #'rah-disable-trailing-whitespace-mode)
+      (add-hook 'leetcode--problems-mode-hook #'rah-disable-trailing-whitespace-mode)
 
       (defun rah-prog-mode-setup ()
         ;; Use a bit wider fill column width in programming modes
@@ -207,19 +205,60 @@ in
       ;  (let ((sort-fold-case t))
       ;    (call-interactively 'sort-lines)))
 
+      (defun o-dup ()
+        (interactive)
+        (insert-char
+          (char-after)))
+
+      ; A less-smart line join.
+      ; I wanted to keep the extra space anyway.
+      ; TODO maybe check this works at buffer end
+      (defun o-join ()
+        (interactive)
+        (meow-join (- 0 1))
+        (meow-kill nil)
+        (unless (eq (char-after) ?\s)
+          (insert-char ?\s)))
+
+      (defun o-append-line ()
+        (interactive)
+        (meow-line 1)
+        (meow-append))
+
+      (defun o-change ()
+        (interactive)
+        (meow-kill nil)
+        (meow-insert))
+
+      (defun o-change-char ()
+        (interactive)
+        (delete-char 1)
+        (meow-insert))
 
       (defun meow-setup ()
 
         (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+
+        (setq meow-selection-command-fallback
+          '((meow-replace . meow-replace-char)
+            (meow-change . meow-change-char)
+            (meow-save . meow-save-char)
+            (meow-kill . delete-char)
+            (meow-delete . meow-C-d)
+            (meow-cancel . meow-keyboard-quit)
+            (o-change . o-change-char)
+            (meow-pop-selection . meow-pop-grab)))
 
         (meow-motion-overwrite-define-key
           '("j" . meow-next)
           '("k" . meow-prev))
 
         (meow-leader-define-key
+
           ;; SPC j/k will run the original command in MOTION state.
           '("j" . meow-motion-origin-command)
           '("k" . meow-motion-origin-command)
+
           ;; Use SPC (0-9) for digit arguments.
           '("1" . meow-digit-argument)
           '("2" . meow-digit-argument)
@@ -232,9 +271,7 @@ in
           '("9" . meow-digit-argument)
           '("0" . meow-digit-argument)
           '("/" . meow-keypad-describe-key)
-          '("?" . meow-cheatsheet))
-
-        (meow-leader-define-key
+          '("?" . meow-cheatsheet)
 
           ;; reverse command query
           '("^" . meow-keypad-describe-key)
@@ -243,17 +280,20 @@ in
           '("?" . meow-cheatsheet)
 
           ;; high frequency keybindings
+
           ;; window management
           '("w" . other-window)
           '("o" . delete-other-windows)
 
+
+          '("u" . undo-tree-visualize)
+
           ;; high frequency commands
           '(";" . comment-dwim)
-          '("k" . kill-this-buffer)
+          '("k" . quit-window)
           '("g" . magit-status)
           '("p" . project-find-file)
-          '("j" . project-switch-to-buffer)
-          '("d" . dired)
+          '("j" . o-join)
           '("d" . dired)
           '("b" . switch-to-buffer)
           '("r" . deadgrep)
@@ -262,6 +302,7 @@ in
           '("a" . "M-x"))
 
         (meow-normal-define-key
+          '("/" . swiper)
           '("0" . meow-expand-0)
           '("9" . meow-expand-9)
           '("8" . meow-expand-8)
@@ -272,6 +313,8 @@ in
           '("3" . meow-expand-3)
           '("2" . meow-expand-2)
           '("1" . meow-expand-1)
+          '("<" . indent-rigidly-left)
+          '(">" . indent-rigidly-right)
           '("-" . negative-argument)
           '(";" . meow-reverse)
           '("," . meow-inner-of-thing)
@@ -279,10 +322,10 @@ in
           '("[" . meow-beginning-of-thing)
           '("]" . meow-end-of-thing)
           '("a" . meow-append)
-          '("A" . meow-open-below)
+          '("A" . o-append-line)
           '("b" . meow-back-word)
-          '("B" . meow-back-symbol)
-          '("c" . meow-change)
+          '("B" . meow-block-expand)
+          '("c" . o-change)
           '("C" . meow-change-save)
           '("d" . meow-kill)
           '("D" . meow-backward-delete)
@@ -307,13 +350,13 @@ in
           '("N" . meow-pop-search)
           '("o" . meow-open-below)
           '("O" . meow-open-above)
-          '("p" . meow-clipboard-yank)
+          '("p" . meow-yank)
           '("P" . meow-clipboard-yank)
           '("q" . meow-quit)
           '("Q" . meow-goto-line)
           '("r" . meow-replace)
           '("R" . meow-swap-grab)
-          '("s" . meow-save)
+          '("s" . save-buffer)
           '("t" . meow-till)
           '("T" . meow-till-expand)
           '("u" . meow-undo)
@@ -331,8 +374,8 @@ in
           '("&" . meow-query-replace)
           '("%" . meow-query-replace-regexp)
           '("'" . repeat)
-          '("\\" . quoted-insert)))
-          ; '("<escape>" . meow-last-buffer)))
+          '("\\" . quoted-insert)
+          '("<escape>" . meow-cancel)))
 
       ; ;; Connect M-x to ivy-rich
       ; (use-package counsel
@@ -363,6 +406,19 @@ in
       (setq tree-sitter-load-path '("${treeSitterGrammars}/bin"))
 
       (add-to-list 'auto-mode-alist '("\\.sil\\'" . sil-mode))
+
+      ;;; esc always quits
+      (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+      (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+      (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+      (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+      (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+      (global-set-key [escape] 'keyboard-quit)
+
+      (global-set-key (kbd "C-d") 'scroll-up)
+      (global-set-key (kbd "C-u") 'scroll-down)
+
+      (setq python-indent-guess-indent-offset nil)
     '';
 
     usePackage = {
@@ -380,13 +436,6 @@ in
         '';
       };
 
-      doom-themes = {
-        enable = true;
-        config = ''
-          (load-theme 'doom-one t)
-        '';
-      };
-
       dashboard = {
         enable = true;
         config = ''
@@ -394,9 +443,20 @@ in
           (setq dashboard-items '((recents . 15) (agenda . 5)))
           (setq dashboard-set-heading-icons t)
           (setq dashboard-set-file-icons t)
-          (setq dashboard-startup-banner 3)
+          (setq dashboard-startup-banner 'logo)
           (dashboard-setup-startup-hook)
         '';
+      };
+
+      doom-themes = {
+        enable = true;
+        config = ''
+          (load-theme 'doom-one t)
+        '';
+      };
+
+      esup = {
+        enable = true;
       };
 
       swiper = {
@@ -407,14 +467,11 @@ in
         enable = true;
         diminish = [ "ivy-mode" ];
         command = [ "ivy-mode" ];
-        bind = {
-          "/"  = "swiper";
-        };
         config = ''
           (setq ivy-use-virtual-buffers t
                 ivy-wrap t
                 ivy-count-format "%d/%d "
-                enable-recursive-minibuffers t
+                enable-recursive-minibuffers nil
                 ivy-virtual-abbreviate 'full)
 
           (define-key ivy-minibuffer-map (kbd "TAB") #'ivy-alt-done)
@@ -434,10 +491,27 @@ in
           ; (define-key ivy-reverse-i-search (kbd "C-q") #'ivy-reverse-i-search-kill)
 
           (setq ivy-re-builders-alist
-            '((swiper . ivy--regex-plus)
-              (t      . ivy--regex-fuzzy)))
+            '((t . ivy--regex-plus)))
               (ivy-mode 1)
          '';
+      };
+
+      leetcode = {
+        enable = true;
+        config = ''
+          (define-key leetcode--problem-description-mode-map
+            (kbd "h") #'meow-left)
+          (define-key leetcode--problem-description-mode-map
+            (kbd "l") #'meow-right)
+          (define-key leetcode--problem-description-mode-map
+            (kbd "w") #'meow-next-word)
+          (define-key leetcode--problem-description-mode-map
+            (kbd "b") #'meow-back-word)
+          (setq leetcode-prefer-language "python3")
+          (setq leetcode-prefer-sql "mysql")
+          (setq leetcode-save-solutions t)
+          (setq leetcode-directory "~/leetcode")
+        '';
       };
 
       magit = {
@@ -458,7 +532,7 @@ in
 
       meow = {
         enable = true;
-        demand = true;
+        after = [ "ivy" ];
         config = ''
           (meow-setup)
           ;; If you want relative line number in NORMAL state(for display-line-numbers-mode)
@@ -467,6 +541,25 @@ in
           (meow-global-mode 1)
           (meow-setup-indicator)
         '';
+      };
+
+      envrc = {
+        enable = true;
+        config = ''
+          (envrc-global-mode)
+        '';
+      };
+
+      multiple-cursors = {
+        enable = true;
+      };
+
+      phi-search = {
+        enable = true;
+        bind = {
+          "C-s" = "phi-search";
+          "C-r" = "phi-search-backward";
+        };
       };
 
       nix-mode = {
@@ -506,7 +599,17 @@ in
       };
 
       undo-tree = {
+        enable = true;
         config = ''
+          (define-key undo-tree-visualizer-mode-map
+            (kbd "h") #'undo-tree-visualize-switch-branch-left)
+          (define-key undo-tree-visualizer-mode-map
+            (kbd "l") #'undo-tree-visualize-switch-branch-right)
+          (define-key undo-tree-visualizer-mode-map
+            (kbd "j") #'undo-tree-visualize-redo)
+          (define-key undo-tree-visualizer-mode-map
+            (kbd "k") #'undo-tree-visualize-undo)
+
           (global-undo-tree-mode 1)
         '';
       };
