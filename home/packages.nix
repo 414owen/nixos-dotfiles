@@ -36,7 +36,6 @@ in
     ghc
     htop
     hub
-    helix
     gnumake
     gdb
     ghc
@@ -98,6 +97,8 @@ in
     duf
     zsh-history-substring-search
     zsh-syntax-highlighting
+    python39
+    python39Packages.pip
   ] ++ (with gitAndTools; [
     gh
     git-absorb
