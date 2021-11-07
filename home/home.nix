@@ -52,7 +52,7 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
-    alacritty.enable = false;
+    alacritty.enable = true;
     command-not-found.enable = true;
     direnv.enable = true;
     dircolors = enableZsh;

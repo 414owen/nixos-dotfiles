@@ -17,6 +17,8 @@ in
   FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview '${pkgs.bat}/bin/bat --color=always --style=header,grid --line-range :300 {}'";
   MAKEFLAGS = "-j$(nproc)";
   TERMINAL = "${pkgs.st}/bin/st";
+  NIX_PATH = ''$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH'';
+
   # force all generic backend to use wayland backend
   # GDK_BACKEND = "wayland";
   # QT_QPA_PLATFORM = "wayland-egl";
