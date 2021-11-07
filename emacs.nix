@@ -507,10 +507,15 @@ in
             (kbd "w") #'meow-next-word)
           (define-key leetcode--problem-description-mode-map
             (kbd "b") #'meow-back-word)
+
           (setq leetcode-prefer-language "python3")
           (setq leetcode-prefer-sql "mysql")
           (setq leetcode-save-solutions t)
-          (setq leetcode-directory "~/leetcode")
+          (setq leetcode-directory "~/src/leet")
+
+          (defalias 'lc 'leetcode)
+          (defalias 'lct 'leetcode-try)
+          (defalias 'lcs 'leetcode-submit)
         '';
       };
 
