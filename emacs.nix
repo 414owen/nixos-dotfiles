@@ -12,7 +12,7 @@ let
     (lib.mapAttrsToList (name: src: "ln -s ${src}/parser $out/bin/${(builtins.replaceStrings [ "tree-sitter-" ] [ "" ] name)}.so") pkgs.tree-sitter.builtGrammars)};
   '';
 
-  package = pkgs.emacsPgtk;
+  package = pkgs.emacsPgtkGcc;
 in
 
 {
@@ -235,6 +235,25 @@ in
         (delete-char 1)
         (meow-insert))
 
+      (defun o-replace ()
+        (interactive)
+        (let ((c (read-char))
+              (l (- (region-end) (region-beginning))))
+          (meow-kill nil)
+          (insert-char c l)))
+
+      (defun o-replace-char ()
+        (interactive)
+        (let ((c (read-char))
+          (delete-char 1)
+          (insert-char c))))
+
+      (defun o-swiper ()
+        (interactive)
+        (narrow-to-region)
+        (swiper)
+        (widen))
+
       (defun meow-setup ()
 
         (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
@@ -247,6 +266,8 @@ in
             (meow-delete . meow-C-d)
             (meow-cancel . meow-keyboard-quit)
             (o-change . o-change-char)
+            (o-replace . o-replace-char)
+            (o-swiper . swiper)
             (meow-pop-selection . meow-pop-grab)))
 
         (meow-motion-overwrite-define-key
@@ -302,7 +323,7 @@ in
           '("a" . "M-x"))
 
         (meow-normal-define-key
-          '("/" . swiper)
+          '("/" . o-swiper)
           '("0" . meow-expand-0)
           '("9" . meow-expand-9)
           '("8" . meow-expand-8)
@@ -354,7 +375,7 @@ in
           '("P" . meow-clipboard-yank)
           '("q" . meow-quit)
           '("Q" . meow-goto-line)
-          '("r" . meow-replace)
+          '("r" . o-replace)
           '("R" . meow-swap-grab)
           '("s" . save-buffer)
           '("t" . meow-till)
@@ -519,6 +540,35 @@ in
         '';
       };
 
+      lsp-mode = {
+        enable = true;
+        command = [ "lsp" ];
+        hook = [
+          "(python-mode . lsp-deferred)"
+          "(rust-mode . lsp-deferred)"
+          "(lsp-mode . lsp-enable-which-key-integration)"
+        ];
+      };
+
+      # company = { enable = true; };
+      # flycheck = { enable = true; };
+      # lsp-treemacs = {
+      #   enable = true;
+      #   command = [ "lsp-treemacs-errors-list" ];
+      # };
+      lsp-ui = {
+        enable = true;
+        command = [ "lsp-ui-mode" ];
+      };
+      # treemacs = { enable = true; };
+      lsp-ivy = {
+        enable = true;
+        command = [ "lsp-ivy-workspace-symbol" ];
+      };
+
+      # TODO
+      # dap-mode = { enable = true; };
+
       magit = {
         enable = true;
         config = ''
@@ -619,9 +669,14 @@ in
         '';
       };
 
+      wgrep = {
+        enable = true;
+      };
+
       which-key = {
         enable = true;
-        diminish = ["which-key-mode"];
+        after = [ "lsp-mode" ];
+        diminish = [ "which-key-mode" ];
         config = ''
           (which-key-mode)
           (setq which-key-idle-delay 1)
