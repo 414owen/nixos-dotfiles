@@ -5,52 +5,52 @@
     snippet_support = true
     verbosity = 2
 
-    [[semantic_tokens]]
-    token = "comment"
-    face = "documentation"
-    modifiers = ["documentation"]
+    # [[semantic_tokens]]
+    # token = "comment"
+    # face = "documentation"
+    # modifiers = ["documentation"]
 
-    [[semantic_tokens]]
-    token = "comment"
-    face = "comment"
+    # [[semantic_tokens]]
+    # token = "comment"
+    # face = "comment"
 
-    [[semantic_tokens]]
-    token = "function"
-    face = "function"
+    # [[semantic_tokens]]
+    # token = "function"
+    # face = "function"
 
-    [[semantic_tokens]]
-    token = "keyword"
-    face = "keyword"
+    # [[semantic_tokens]]
+    # token = "keyword"
+    # face = "keyword"
 
-    [[semantic_tokens]]
-    token = "namespace"
-    face = "module"
+    # [[semantic_tokens]]
+    # token = "namespace"
+    # face = "module"
 
-    [[semantic_tokens]]
-    token = "operator"
-    face = "operator"
+    # [[semantic_tokens]]
+    # token = "operator"
+    # face = "operator"
 
-    [[semantic_tokens]]
-    token = "string"
-    face = "string"
+    # [[semantic_tokens]]
+    # token = "string"
+    # face = "string"
 
-    [[semantic_tokens]]
-    token = "type"
-    face = "type"
+    # [[semantic_tokens]]
+    # token = "type"
+    # face = "type"
 
-    [[semantic_tokens]]
-    token = "variable"
-    face = "default+d"
-    modifiers = ["readonly"]
+    # [[semantic_tokens]]
+    # token = "variable"
+    # face = "default+d"
+    # modifiers = ["readonly"]
 
-    [[semantic_tokens]]
-    token = "variable"
-    face = "default+d"
-    modifiers = ["constant"]
+    # [[semantic_tokens]]
+    # token = "variable"
+    # face = "default+d"
+    # modifiers = ["constant"]
 
-    [[semantic_tokens]]
-    token = "variable"
-    face = "variable"
+    # [[semantic_tokens]]
+    # token = "variable"
+    # face = "variable"
 
     [language.haskell]
     filetypes = ["haskell"]

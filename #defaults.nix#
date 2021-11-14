@@ -1,4 +1,4 @@
-{
+jjj{
   cat = "bat";
   editor = "emacsclient -c";
   fuzzy = "fzf";
