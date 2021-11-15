@@ -17,7 +17,6 @@ in
     cabal-install
     cachix
     calibre
-    clang
     coreutils
     darktable
     dateutils
