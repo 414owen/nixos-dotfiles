@@ -12,7 +12,7 @@ let
     (lib.mapAttrsToList (name: src: "ln -s ${src}/parser $out/bin/${(builtins.replaceStrings [ "tree-sitter-" ] [ "" ] name)}.so") pkgs.tree-sitter.builtGrammars)};
   '';
 
-  package = pkgs.emacsPgtk;
+  package = pkgs.emacsPgtkGcc;
 in
 
 {
@@ -472,12 +472,11 @@ in
             (defun o-indent-left ()
               (interactive)
               (meow--with-selection-fallback
-                (when (region-active-p)
-                  (save-mark-and-excursion
-                    (indent-rigidly-left
-                      (region-beginning)
-                      (region-end)))
-                  (setq deactivate-mark nil))))
+                (save-mark-and-excursion
+                  (indent-rigidly-left
+                    (region-beginning)
+                    (region-end)))
+                (setq deactivate-mark nil)))
 
             (defun o-mark-line ()
               (set-mark (line-beginning-position))
@@ -487,12 +486,11 @@ in
             (defun o-indent-right()
               (interactive)
               (meow--with-selection-fallback
-                (when (region-active-p)
-                  (save-mark-and-excursion
-                    (indent-rigidly-right
-                      (region-beginning)
-                      (region-end)))
-                  (setq deactivate-mark nil))))
+                (save-mark-and-excursion
+                  (indent-rigidly-right
+                    (region-beginning)
+                    (region-end)))
+                (setq deactivate-mark nil)))
 
             (defun o-indent-line-left ()
               (interactive)
