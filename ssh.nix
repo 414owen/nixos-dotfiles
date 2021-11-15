@@ -11,6 +11,9 @@
         hostname = "192.168.0.241";
         user = "pi";
       };
+      "git.symmetry.dev" = {
+        addressFamily = "inet";
+      };
     };
   };
 }
