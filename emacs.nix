@@ -12,7 +12,7 @@ let
     (lib.mapAttrsToList (name: src: "ln -s ${src}/parser $out/bin/${(builtins.replaceStrings [ "tree-sitter-" ] [ "" ] name)}.so") pkgs.tree-sitter.builtGrammars)};
   '';
 
-  package = pkgs.emacsPgtkGcc;
+  package = pkgs.emacsPgtk;
 in
 
 {
@@ -42,6 +42,13 @@ in
       usePackageVerbose = false;
 
       earlyInit = ''
+        (setq garbage-collection-messages t
+              gc-cons-threshold 500000000
+              gc-cons-percentage 0.6)
+
+        (run-with-idle-timer 2 t
+          (lambda () (garbage-collect)))
+
         ;; Emacs really shouldn't be displaying anything until it has fully started
         ;; up. This saves a bit of time.
         (setq-default inhibit-redisplay t
@@ -80,6 +87,9 @@ in
       '';
 
       prelude = ''
+        ;; No lockfiles
+        (setq create-lockfiles nil)
+
         ;; Disable audio bell
         (setq visible-bell 1)
 
@@ -263,6 +273,39 @@ in
           enable = true;
         };
 
+        counsel = {
+          enable = true;
+          diminish = [ "ivy-mode" ];
+          command = [ "ivy-mode" ];
+          config = ''
+            (setq ivy-use-virtual-buffers t
+                  ivy-wrap t
+                  ivy-count-format "%d/%d "
+                  enable-recursive-minibuffers nil
+                  ivy-virtual-abbreviate 'full)
+
+            (define-key ivy-minibuffer-map (kbd "TAB") #'ivy-alt-done)
+            (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
+            (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-next-line)
+            (define-key ivy-minibuffer-map (kbd "C-k") #'ivy-previous-line)
+
+            (define-key ivy-switch-buffer-map (kbd "C-l") #'ivy-done)
+            (define-key ivy-switch-buffer-map (kbd "C-j") #'ivy-next-line)
+            (define-key ivy-switch-buffer-map (kbd "C-k") #'ivy-previous-line)
+            (define-key ivy-switch-buffer-map (kbd "C-d") #'ivy-switch-buffer-kill)
+            (define-key ivy-switch-buffer-map (kbd "C-q") #'ivy-switch-buffer-kill)
+
+            ; (define-key ivy-reverse-i-search (kbd "C-l") #'ivy-done)
+            ; (define-key ivy-reverse-i-search (kbd "C-j") #'ivy-next-line)
+            ; (define-key ivy-reverse-i-search (kbd "C-k") #'ivy-previous-line)
+            ; (define-key ivy-reverse-i-search (kbd "C-q") #'ivy-reverse-i-search-kill)
+
+            (setq ivy-re-builders-alist
+              '((t . ivy--regex-plus)))
+                (ivy-mode 1)
+           '';
+        };
+
         counsel-projectile = {
           enable = true;
           bind = {
@@ -300,39 +343,6 @@ in
           enable = true;
         };
 
-        ivy = {
-          enable = true;
-          diminish = [ "ivy-mode" ];
-          command = [ "ivy-mode" ];
-          config = ''
-            (setq ivy-use-virtual-buffers t
-                  ivy-wrap t
-                  ivy-count-format "%d/%d "
-                  enable-recursive-minibuffers nil
-                  ivy-virtual-abbreviate 'full)
-
-            (define-key ivy-minibuffer-map (kbd "TAB") #'ivy-alt-done)
-            (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
-            (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-next-line)
-            (define-key ivy-minibuffer-map (kbd "C-k") #'ivy-previous-line)
-
-            (define-key ivy-switch-buffer-map (kbd "C-l") #'ivy-done)
-            (define-key ivy-switch-buffer-map (kbd "C-j") #'ivy-next-line)
-            (define-key ivy-switch-buffer-map (kbd "C-k") #'ivy-previous-line)
-            (define-key ivy-switch-buffer-map (kbd "C-d") #'ivy-switch-buffer-kill)
-            (define-key ivy-switch-buffer-map (kbd "C-q") #'ivy-switch-buffer-kill)
-
-            ; (define-key ivy-reverse-i-search (kbd "C-l") #'ivy-done)
-            ; (define-key ivy-reverse-i-search (kbd "C-j") #'ivy-next-line)
-            ; (define-key ivy-reverse-i-search (kbd "C-k") #'ivy-previous-line)
-            ; (define-key ivy-reverse-i-search (kbd "C-q") #'ivy-reverse-i-search-kill)
-
-            (setq ivy-re-builders-alist
-              '((t . ivy--regex-plus)))
-                (ivy-mode 1)
-           '';
-        };
-
         leetcode = {
           enable = true;
           config = ''
@@ -356,8 +366,15 @@ in
           '';
         };
 
-        lsp-mode = {
+        eglot = {
           enable = true;
+          config = ''
+            (add-hook 'python-mode-hook 'eglot-ensure)
+          '';
+        };
+
+        lsp-mode = {
+          enable = false;
           command = [ "lsp" ];
           hook = [
             "(python-mode . lsp-deferred)"
@@ -373,12 +390,12 @@ in
         #   command = [ "lsp-treemacs-errors-list" ];
         # };
         lsp-ui = {
-          enable = true;
+          enable = false;
           command = [ "lsp-ui-mode" ];
         };
         # treemacs = { enable = true; };
         lsp-ivy = {
-          enable = true;
+          enable = false;
           command = [ "lsp-ivy-workspace-symbol" ];
         };
 
@@ -456,14 +473,24 @@ in
               (interactive)
               (meow--with-selection-fallback
                 (if (region-active-p)
-                  (indent-rigidly-left
-                    (region-beginning)
-                    (region-end)))))
+                  (save-excursion
+                    (indent-rigidly-left
+                      (region-beginning)
+                      (region-end))))))
 
             (defun o-mark-line ()
               (set-mark (line-beginning-position))
               (goto-char (line-end-position))
               (activate-mark))
+
+            (defun o-indent-right()
+              (interactive)
+              (meow--with-selection-fallback
+                (if (region-active-p)
+                  (save-excursion
+                    (indent-rigidly-right
+                      (region-beginning)
+                      (region-end))))))
 
             (defun o-indent-line-left ()
               (interactive)
@@ -476,14 +503,6 @@ in
               (indent-rigidly-right
                 (line-beginning-position)
                 (line-end-position)))
-
-            (defun o-indent-right()
-              (interactive)
-              (meow--with-selection-fallback
-                (if (region-active-p)
-                  (indent-rigidly-right
-                    (region-beginning)
-                    (region-end)))))
 
             (defun meow-setup ()
 
@@ -498,7 +517,6 @@ in
                   (meow-cancel . meow-keyboard-quit)
                   (o-change . o-change-char)
                   (o-replace . o-replace-char)
-                  (o-swiper . swiper)
                   (o-indent-left . o-indent-line-left)
                   (o-indent-right . o-indent-line-right)
                   (meow-pop-selection . meow-pop-grab)))
@@ -628,7 +646,8 @@ in
                 '("Z" . meow-pop-all-selection)
                 '("&" . meow-query-replace)
                 '("%" . mark-whole-buffer)
-                '("'" . repeat)
+                '("." . repeat)
+                '("#" . comment-or-uncomment-region)
                 '("\\" . quoted-insert)
                 '("<escape>" . meow-cancel)))
 
@@ -666,7 +685,7 @@ in
                           (multiple-cursors-mode 1))))))))
 
 
-            (define-key swiper-map (kbd "RET") #'swiper-mc-regions-in-region)
+            ; (define-key swiper-map (kbd "RET") #'swiper-mc-regions-in-region)
           '';
         };
 
@@ -759,6 +778,5 @@ in
   };
 
   programs.emacs.extraPackages = epkgs: with epkgs; [
-    counsel
   ];
 }
