@@ -472,11 +472,12 @@ in
             (defun o-indent-left ()
               (interactive)
               (meow--with-selection-fallback
-                (if (region-active-p)
-                  (save-excursion
+                (when (region-active-p)
+                  (save-mark-and-excursion
                     (indent-rigidly-left
                       (region-beginning)
-                      (region-end))))))
+                      (region-end)))
+                  (setq deactivate-mark nil))))
 
             (defun o-mark-line ()
               (set-mark (line-beginning-position))
@@ -486,11 +487,12 @@ in
             (defun o-indent-right()
               (interactive)
               (meow--with-selection-fallback
-                (if (region-active-p)
-                  (save-excursion
+                (when (region-active-p)
+                  (save-mark-and-excursion
                     (indent-rigidly-right
                       (region-beginning)
-                      (region-end))))))
+                      (region-end)))
+                  (setq deactivate-mark nil))))
 
             (defun o-indent-line-left ()
               (interactive)
