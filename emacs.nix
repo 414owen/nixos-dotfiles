@@ -12,7 +12,7 @@ let
     (lib.mapAttrsToList (name: src: "ln -s ${src}/parser $out/bin/${(builtins.replaceStrings [ "tree-sitter-" ] [ "" ] name)}.so") pkgs.tree-sitter.builtGrammars)};
   '';
 
-  package = pkgs.emacsPgtk;
+  package = pkgs.emacsPgtkGcc;
 in
 
 {
@@ -45,6 +45,10 @@ in
         (setq garbage-collection-messages t
               gc-cons-threshold 500000000
               gc-cons-percentage 0.6)
+
+
+        (when (fboundp 'native-compile-async)
+          (setq comp-deferred-compilation t))
 
         (run-with-idle-timer 2 t
           (lambda () (garbage-collect)))
@@ -420,7 +424,7 @@ in
 
         meow = {
           enable = true;
-          after = [ "ivy" "swiper" ];
+          after = [ "ivy" "swiper" "multiple-cursors" ];
           config = ''
             (defun o-dup ()
               (interactive)
@@ -469,28 +473,26 @@ in
               (interactive)
               (find-file "~/.config/nixpkgs/emacs.nix"))
 
-            (defun o-indent-left ()
-              (interactive)
-              (meow--with-selection-fallback
-                (if (region-active-p)
-                  (save-excursion
-                    (indent-rigidly-left
-                      (region-beginning)
-                      (region-end))))))
-
             (defun o-mark-line ()
               (set-mark (line-beginning-position))
               (goto-char (line-end-position))
               (activate-mark))
 
+            (defun o-indent-left ()
+              (interactive)
+              (meow--with-selection-fallback
+                (save-mark-and-excursion
+                  (indent-rigidly-left
+                    (region-beginning)
+                    (region-end)))))
+
             (defun o-indent-right()
               (interactive)
               (meow--with-selection-fallback
-                (if (region-active-p)
-                  (save-excursion
-                    (indent-rigidly-right
-                      (region-beginning)
-                      (region-end))))))
+                (save-mark-and-excursion
+                  (indent-rigidly-right
+                    (region-beginning)
+                    (region-end)))))
 
             (defun o-indent-line-left ()
               (interactive)
