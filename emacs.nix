@@ -46,6 +46,16 @@ in
               gc-cons-threshold 500000000
               gc-cons-percentage 0.6)
 
+        ;; Avoid unnecessary regexp matching while loading .el files.
+        (defvar hm/file-name-handler-alist file-name-handler-alist)
+        (setq file-name-handler-alist nil)
+
+        (defun hm/restore-file-name-handler-alist ()
+          "Restores the file-name-handler-alist variable."
+          (setq file-name-handler-alist hm/file-name-handler-alist)
+          (makunbound 'hm/file-name-handler-alist))
+
+        (add-hook 'emacs-startup-hook #'hm/restore-file-name-handler-alist)
 
         (when (fboundp 'native-compile-async)
           (setq comp-deferred-compilation t))
