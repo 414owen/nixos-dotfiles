@@ -38,7 +38,7 @@ in
       enable = true;
 
       packageQuickstart = false;
-      recommendedGcSettings = true;
+      recommendedGcSettings = false;
       usePackageVerbose = false;
 
       earlyInit = ''
