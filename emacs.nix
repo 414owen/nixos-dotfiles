@@ -87,7 +87,6 @@ in
 
         ;; Debugging
         (setq message-log-max 10000)
-
       '';
 
       prelude = ''
