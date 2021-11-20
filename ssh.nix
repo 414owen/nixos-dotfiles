@@ -11,6 +11,10 @@
         hostname = "192.168.0.241";
         user = "pi";
       };
+      "work" = {
+        hostname = "192.168.0.131";
+        user = "owen";
+      };
     };
   };
 }
