@@ -38,16 +38,30 @@ in
       enable = true;
 
       packageQuickstart = false;
-      recommendedGcSettings = true;
+      recommendedGcSettings = false;
       usePackageVerbose = false;
 
       earlyInit = ''
+        ;; Minimize garbage collection during startup
         (setq garbage-collection-messages t
-              gc-cons-threshold 500000000
+              gc-cons-threshold most-positive-fixnum
               gc-cons-percentage 0.6)
 
-        (run-with-idle-timer 2 t
-          (lambda () (garbage-collect)))
+        ;; Lower threshold back to 8 MiB (default is 800kB)
+        (add-hook 'emacs-startup-hook
+          (lambda ()
+            (run-with-idle-timer 2 t
+              (lambda () (garbage-collect)))
+            (setq gc-cons-threshold (expt 2 23))))
+
+        ;; Avoid unnecessary regexp matching while loading .el files.
+        (defvar hm/file-name-handler-alist file-name-handler-alist)
+        (setq file-name-handler-alist nil)
+
+        ;; Restore regexp matching
+        (add-hook 'emacs-startup-hook (lambda ()
+          (setq file-name-handler-alist hm/file-name-handler-alist)
+          (makunbound 'hm/file-name-handler-alist)))
 
         ;; Emacs really shouldn't be displaying anything until it has fully started
         ;; up. This saves a bit of time.
@@ -72,8 +86,8 @@ in
         ;; Set up fonts early.
         (set-face-attribute 'default
                             nil
-                            :height 100
-                            :family "Fira Code")
+                            :height 120
+                            :family "Fira Mono")
         (set-face-attribute 'variable-pitch
                             nil
                             :family "DejaVu Sans")
@@ -332,6 +346,14 @@ in
           enable = true;
           config = ''
             (load-theme 'doom-one t)
+          '';
+        };
+
+        editorconfig = {
+          enable = true;
+          config = ''
+            (require 'editorconfig-core)
+            (editorconfig-mode 1)
           '';
         };
 
