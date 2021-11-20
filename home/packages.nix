@@ -4,7 +4,7 @@ let
   lib = pkgs.lib;
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
   scripts = import ./scripts.nix { inherit pkgs; };
-  # unstable = import <unstable> {};
+  unstable = import <unstable> {};
   sources = import ./nix/sources.nix;
   nixpkgs-update = import sources.nixpkgs-update {};
 in
@@ -56,8 +56,10 @@ in
     kak-lsp
     killall
     libsecret
+    unstable.btop
     lshw
     macchina
+    mosh
     mpv
     # newsflash
     neofetch
