@@ -12,7 +12,23 @@ let
     (lib.mapAttrsToList (name: src: "ln -s ${src}/parser $out/bin/${(builtins.replaceStrings [ "tree-sitter-" ] [ "" ] name)}.so") pkgs.tree-sitter.builtGrammars)};
   '';
 
-  package = pkgs.emacsPgtkGcc;
+  removeAll = els: lib.filter (x: !(lib.elem x els));
+
+  withoutFeat = feat: oldFlags:
+    (lib.remove ("--with-" + feat) oldFlags) ++ ("--without-" + feat);
+
+  withoutFeats = feats: oldFlags:
+    (removeAll (map (a: "--with-" + a) feats) oldFlags)
+    ++ (map (a: "--without-" + a) feats);
+
+  package = pkgs.emacsPgtkGcc.overrideAttrs(old: {
+    configureFlags = [
+      "--enable-link-time-optimization"
+    ] ++ (withoutFeats [
+      # "modules"
+      "sound"
+    ] old.configureFlags);
+  });
 in
 
 {

@@ -8,8 +8,18 @@ let
         export GIT_AUTHOR_DATE=$(date -d "$(dateround "$at" Sat)" "+%Y-%m-%d %H:%M:%S") \
         GIT_COMMITTER_DATE=$(date -d "$(dateround "$ct" Sat)" "+%Y-%m-%d %H:%M:%S")'
   '';
+  copy = pkgs.writeShellScriptBin "copy" ''
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+      wl-copy $@
+    elif [ "$XDG_SESSION_TYPE" = "x11" ]; then
+      xclip -selection clipboard $@
+    else
+      echo "Can't copy. Please set XDG_SESSION_TYPE." >&2
+    fi
+  '';
 in
 
 {
+  inherit copy;
   inherit git-weekend;
 }
