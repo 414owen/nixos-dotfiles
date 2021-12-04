@@ -11,12 +11,13 @@ in
     ./alacritty.nix
     ./direnv.nix
     ./dircolors.nix
-    ./emacs.nix
+    # ./emacs.nix
     ./firefox.nix
     ./gdb.nix
     ./ghci.nix
     ./git.nix
     ./theme.nix
+    ./helix.nix
     ./gpg-agent.nix
     ./haskeline.nix
     ./kak-lsp.nix
