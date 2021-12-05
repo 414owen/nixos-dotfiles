@@ -1,4 +1,4 @@
-macchina --no-ascii --no-box --no-separator -S -U -p -H WindowManager DesktopEnvironment Packages Battery OperatingSystem
+macchina
 
 setopt HIST_IGNORE_ALL_DUPS
 
