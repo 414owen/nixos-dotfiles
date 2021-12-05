@@ -48,7 +48,7 @@ in
     gnupg
     gparted
     nixpkgs-update
-    unstable.helix
+    helix
     htop
     imagemagick
     inkscape
