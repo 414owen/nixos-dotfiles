@@ -17,7 +17,6 @@ in
     cabal-install
     cachix
     calibre
-    clang
     coreutils
     darktable
     dateutils
@@ -43,7 +42,6 @@ in
     gimp
     gitAndTools.hub
     gnome3.geary
-    gnome3.gnome-tweaks
     gnumeric
     gnupg
     gparted
@@ -91,17 +89,18 @@ in
     spotify
     # unstable.spot
     stdenv
+    xclip
+    scripts.copy
     wl-clipboard
     tree
-    tmate
     tmux
     tree
     usbutils
     duf
     zsh-history-substring-search
     zsh-syntax-highlighting
-    python39
-    python39Packages.pip
+    # python39
+    # python39Packages.pip
   ] ++ (with gitAndTools; [
     gh
     git-absorb
