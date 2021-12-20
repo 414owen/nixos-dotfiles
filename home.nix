@@ -41,7 +41,7 @@ in
     username = "owen";
     homeDirectory = "/home/owen";
     sessionVariables = import ./env.nix { pkgs = pkgs; };
-    stateVersion = "21.05";
+    stateVersion = "21.11";
     keyboard = {
       layout = "gb";
       options = [
