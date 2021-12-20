@@ -1,109 +1,139 @@
-{ config, pkgs, options, ... }:
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, ... }:
 
 {
-
-  imports = [
-    ./boot.nix
-    ./cachix.nix
-    ./fonts.nix
-    ./games.nix
-    ./nix.nix
-    ./nixpkgs.nix
-    ./hardware-configuration.nix
-    ./make-linux-fast-again.nix
-    <nixos-hardware/dell/xps/13-9370>
-  ];
-
-  time.timeZone = "Europe/Dublin";
-
-  # boot.kernelPackages = pkgs.linuxPackages_5_7;
-
-  networking = {
-    networkmanager.enable = true;
-    firewall.enable = false;
-  };
-
-  hardware = {
-    bluetooth.enable = true;
-    opengl = {
-      enable = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
-    pulseaudio = {
-      enable = true;
-      package = pkgs.pulseaudioFull;
-    };
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  environment = {
-
-    # for zsh completions of system packages
-    pathsToLink = [ "/share/zsh" ];
-
-    systemPackages = with pkgs; [
-      bind
-      file
-      fira-code
-      firmwareLinuxNonfree
-      numix-icon-theme
-      numix-icon-theme-circle
-      ntfs3g
-      paper-icon-theme
-      patchelf
-      python3Full
-      service-wrapper
-      traceroute
-      tree
-      unzip
-      wget
-      wirelesstools
-      xf86_input_wacom
-      xorg.libxcb
-      xsel
+  imports =
+    [ # Include the results of the hardware scan.
+      ./cachix.nix
+      ./hardware-configuration.nix
+      ./make-linux-fast-again.nix
+      <nixos-hardware/dell/xps/13-9370>
     ];
-  };
 
-  programs.zsh.enable = true;
-  programs.command-not-found.enable = true;
+    nix.binaryCaches = [ "https://nixcache.reflex-frp.org" ];
+    nix.binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
 
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+
+
+  services.gvfs.enable = true;
+
+  # networking.hostName = "nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Set your time zone.
+  # time.timeZone = "Europe/Amsterdam";
+
+  # networking.interfaces.wlp2s0.useDHCP = true;
+  networking.networkmanager.enable = true;
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Select internationalisation properties.
+  # i18n.defaultLocale = "en_US.UTF-8";
+  # console = {
+  #   font = "Lat2-Terminus16";
+  #   keyMap = "us";
+  # };
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+
+  # Enable the GNOME 3 Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # Configure keymap in X11
+  services.xserver.layout = "gb";
+  services.xserver.xkbOptions = "ctrl:nocaps";
+
+  # Enable CUPS to print documents.
+  # services.printing.enable = true;
+
+  # Enable sound.
   sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
-  services = {
-    xserver = {
-      enable = true;
-      layout = "gb";
-      desktopManager = {
-        gnome3.enable = true;
-      };
-      displayManager = {
-        # defaultSession = "gnome";
-        gdm = {
-          enable = true;
-          autoLogin = {
-            enable = false;
-            user = "owen";
-          };
-        };
-      };
-      libinput = {
-        enable = true;
-        disableWhileTyping = false;
-      };
-      xkbOptions = "ctrl:swapcaps";
-    };
-    keybase.enable = true;
-  };
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "disk" "networkmanager" ];
-    shell = "/run/current-system/sw/bin/zsh";
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
   };
 
-  system.stateVersion = "20.03";
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    kakoune # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    firefox
+    exfat-utils
+  ];
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
+  services.tlp.enable = false;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "21.11"; # Did you read the comment?
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  fileSystems."/media/external-drive" = {
+    device = "192.168.0.65:/media/external-drive";
+    options = [ "x-systemd.automount" "noauto" ];
+    fsType = "nfs";
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    steam = pkgs.steam.override {
+      nativeOnly = true;
+    };
+  };
+  programs.steam.enable = true;
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;
+
+
+  nix = {
+    useSandbox = true;
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 }
+
