@@ -5,37 +5,6 @@
     snippet_support = true
     verbosity = 2
 
-    [semantic_scopes]
-    # Map textmate scopes to kakoune faces for semantic highlighting
-    # the underscores are translated to dots, and indicate nesting.
-    # That is, if variable_other_field is omitted, it will try the face for
-    # variable_other and then variable
-    #
-    # To see a list of available scopes in the debug buffer, run lsp-semantic-available-scopes
-    variable = "variable"
-    entity_name_function = "function"
-    entity_name_type = "type"
-    variable_other_enummember = "variable"
-    entity_name_namespace = "module"
-
-    # Semantic tokens support
-    # See https://github.com/microsoft/vscode-languageserver-node/blob/8c8981eb4fb6adec27bf1bb5390a0f8f7df2899e/client/src/semanticTokens.proposed.ts#L288
-    # for token/modifier types.
-
-    [semantic_tokens]
-    type = "type"
-    variable = "variable"
-    namespace = "module"
-    function = "function"
-    string = "string"
-    keyword = "keyword"
-    operator = "operator"
-    comment = "comment"
-
-    [semantic_modifiers]
-    documentation = "documentation"
-    readonly = "default+d"
-
     [language.haskell]
     filetypes = ["haskell"]
     roots = ["Setup.hs", "stack.yaml", "*.cabal"]
@@ -70,5 +39,63 @@
     roots = [".c-lang-serv", "makefile", "Makefile"]
     command = "clangd"
     args = []
+
+
+    # Semantic tokens support
+    # See https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_semanticTokens
+    # for the default list of tokens and modifiers.
+    # However, many language servers implement their own values.
+    # Make sure to check the output of `lsp-capabilities` and each server's documentation and source code as well.
+    # Examples:
+    # - TypeScript: https://github.com/microsoft/vscode-languageserver-node/blob/2645fb54ea1e764aff71dee0ecc8aceff3aabf56/client/src/common/semanticTokens.ts#L58
+    # - Rust Analyzer: https://github.com/rust-analyzer/rust-analyzer/blob/f6da603c7fe56c19a275dc7bab1f30fe1ad39707/crates/ide/src/syntax_highlighting.rs#L42
+
+    [[semantic_tokens]]
+    token = "comment"
+    face = "documentation"
+    modifiers = ["documentation"]
+
+    [[semantic_tokens]]
+    token = "comment"
+    face = "comment"
+
+    [[semantic_tokens]]
+    token = "function"
+    face = "function"
+
+    [[semantic_tokens]]
+    token = "keyword"
+    face = "keyword"
+
+    [[semantic_tokens]]
+    token = "namespace"
+    face = "module"
+
+    [[semantic_tokens]]
+    token = "operator"
+    face = "operator"
+
+    [[semantic_tokens]]
+    token = "string"
+    face = "string"
+
+    [[semantic_tokens]]
+    token = "type"
+    face = "type"
+
+    [[semantic_tokens]]
+    token = "variable"
+    face = "default+d"
+    modifiers = ["readonly"]
+
+    [[semantic_tokens]]
+    token = "variable"
+    face = "default+d"
+    modifiers = ["constant"]
+
+    [[semantic_tokens]]
+    token = "variable"
+    face = "variable"
+
   '';
 }
