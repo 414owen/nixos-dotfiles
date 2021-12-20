@@ -108,7 +108,7 @@ in
       kak-idr'
       kak-auto-pairs
       kak-fzf
-      pkgs.kak-lsp
+      # pkgs.kak-lsp
       kakoune-easymotion
       kakboard
     ];

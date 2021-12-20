@@ -13,6 +13,7 @@ in
     any-nix-shell
     asciinema
     bat
+    # (retroarch.override { cores = with libretro; [ snes9x ]; })
     cabal2nix
     cabal-install
     cachix
