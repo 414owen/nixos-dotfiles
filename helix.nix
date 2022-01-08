@@ -26,7 +26,7 @@
     roots = []
     auto-format = false
     comment-token = "--"
-    language-server = { command = "haskell-language-server", args = ["-d", "-l", "/home/owen/lsp.log"] }
+    language-server = { command = "haskell-language-server-wrapper", args = ["--lsp"] }
     indent = { tab-width = 2, unit = "  " }
   '';
 }
