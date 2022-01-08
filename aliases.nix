@@ -96,6 +96,7 @@ pts += -ticky' > _ticky/hadrian.settings; hb --flavour=validate --build-root=_ti
   reload = "source $DOTFILE";
   sl = ls;
   sudo = "sudo ";
+  tree = "exa --tree";
   t = "time";
 }] ++ map (i: let a = toString i; in {
   "gd${a}" = "git diff HEAD~${a}";
