@@ -13,7 +13,7 @@ in
     ./dircolors.nix
     # ./emacs.nix
     ./firefox.nix
-    ./gdb.nix
+    # ./gdb.nix
     ./ghci.nix
     ./git.nix
     ./theme.nix
