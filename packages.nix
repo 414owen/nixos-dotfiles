@@ -14,6 +14,8 @@ in
     asciinema
     bat
     # (retroarch.override { cores = with libretro; [ snes9x ]; })
+    chromium
+    choose
     cabal2nix
     cabal-install
     cachix
@@ -28,6 +30,7 @@ in
     gnome.devhelp
     jetbrains-mono
     evince
+    spot
     exa
     expect
     file
@@ -52,6 +55,7 @@ in
     imagemagick
     inkscape
     jq
+    multimc
     kak-lsp
     killall
     libsecret
