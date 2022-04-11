@@ -13,45 +13,60 @@ in
     any-nix-shell
     asciinema
     bat
+    # (retroarch.override { cores = with libretro; [ snes9x ]; })
+    chromium
+    choose
     cabal2nix
     cabal-install
     cachix
     calibre
-    chromium
-    coq
+    coreutils
     darktable
     dateutils
-    discord
+    editorconfig-core-c
+    fira
+    fira-mono
+    font-awesome
+    gnome.devhelp
+    jetbrains-mono
+    evince
+    spot
     exa
     expect
+    file
     signal-desktop
     fd
+    gnupg
+    ghc
+    htop
+    hub
+    gnumake
+    gdb
     ghc
     gimp
     gitAndTools.hub
     gnome3.geary
-    gnome3.gnome-tweaks
     gnumeric
     gnupg
     gparted
     nixpkgs-update
+    helix
     htop
-    # (ib-tws.override (old: {
-    #   jdk = openjdk;
-    # }))
     imagemagick
     inkscape
     jq
     kak-lsp
     killall
     libsecret
+    unstable.btop
     lshw
     macchina
+    mosh
     mpv
     multimc
-    newsflash
+    # newsflash
     neofetch
-    # (netsurf.browser.override { uilib = "gtk3"; })
+    nix-bundle
     nnn
     non
     niv
@@ -59,6 +74,8 @@ in
     nix-output-monitor
     nix-prefetch-git
     nix-prefetch-github
+    nixpkgs-update
+    nnn
     pciutils
     (pidgin.override {
       plugins = [
@@ -74,19 +91,22 @@ in
     # waveform-pro
     sd
     shotwell
-    unstable.spot
+    spotify
+    # unstable.spot
     stdenv
+    xclip
+    scripts.copy
     wl-clipboard
-    tmate
+    tree
     tmux
     tree
     transmission-gtk
     usbutils
     duf
-    xsel
-    zoom-us
     zsh-history-substring-search
     zsh-syntax-highlighting
+    # python39
+    # python39Packages.pip
   ] ++ (with gitAndTools; [
     gh
     git-absorb

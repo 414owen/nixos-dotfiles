@@ -1,4 +1,28 @@
 {
+    "dlang-debug": {
+        "branch": "master",
+        "description": "dlang pretty printers for GDB & LLDB for various standard types",
+        "homepage": "",
+        "owner": "Pure-D",
+        "repo": "dlang-debug",
+        "rev": "39d8851249e297e0a0b8716cd3ffdc29711dd85c",
+        "sha256": "0a0h0phk6pwcmihanlk6xcg872cb05h36dq5dyz1djbgf1h2fznk",
+        "type": "tarball",
+        "url": "https://github.com/Pure-D/dlang-debug/archive/39d8851249e297e0a0b8716cd3ffdc29711dd85c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "elisp-tree-sitter": {
+        "branch": "master",
+        "description": "Tree-sitter bindings for Emacs Lisp",
+        "homepage": "https://emacs-tree-sitter.github.io",
+        "owner": "emacs-tree-sitter",
+        "repo": "elisp-tree-sitter",
+        "rev": "401f7fb7421185f0e442b989f8ed2d15315f04aa",
+        "sha256": "0hy0ak3bqq48bzr3j4i6xg3934db6d1x9g5vw1yvxbhcal4hi79q",
+        "type": "tarball",
+        "url": "https://github.com/emacs-tree-sitter/elisp-tree-sitter/archive/401f7fb7421185f0e442b989f8ed2d15315f04aa.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "firefox-gnome-theme": {
         "branch": "master",
         "description": "A GNOME👣 theme for Firefox🔥",
@@ -53,10 +77,10 @@
         "homepage": "",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "0c36c9b59719e14c3ee02fa7019063425e422e70",
-        "sha256": "0v71k9xq742x43dp384jvwylhpc2m76x4lygz7c07ws7d7jxd2x2",
+        "rev": "0009a801ef8aa880946ac1d8072159782f1e6c47",
+        "sha256": "13i4hf7q23q15fcayni50rhq0gdbmjaf8yjgzpmngwn68qnysssm",
         "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update/archive/0c36c9b59719e14c3ee02fa7019063425e422e70.tar.gz",
+        "url": "https://github.com/ryantm/nixpkgs-update/archive/0009a801ef8aa880946ac1d8072159782f1e6c47.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nord-alacritty": {
@@ -81,6 +105,18 @@
         "sha256": "1kg0xabg1wz61z1f23i4b5yzfhm5s4dv554bqb19d4by3pay23g8",
         "type": "tarball",
         "url": "https://github.com/arcticicestudio/nord-dircolors/archive/35166d328992213194d7d02cd034e39da962f19e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nur": {
+        "branch": "master",
+        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
+        "homepage": "https://nur.nix-community.org/",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "37d64f81eca83c914c2842182e01217d81cf81f1",
+        "sha256": "0f48qs8p8ipfz5ajwhs03ibsxf255zaj3hv2abvd0z449phdlma4",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/NUR/archive/37d64f81eca83c914c2842182e01217d81cf81f1.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "obelisk": {

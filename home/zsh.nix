@@ -14,9 +14,11 @@ in
       share = true;
     };
     initExtraBeforeCompInit = ''
-      if [ -z "$TMUX" ]; then
-        tmux
-        exit
+      if [ "$TERM" = "alacritty" ]; then
+        if [ -z "$TMUX" ]; then
+          tmux
+          exit
+        fi
       fi
     '';
     initExtra = ''

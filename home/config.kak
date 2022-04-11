@@ -3,7 +3,7 @@ eval %sh{kak-lsp --kakoune -s $kak_session}
 set-option global lsp_server_configuration haskellLanguageServer.hlintOn=true
 set-option global lsp_server_configuration haskellLanguageServer.formattingProvider=brittany
 
-hook global WinSetOption filetype=(haskell|rust|c|cpp) %{
+hook global WinSetOption filetype=(haskell|rust|c|cpp|d|idris) %{
   lsp-enable-window
   lsp-auto-hover-enable
   map global normal <c-l> ':enter-user-mode lsp<ret>'
@@ -23,6 +23,10 @@ hook global WinCreate .* %{
   map global normal <T> ': quickscope-T<ret>'
   map global normal <a-T> ': quickscope-a-T<ret>'
 }
+
+hook global BufCreate .+\.idr %{ set buffer filetype idris }
+
+hook global WinCreate ^[^*]+$ %{ editorconfig-load }
 
 hook global InsertChar j %{ try %{
   exec -draft hH <a-k>kj<ret> d

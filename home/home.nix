@@ -11,10 +11,13 @@ in
     ./alacritty.nix
     ./direnv.nix
     ./dircolors.nix
+    # ./emacs.nix
     ./firefox.nix
+    # ./gdb.nix
     ./ghci.nix
     ./git.nix
     ./theme.nix
+    ./helix.nix
     ./gpg-agent.nix
     ./haskeline.nix
     ./kak-lsp.nix
@@ -38,7 +41,7 @@ in
     username = "owen";
     homeDirectory = "/home/owen";
     sessionVariables = import ./env.nix { pkgs = pkgs; };
-    stateVersion = "21.05";
+    stateVersion = "21.11";
     keyboard = {
       layout = "gb";
       options = [
