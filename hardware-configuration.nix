@@ -25,6 +25,11 @@
       fsType = "vfat";
     };
 
+  fileSystems."/media/share" =
+    { device = "192.168.0.65:/media/external-drive";
+      fsType = "nfs";
+    };
+
   swapDevices = [ { device = "/swapfile"; size = 2048; } ];
 
   nix.maxJobs = lib.mkDefault 24;

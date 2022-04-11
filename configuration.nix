@@ -9,7 +9,6 @@
     ./nixpkgs.nix
     ./hardware-configuration.nix
     ./kernel-params.nix
-    <musnix>
     <nixos-hardware/common/pc>
     <nixos-hardware/common/pc/ssd>
     <nixos-hardware/common/cpu/amd>
@@ -20,11 +19,16 @@
   boot.kernelPackages = pkgs.linuxPackages_5_10;
 
   fonts.fontDir.enable = true;
-  virtualisation.docker.enable = true;
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.docker.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "owen" ];
 
+  nix.binaryCaches = [ "https://nixcache.reflex-frp.org" ];
+  nix.binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
+
+
   fonts.fonts = with pkgs; [
+    linuxPackages.rtl8812au
     noto-fonts
     noto-fonts-emoji
     liberation_ttf
@@ -39,22 +43,12 @@
     iosevka
     jost
     # monoid
-    virtualbox
+    # virtualbox
     montserrat
     mononoki
     pecita
     overpass
   ];
-
-  musnix = {
-    enable = false;
-    # soundCardPciId = "0c:00.4";
-    kernel = {
-      optimize = false;
-      realtime = false;
-      # packages = pkgs.linuxPackages_latest_rt;
-    };
-  };
 
   networking = {
     networkmanager.enable = true;
@@ -110,7 +104,7 @@
 
   # services.pipewire = {
   #   enable = true;
-  #   package = nixos-unstable.pipewire;
+  #   # package = nixos-unstable.pipewire;
   #   alsa = {
   #     enable = true;
   #     support32Bit = true;
@@ -157,9 +151,9 @@
   # services.cassandra.enable = true;
   # services.redis.enable = true;
   # services.apache-kafka.enable = true;
-  virtualisation.docker.extraOptions = let file = pkgs.writeText "daemon.json"
-    (builtins.toJSON { default-address-pools = [ { base = "192.168.128.0/18"; size = 24; } ]; });
-  in "--config-file=${file}";
+  # virtualisation.docker.extraOptions = let file = pkgs.writeText "daemon.json"
+  #   (builtins.toJSON { default-address-pools = [ { base = "192.168.128.0/18"; size = 24; } ]; });
+  # in "--config-file=${file}";
 
   system.stateVersion = "21.05";
 }
