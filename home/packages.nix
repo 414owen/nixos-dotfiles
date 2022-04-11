@@ -17,6 +17,7 @@ in
     cabal-install
     cachix
     calibre
+    chromium
     coq
     darktable
     dateutils
