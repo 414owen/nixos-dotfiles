@@ -47,6 +47,14 @@ in
       blame = {
         # ignoreRevsFile = ".blameignore";
       };
+      merge = {
+        conflictstyle = "diff3";
+      };
+      url = {
+        "https://github.com/" = {
+          insteadOf = "git://github.com/";
+        };
+      };
     };
   };
 }

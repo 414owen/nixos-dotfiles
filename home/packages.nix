@@ -30,7 +30,7 @@ in
     gnome.devhelp
     jetbrains-mono
     evince
-    spot
+    # spot
     exa
     expect
     file
