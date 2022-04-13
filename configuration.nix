@@ -23,12 +23,16 @@
   # virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "owen" ];
 
-  nix.binaryCaches = [ "https://nixcache.reflex-frp.org" ];
-  nix.binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
-
+  nix = {
+    binaryCaches = [ "https://nixcache.reflex-frp.org" ];
+    binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
+    package = pkgs.nixFlakes; # or versioned attributes like nix_2_7
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+   };
 
   fonts.fonts = with pkgs; [
-    linuxPackages.rtl8812au
     noto-fonts
     noto-fonts-emoji
     liberation_ttf
@@ -78,6 +82,7 @@
     pathsToLink = [ "/share/zsh" ];
 
     systemPackages = with pkgs; [
+      linuxPackages.rtl8812au
       bind
       file
       firmwareLinuxNonfree
@@ -155,5 +160,5 @@
   #   (builtins.toJSON { default-address-pools = [ { base = "192.168.128.0/18"; size = 24; } ]; });
   # in "--config-file=${file}";
 
-  system.stateVersion = "21.05";
+  system.stateVersion = "21.11";
 }
