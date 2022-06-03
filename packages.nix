@@ -37,6 +37,7 @@ in
     signal-desktop
     fd
     gnupg
+    krita
     ghc
     htop
     hub
@@ -50,15 +51,16 @@ in
     gnupg
     gparted
     nixpkgs-update
-    helix
+    unstable.helix
     htop
     imagemagick
     inkscape
     jq
-    multimc
+    # multimc
     kak-lsp
     killall
     libsecret
+    libreoffice-fresh
     unstable.btop
     lshw
     macchina
@@ -94,6 +96,7 @@ in
     spotify
     # unstable.spot
     stdenv
+    transmission-gtk
     xclip
     scripts.copy
     wl-clipboard
