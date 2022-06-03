@@ -81,6 +81,7 @@ pts += -ticky' > _ticky/hadrian.settings; hb --flavour=validate --build-root=_ti
   hbtf = "hbts --freeze1";
   hs = "nix-build -E '(import <nixpkgs> {}).haskellPackages.callCabal2nix \"\" ./. {}'";
   hsd = "nix-shell -E '(import <nixpkgs> {}).haskellPackages.developPackage {root = ./.;}'";
+  hsdu = "nix-shell -E '(import <unstable> {}).haskellPackages.developPackage {root = ./.;}'";
   json = "jq -Rr 'try fromjson // .'";
   k = "kill";
   ll = ls + " -alF";
