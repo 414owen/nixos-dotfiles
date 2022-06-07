@@ -12,11 +12,9 @@
       package = pkgs.arc-theme;
     };
   };
-  xsession = {
-    pointerCursor = {
-      name = "Qogir-dark";
-      package = pkgs.qogir-theme;
-    };
+  home.pointerCursor = {
+    name = "Qogir-dark";
+    package = pkgs.qogir-theme;
   };
   fonts.fontconfig.enable = true;
 }
