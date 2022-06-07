@@ -33,7 +33,7 @@ in
     };
     extraConfig = {
       core = {
-        pager = "${delta}/bin/delta --plus-color='#226522'";
+        pager = "${delta}/bin/delta";
       };
       interactive = {
         diffFilter = "${delta}/bin/delta --color-only";

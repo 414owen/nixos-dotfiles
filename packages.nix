@@ -51,7 +51,7 @@ in
     gnupg
     gparted
     nixpkgs-update
-    unstable.helix
+    helix
     htop
     imagemagick
     inkscape
@@ -61,7 +61,7 @@ in
     killall
     libsecret
     libreoffice-fresh
-    unstable.btop
+    btop
     lshw
     macchina
     mosh
@@ -70,7 +70,6 @@ in
     neofetch
     nix-bundle
     nnn
-    non
     niv
     nix-index
     nix-output-monitor
@@ -79,13 +78,7 @@ in
     nixpkgs-update
     nnn
     pciutils
-    (pidgin.override {
-      plugins = [
-        pidgin-window-merge
-        purple-hangouts
-        telegram-purple
-      ];
-    })
+    pidgin
     q-text-as-data
     rawtherapee
     remarshal
@@ -93,7 +86,7 @@ in
     # waveform-pro
     sd
     shotwell
-    spotify
+    # spotify
     # unstable.spot
     stdenv
     transmission-gtk

@@ -26,7 +26,6 @@
     roots = []
     auto-format = false
     comment-token = "--"
-    language-server = { command = "haskell-language-server-wrapper", args = ["--lsp"] }
     indent = { tab-width = 2, unit = "  " }
   '';
 }
