@@ -13,40 +13,36 @@
       <nixos-hardware/dell/xps/13-9370>
     ];
 
-    nix.binaryCaches = [ "https://nixcache.reflex-frp.org" ];
-    nix.binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
-
-  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-
-
   services.gvfs.enable = true;
-
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
-
-  # networking.interfaces.wlp2s0.useDHCP = true;
+  networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
-  # Enable the X11 windowing system.
+  services.localtime.enable = true;
+  time.timeZone = "Europe/Dublin";
+  i18n.defaultLocale = "en_GB.UTF-8";
   services.xserver.enable = true;
+  virtualisation.docker.enable = true;
 
+  services = {
+    openssh = {
+      enable = true;
+      # passwordAuthentication = false: Authenticate using file
+      # passwordAuthentication = true: Enter password to authenticate
+      passwordAuthentication = true;
+    };
+
+    openvpn.servers = { 
+      # NOTE: You probably want to modify this!
+      # This uses the old openVPN configuration, and may need to be tinkered with.
+      # See also https://tikoenergy.atlassian.net/wiki/spaces/DOPS/pages/283639809/OpenVPN+for+tiko+employee#For-Linux-users-only%3A
+      officeVPN = {
+        config = '' config /home/owen/.sec/profile-162.ovpn '';
+        updateResolvConf = true;
+        autoStart = false;
+      };
+    };
+  };
 
   # Enable the GNOME 3 Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -63,9 +59,6 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.owen = {
     isNormalUser = true;
@@ -79,7 +72,7 @@
     kakoune # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     firefox
-    exfat-utils
+    exfat
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -92,13 +85,10 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   services.tlp.enable = false;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 9000 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -109,31 +99,40 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "22.05"; # Did you read the comment?
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  fileSystems."/media/external-drive" = {
-    device = "192.168.0.65:/media/external-drive";
-    options = [ "x-systemd.automount" "noauto" ];
-    fsType = "nfs";
-  };
+  # fileSystems."/media/external-drive" = {
+  #   device = "192.168.0.65:/media/external-drive";
+  #   options = [ "x-systemd.automount" "noauto" "user" ];
+  #   fsType = "nfs";
+  # };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    steam = pkgs.steam.override {
-      nativeOnly = true;
-    };
-  };
-  programs.steam.enable = true;
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowBroken = true;
+  # fileSystems."/media/drive2" = {
+  #   device = "192.168.0.65:/media/drive2";
+  #   options = [ "x-systemd.automount" "noauto" ];
+  #   fsType = "nfs";
+  # };
+
+  # nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowBroken = true;
 
 
   nix = {
     useSandbox = true;
     package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    binaryCaches = [
+      "https://cache.nixos.org"
+      "http://hydra.tiko.ch/"
+      "https://iohk.cachix.org"
+      "https://hydra.iohk.io"
+    ];
+    binaryCachePublicKeys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "hydra.tiko.ch:q8EX+cmvjysdFOPttZEl30cMv5tnB2dddkwrC61qdA4="
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+      "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo="
+    ];
   };
 }
 
