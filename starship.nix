@@ -10,15 +10,6 @@
         error_symbol = " [o_O](red)";
         # use_symbol_for_status = true;
       };
-      git_status = {
-        conflicted = { enabled = true; };
-        untracked = { enabled = true; };
-        stashed = { enabled = true; };
-        modified = { enabled = true; };
-        renamed = { enabled = true; };
-        staged = { enabled = true; };
-        deleted = { enabled = true; };
-      };
       aws = { disabled = true; };
       battery = { disabled = true; };
       conda = { disabled = true; };

@@ -3,6 +3,6 @@
   editor = "hx";
   fuzzy = "fzf";
   find = "fd";
-  grep = "rg";
+  grep = "grep";
   ls = "exa";
 }
