@@ -9,6 +9,7 @@ in
 {
   imports = [
     ./alacritty.nix
+    # ./bash.nix
     ./direnv.nix
     ./dircolors.nix
     # ./emacs.nix
@@ -23,6 +24,7 @@ in
     ./kak-lsp.nix
     ./kakoune.nix
     ./packages.nix
+    ./nix.nix
     # ./profile.nix
     ./readline.nix
     ./ssh.nix
@@ -54,6 +56,7 @@ in
 
   programs = {
     alacritty.enable = true;
+    # bash.enable = true;
     command-not-found.enable = true;
     direnv.enable = true;
     dircolors = enableZsh;

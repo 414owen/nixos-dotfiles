@@ -31,12 +31,14 @@ in
     jetbrains-mono
     evince
     spot
+    spotify
     exa
     expect
     file
     signal-desktop
     fd
     gnupg
+    gnomeExtensions.system-monitor
     krita
     ghc
     htop
@@ -51,7 +53,7 @@ in
     gnupg
     gparted
     nixpkgs-update
-    helix
+    unstable.helix
     htop
     imagemagick
     inkscape
@@ -83,6 +85,8 @@ in
     rawtherapee
     remarshal
     ripgrep
+    # (pkgs.writeShellScriptBin "grep" "${ripgrep}/bin/rg $@")
+      
     # waveform-pro
     sd
     shotwell
@@ -98,8 +102,8 @@ in
     tree
     usbutils
     duf
-    zsh-history-substring-search
-    zsh-syntax-highlighting
+    # zsh-history-substring-search
+    # zsh-syntax-highlighting
     # python39
     # python39Packages.pip
   ] ++ (with gitAndTools; [

@@ -11,7 +11,7 @@ in
 
 {
   programs.direnv = {
-    enableZshIntegration = true;
+    enableBashIntegration = true;
     nix-direnv.enable = true;
     stdlib = ''
       source ${nixDirenv}/direnvrc;

@@ -60,6 +60,9 @@
 
       # Yank last argument
       "\\C-." = "yank-nth-arg";
+
+      # Delete Key
+      "^[[3~" = "delete-char";
     };
   };
 }
