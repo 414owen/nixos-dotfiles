@@ -18,12 +18,22 @@
       fsType = "ext4";
     };
 
+  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/1c3e9f47-41dd-4ef5-a8e3-486f63660090";
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/0803-2FD1";
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
+  swapDevices = [ { device = "/swapfile"; size = 16384; } ];
+
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
