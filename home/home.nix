@@ -21,8 +21,6 @@ in
     ./helix.nix
     ./gpg-agent.nix
     ./haskeline.nix
-    ./kak-lsp.nix
-    ./kakoune.nix
     ./packages.nix
     ./nix.nix
     # ./profile.nix

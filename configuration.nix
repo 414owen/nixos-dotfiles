@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -51,6 +52,8 @@
     shell = pkgs.zsh;
   };
 
+  home-manager.users.owen = import ./home/home.nix;
+
   environment.systemPackages = with pkgs; [
     kakoune
     wget
@@ -64,6 +67,18 @@
 
   services.tlp.enable = false;
 
+  fileSystems."/media/external-drive" = {
+    device = "192.168.0.65:/media/external-drive";
+    options = [ "x-systemd.automount" "noauto" "user" ];
+    fsType = "nfs";
+  };
+
+  fileSystems."/media/drive2" = {
+    device = "192.168.0.65:/media/drive2";
+    options = [ "x-systemd.automount" "noauto" "user" ];
+    fsType = "nfs";
+  };
+  
 
   nix = {
     useSandbox = true;
