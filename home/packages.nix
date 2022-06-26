@@ -71,6 +71,7 @@ in
     stdenv
     xclip
     scripts.copy
+    scripts.vpn
     wl-clipboard
     tree
     tmux
