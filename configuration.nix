@@ -34,14 +34,19 @@
         autoStart = false;
       };
     };
+
+    xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+
+      layout = "gb";
+      xkbOptions = "ctrl:nocaps";
+
+      libinput.touchpad.tapping = true;
+      libinput.touchpad.tappingDragLock = true;
+    };
   };
-
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  services.xserver.layout = "gb";
-  services.xserver.xkbOptions = "ctrl:nocaps";
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
@@ -67,18 +72,17 @@
 
   services.tlp.enable = false;
 
-  fileSystems."/media/external-drive" = {
-    device = "192.168.0.65:/media/external-drive";
-    options = [ "x-systemd.automount" "noauto" "user" ];
-    fsType = "nfs";
-  };
+  # fileSystems."/media/external-drive" = {
+  #   device = "192.168.0.65:/media/external-drive";
+  #   options = [ "x-systemd.automount" "noauto" "user" ];
+  #   fsType = "nfs";
+  # };
 
-  fileSystems."/media/drive2" = {
-    device = "192.168.0.65:/media/drive2";
-    options = [ "x-systemd.automount" "noauto" "user" ];
-    fsType = "nfs";
-  };
-  
+  # fileSystems."/media/drive2" = {
+  #   device = "192.168.0.65:/media/drive2";
+  #   options = [ "x-systemd.automount" "noauto" "user" ];
+  #   fsType = "nfs";
+  # };
 
   nix = {
     useSandbox = true;
@@ -99,4 +103,3 @@
 
   system.stateVersion = "22.05"; # Did you read the comment?
 }
-
