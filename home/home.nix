@@ -22,7 +22,7 @@ in
     ./gpg-agent.nix
     ./haskeline.nix
     ./packages.nix
-    ./nix.nix
+    # ./nix.nix
     # ./profile.nix
     ./readline.nix
     ./ssh.nix
@@ -71,6 +71,8 @@ in
     zoxide.enable = true;
     zsh.enable = true;
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   # wayland.windowManager.sway.enable = true;
 }

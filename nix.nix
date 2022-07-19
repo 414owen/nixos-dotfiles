@@ -2,7 +2,8 @@
 
 {
   nix = {
-    package = pkgs.nix;
+    useSandbox = true;
+    package = pkgs.nixUnstable;
     settings = {
       trusted-users = ["owen"];
       trusted-substituters = [
