@@ -15,6 +15,14 @@
         hostname = "192.168.0.131";
         user = "owen";
       };
+      "hydra" = {
+        hostname = "hydra.tiko.ch";
+        identityFile = "~/.ssh/aws-prod-keypair.pem";
+        user = "root";
+        extraOptions = {
+          preferredAuthentications = "publickey";
+        };
+      };
     };
   };
 }

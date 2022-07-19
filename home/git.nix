@@ -44,9 +44,9 @@ in
       push = {
         default = "current";
       };
-      blame = {
-        # ignoreRevsFile = ".blameignore";
-      };
+      # blame = {
+      #   ignoreRevsFile = ".git-blame-ignore-revs";
+      # };
     };
   };
 }

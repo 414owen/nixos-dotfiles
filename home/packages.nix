@@ -17,16 +17,16 @@ in
     cabal2nix
     cabal-install
     cachix
-    calibre
     coreutils
     dateutils
     editorconfig-core-c
     fira
-    fira-mono
+    fira-code
     font-awesome
     gnome.devhelp
     evince
     spot
+    spotify
     exa
     expect
     file
@@ -48,7 +48,7 @@ in
     killall
     libsecret
     libreoffice-fresh
-    btop
+    gotop
     lshw
     macchina
     mosh
@@ -64,6 +64,7 @@ in
     nnn
     pciutils
     pidgin
+    polymc
     q-text-as-data
     remarshal
     ripgrep
@@ -74,6 +75,7 @@ in
     scripts.vpn
     wl-clipboard
     tree
+    transmission-gtk
     tmux
     tree
     usbutils
