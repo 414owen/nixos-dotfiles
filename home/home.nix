@@ -69,5 +69,5 @@ in
     zsh.enable = true;
   };
 
-  # wayland.windowManager.sway.enable = true;
+  nixpkgs.config.allowUnfree = true;
 }
