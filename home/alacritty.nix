@@ -11,8 +11,8 @@ in
       window = {
         decorations = "none";
         dynamic_title = true;
+        opacity = 1;
       };
-      background_opacity = 1;
       live_config_reload = false;
     } // theme;
   };

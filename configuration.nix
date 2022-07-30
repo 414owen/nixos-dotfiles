@@ -22,15 +22,6 @@
   # virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "owen" ];
 
-  nix = {
-    binaryCaches = [ "https://nixcache.reflex-frp.org" ];
-    binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
-    package = pkgs.nixFlakes; # or versioned attributes like nix_2_7
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-   };
-
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-emoji

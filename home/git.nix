@@ -33,7 +33,7 @@ in
     };
     extraConfig = {
       core = {
-        pager = "${delta}/bin/delta --plus-color='#226522'";
+        pager = "${delta}/bin/delta --plus-style='#226522'";
       };
       interactive = {
         diffFilter = "${delta}/bin/delta --color-only";
@@ -43,9 +43,6 @@ in
       };
       push = {
         default = "current";
-      };
-      blame = {
-        # ignoreRevsFile = ".blameignore";
       };
       merge = {
         conflictstyle = "diff3";

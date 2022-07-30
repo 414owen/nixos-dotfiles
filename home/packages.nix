@@ -75,13 +75,6 @@ in
     nnn
     gotop
     pciutils
-    (pidgin.override {
-      plugins = [
-        pidgin-window-merge
-        purple-hangouts
-        telegram-purple
-      ];
-    })
     polymc
     q-text-as-data
     rawtherapee
