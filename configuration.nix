@@ -12,11 +12,10 @@
     <nixos-hardware/common/pc>
     <nixos-hardware/common/pc/ssd>
     <nixos-hardware/common/cpu/amd>
+    <home-manager/nixos>
   ];
 
   time.timeZone = "Europe/Dublin";
-
-  boot.kernelPackages = pkgs.linuxPackages_5_10;
 
   fonts.fontDir.enable = true;
   # virtualisation.docker.enable = true;
@@ -76,13 +75,14 @@
   nixpkgs.config.allowUnsupportedSystem = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  home-manager.users.owen = import ./home/home.nix;
+
   environment = {
 
     # for zsh completions of system packages
     pathsToLink = [ "/share/zsh" ];
 
     systemPackages = with pkgs; [
-      linuxPackages.rtl8812au
       bind
       file
       firmwareLinuxNonfree
@@ -160,5 +160,5 @@
   #   (builtins.toJSON { default-address-pools = [ { base = "192.168.128.0/18"; size = 24; } ]; });
   # in "--config-file=${file}";
 
-  system.stateVersion = "21.11";
+  system.stateVersion = "22.05";
 }

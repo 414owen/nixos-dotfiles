@@ -4,7 +4,6 @@ let
   lib = pkgs.lib;
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
   scripts = import ./scripts.nix { inherit pkgs; };
-  unstable = import <unstable> {};
   sources = import ./nix/sources.nix;
   nixpkgs-update = import sources.nixpkgs-update {};
 in
@@ -58,12 +57,10 @@ in
     kak-lsp
     killall
     libsecret
-    unstable.btop
     lshw
     macchina
     mosh
     mpv
-    multimc
     # newsflash
     neofetch
     nix-bundle
@@ -76,6 +73,7 @@ in
     nix-prefetch-github
     nixpkgs-update
     nnn
+    gotop
     pciutils
     (pidgin.override {
       plugins = [
@@ -84,6 +82,7 @@ in
         telegram-purple
       ];
     })
+    polymc
     q-text-as-data
     rawtherapee
     remarshal
@@ -92,7 +91,6 @@ in
     sd
     shotwell
     spotify
-    # unstable.spot
     stdenv
     xclip
     scripts.copy

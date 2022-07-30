@@ -50,8 +50,6 @@ in
     };
   };
 
-  fonts.fontconfig.enable = true;
-
   programs = {
     alacritty.enable = true;
     command-not-found.enable = true;

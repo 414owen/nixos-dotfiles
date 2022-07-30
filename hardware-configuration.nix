@@ -11,7 +11,9 @@
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.rtl88x2bu
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/4ef277a6-9628-43e0-bb24-74accf47312a";
@@ -27,6 +29,10 @@
 
   fileSystems."/media/share" =
     { device = "192.168.0.65:/media/external-drive";
+      fsType = "nfs";
+    };
+  fileSystems."/media/drive2" =
+    { device = "192.168.0.65:/media/drive2";
       fsType = "nfs";
     };
 
