@@ -15,7 +15,7 @@ in
     chromium
     choose
     cabal2nix
-    cabal-install
+    # cabal-install
     cachix
     coreutils
     dateutils
@@ -33,11 +33,10 @@ in
     fd
     gnupg
     gnomeExtensions.system-monitor
-    ghc
+    # ghc
     htop
     gnumake
     cgdb
-    ghc
     gimp
     gitAndTools.hub
     unstable.helix
@@ -47,7 +46,7 @@ in
     jq
     killall
     libsecret
-    libreoffice-fresh
+    # libreoffice-fresh
     gotop
     lshw
     macchina
@@ -73,6 +72,7 @@ in
     xclip
     scripts.copy
     scripts.vpn
+    signal-desktop
     wl-clipboard
     tree
     transmission-gtk

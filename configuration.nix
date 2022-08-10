@@ -47,6 +47,26 @@
       libinput.touchpad.tapping = true;
       libinput.touchpad.tappingDragLock = true;
     };
+
+    hydra = {
+      enable = false;
+      hydraURL = "http://localhost:3000";
+      notificationSender = "hydra@localhost";
+      buildMachinesFiles = [];
+      useSubstitutes = true;
+      extraConfig = ''
+        <gitlab_authorization>
+        owen.shepherd@tiko.energy=glpat-Y19nsDS9oWjUxxksA88j
+        36=glpat-Y19nsDS9oWjUxxksA88j
+        </gitlab_authorization>
+      '';
+    };
+  };
+
+  programs.ssh.knownHosts = {
+    "gitlab.internal.tiko.ch" = {
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFFVew5uYF6vDHk6olO3cIfLzNQ1mqrSu33Zj68k2Awd";
+    };
   };
 
   sound.enable = true;
@@ -89,6 +109,7 @@
     config.allowUnfree = true;
     overlays = [
       (import <rust-overlay>)
+      (import ./overlays/hydra.nix)
     ];
   };
 

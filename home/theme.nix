@@ -16,5 +16,5 @@
     name = "Qogir-dark";
     package = pkgs.qogir-theme;
   };
-  fonts.fontconfig.enable = true;
+  # fonts.fontconfig.enable = true;
 }
