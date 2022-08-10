@@ -23,6 +23,38 @@
           preferredAuthentications = "publickey";
         };
       };
+      "runner-1" = {
+        hostname = "nix-gitlab-runner-1.internal.tiko.ch";
+        identityFile = "~/.ssh/aws-prod-keypair.pem";
+        user = "root";
+        extraOptions = {
+          preferredAuthentications = "publickey";
+        };
+      };
+      "runner-2" = {
+        hostname = "nix-gitlab-runner-2.internal.tiko.ch";
+        identityFile = "~/.ssh/aws-prod-keypair.pem";
+        user = "root";
+        extraOptions = {
+          preferredAuthentications = "publickey";
+        };
+      };
+      "runner-3" = {
+        hostname = "nix-gitlab-runner-3.internal.tiko.ch";
+        identityFile = "~/.ssh/aws-prod-keypair.pem";
+        user = "root";
+        extraOptions = {
+          preferredAuthentications = "publickey";
+        };
+      };
+      "runner-4" = {
+        hostname = "nix-gitlab-runner-4.internal.tiko.ch";
+        identityFile = "~/.ssh/aws-prod-keypair.pem";
+        user = "root";
+        extraOptions = {
+          preferredAuthentications = "publickey";
+        };
+      };
     };
   };
 }
