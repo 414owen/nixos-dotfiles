@@ -91,8 +91,6 @@
     enableSSHSupport = true;
   };
 
-  services.tlp.enable = false;
-
   # fileSystems."/media/external-drive" = {
   #   device = "192.168.0.65:/media/external-drive";
   #   options = [ "x-systemd.automount" "noauto" "user" ];

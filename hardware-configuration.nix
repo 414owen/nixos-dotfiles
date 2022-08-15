@@ -16,6 +16,10 @@
       <nixos-hardware/common/pc/laptop/ssd>
     ];
 
+  services.tlp.enable = true;
+  services.power-profiles-daemon.enable = false;
+  services.thermald.enable = true;
+
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
