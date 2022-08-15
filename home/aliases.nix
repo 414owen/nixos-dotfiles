@@ -17,7 +17,6 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   ef = "file=$(${fuzzy}); [ ! -z \"$file\" ] && echo \"$file\" && teehist \"e $file\"";
   ff = fuzzy;
   f = find;
-  find = find;
   gaaa = "git add --all";
   gaa = "git add .";
   ga = "git add";
