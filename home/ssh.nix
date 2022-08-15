@@ -1,5 +1,16 @@
 { lib, ... }:
 
+let
+  mkTikoBox = prefix: {
+    hostname = prefix + ".tiko.ch";
+    identityFile = "~/.ssh/aws-prod-keypair.pem";
+    user = "root";
+    extraOptions = {
+      preferredAuthentications = "publickey";
+    };
+  };
+in
+
 {
   programs.ssh = {
     matchBlocks = {
@@ -15,46 +26,12 @@
         hostname = "192.168.0.131";
         user = "owen";
       };
-      "hydra" = {
-        hostname = "hydra.tiko.ch";
-        identityFile = "~/.ssh/aws-prod-keypair.pem";
-        user = "root";
-        extraOptions = {
-          preferredAuthentications = "publickey";
-        };
-      };
-      "runner-1" = {
-        hostname = "nix-gitlab-runner-1.internal.tiko.ch";
-        identityFile = "~/.ssh/aws-prod-keypair.pem";
-        user = "root";
-        extraOptions = {
-          preferredAuthentications = "publickey";
-        };
-      };
-      "runner-2" = {
-        hostname = "nix-gitlab-runner-2.internal.tiko.ch";
-        identityFile = "~/.ssh/aws-prod-keypair.pem";
-        user = "root";
-        extraOptions = {
-          preferredAuthentications = "publickey";
-        };
-      };
-      "runner-3" = {
-        hostname = "nix-gitlab-runner-3.internal.tiko.ch";
-        identityFile = "~/.ssh/aws-prod-keypair.pem";
-        user = "root";
-        extraOptions = {
-          preferredAuthentications = "publickey";
-        };
-      };
-      "runner-4" = {
-        hostname = "nix-gitlab-runner-4.internal.tiko.ch";
-        identityFile = "~/.ssh/aws-prod-keypair.pem";
-        user = "root";
-        extraOptions = {
-          preferredAuthentications = "publickey";
-        };
-      };
+      "hydra"    = mkTikoBox "hydra";
+      "runner-1" = mkTikoBox "nix-gitlab-runner-1.internal";
+      "runner-2" = mkTikoBox "nix-gitlab-runner-2.internal";
+      "runner-3" = mkTikoBox "nix-gitlab-runner-3.internal";
+      "runner-4" = mkTikoBox "nix-gitlab-runner-4.internal";
+      "mgmt1"    = mkTikoBox "mgmt1";
     };
   };
 }
