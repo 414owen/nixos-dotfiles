@@ -144,6 +144,8 @@
     shell = "/run/current-system/sw/bin/zsh";
   };
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # services.cassandra.enable = true;
   # services.redis.enable = true;
   # services.apache-kafka.enable = true;
