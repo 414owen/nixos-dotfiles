@@ -3,6 +3,7 @@
 let tee = "${pkgs.coreutils}/bin/tee";
     jq = "${pkgs.jq}/bin/jq";
     less = "${pkgs.less}/bin/less";
+    common = import ./common.nix;
 in
 
 ''
@@ -134,5 +135,10 @@ function bd(){
       popd > /dev/null
     done
   fi
+}
+
+function git-personal() {
+  git config user.email "owen@owen.cafe"
+  git config user.signingkey "2C9161B9AB61BD1502F9011F426D621DB5732F0A"
 }
 ''

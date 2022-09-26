@@ -15,6 +15,9 @@
       "commit_undo_checkpoint",
       ":write",
     ]
+
+    [editor.indent-guides]
+    render = true
   '';
   home.file.".config/helix/languages.toml".text = ''
 
