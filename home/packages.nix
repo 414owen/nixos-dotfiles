@@ -14,6 +14,7 @@ in
     bat
     chromium
     choose
+      libreoffice
     cabal2nix
     # cabal-install
     cachix

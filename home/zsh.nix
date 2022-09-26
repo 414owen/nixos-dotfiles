@@ -16,12 +16,13 @@ in
     };
     initExtraBeforeCompInit = ''
       ${ if profile then "zmodload zsh/zprof" else "" }
-      if [ "$TERM" = "alacritty" ]; then
-        if [ -z "$TMUX" ]; then
-          tmux
-          exit
-        fi
-      fi
+
+      # if [ "$TERM" = "alacritty" ]; then
+      #   if [ -z "$TMUX" ]; then
+      #     tmux
+      #     exit
+      #   fi
+      # fi
 
       # Only refresh completions once a day
       setopt extendedglob

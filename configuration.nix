@@ -14,6 +14,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  services.gvfs.enable = true;
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -34,6 +35,15 @@
         updateResolvConf = true;
         autoStart = false;
       };
+    };
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      # alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
     };
 
     xserver = {
@@ -70,7 +80,7 @@
   };
 
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
 
   users.users.owen = {
     isNormalUser = true;
