@@ -75,7 +75,6 @@ in
     nnn
     gotop
     pciutils
-    polymc
     q-text-as-data
     rawtherapee
     remarshal
