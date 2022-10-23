@@ -27,14 +27,14 @@
       fsType = "vfat";
     };
 
-  fileSystems."/media/share" =
-    { device = "192.168.0.65:/media/external-drive";
-      fsType = "nfs";
-    };
-  fileSystems."/media/drive2" =
-    { device = "192.168.0.65:/media/drive2";
-      fsType = "nfs";
-    };
+  # fileSystems."/media/share" =
+  #   { device = "192.168.0.65:/media/external-drive";
+  #     fsType = "nfs";
+  #   };
+  # fileSystems."/media/drive2" =
+  #   { device = "192.168.0.65:/media/drive2";
+  #     fsType = "nfs";
+  #   };
 
   swapDevices = [ { device = "/swapfile"; size = 2048; } ];
 
