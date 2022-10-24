@@ -23,6 +23,7 @@ in
     darktable
     dateutils
     editorconfig-core-c
+    expect
     fira
     fira-mono
     font-awesome
@@ -80,6 +81,7 @@ in
     remarshal
     ripgrep
     # waveform-pro
+    scripts.vpn
     sd
     shotwell
     spotify

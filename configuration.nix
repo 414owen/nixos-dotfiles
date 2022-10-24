@@ -64,6 +64,16 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnsupportedSystem = true;
+  nix = {
+    settings = {
+      trusted-public-keys = [
+        "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+      ];
+      substituters = [
+        "https://cache.iog.io"
+      ];
+    };
+  };
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   home-manager.users.owen = import ./home/home.nix;
@@ -96,18 +106,6 @@
     command-not-found.enable = true;
   };
 
-  # security.rtkit.enable = true;
-
-  # services.pipewire = {
-  #   enable = true;
-  #   # package = nixos-unstable.pipewire;
-  #   alsa = {
-  #     enable = true;
-  #     support32Bit = true;
-  #   };
-  #   pulse.enable = true;
-  # };
-
   sound.enable = true;
 
   services = {
@@ -130,6 +128,13 @@
       libinput.enable = true;
       xkbOptions = "ctrl:swapcaps";
       videoDrivers = [ "amdgpu" ];
+    };
+    openvpn.servers = {
+      officeVPN = {
+        config = '' config /home/owen/.sec/profile-162.ovpn '';
+        updateResolvConf = true;
+        autoStart = false;
+      };
     };
     sshd.enable = true;
   };

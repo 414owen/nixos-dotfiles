@@ -16,5 +16,10 @@
         user = "owen";
       };
     };
+    # knownHosts = {
+    #  "gitlab.internal.tiko.ch" = {
+    #     publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFFVew5uYF6vDHk6olO3cIfLzNQ1mqrSu33Zj68k2Awd";
+    #   };
+    # };
   };
 }
