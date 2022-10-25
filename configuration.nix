@@ -44,6 +44,13 @@
     overpass
   ];
 
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "curses";
+    enableSSHSupport = true;
+  };
+
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
@@ -67,10 +74,12 @@
   nix = {
     settings = {
       trusted-public-keys = [
+        "hydra.tiko.ch:q8EX+cmvjysdFOPttZEl30cMv5tnB2dddkwrC61qdA4="
         "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       ];
       substituters = [
         "https://cache.iog.io"
+        "http://hydra.tiko.ch/"
       ];
     };
   };

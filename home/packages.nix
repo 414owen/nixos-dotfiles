@@ -36,7 +36,6 @@ in
     file
     signal-desktop
     fd
-    gnupg
     ghc
     htop
     hub
