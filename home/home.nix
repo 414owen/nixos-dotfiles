@@ -20,8 +20,6 @@ in
     ./helix.nix
     ./gpg-agent.nix
     ./haskeline.nix
-    ./kak-lsp.nix
-    ./kakoune.nix
     ./packages.nix
     # ./profile.nix
     ./readline.nix

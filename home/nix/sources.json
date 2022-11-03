@@ -143,18 +143,6 @@
         "url": "https://github.com/harpocrates/pretty-ghci/archive/179e8453d8af84a2c64fd4dc506c119fa4f971df.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "utdemir-dotfiles": {
-        "branch": "master",
-        "description": "Comprehensive configuration of my NixOS workstation",
-        "homepage": "",
-        "owner": "utdemir",
-        "repo": "dotfiles",
-        "rev": "629582f848da8fa51b761542c74d761fc7e9387e",
-        "sha256": "198lqqqbdvrxy3q1im2y6m1gn74vz3l8fxfp1vazmizxygpq2x55",
-        "type": "tarball",
-        "url": "https://github.com/utdemir/dotfiles/archive/629582f848da8fa51b761542c74d761fc7e9387e.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "vkleen": {
         "branch": "master",
         "description": "Using NixOS to configure some of my machines",
