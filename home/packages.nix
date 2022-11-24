@@ -10,6 +10,7 @@ in
 {
   home.packages = with pkgs; [
     any-nix-shell
+    audio-recorder
     asciinema
     bat
     chromium
@@ -64,7 +65,6 @@ in
     nnn
     pciutils
     pidgin
-    polymc
     q-text-as-data
     remarshal
     ripgrep
@@ -75,11 +75,13 @@ in
     scripts.vpn
     signal-desktop
     wl-clipboard
+    tup
     tree
     transmission-gtk
     tmux
     tree
     usbutils
+    vlc
     duf
   ] ++ (with gitAndTools; [
     gh
@@ -92,5 +94,6 @@ in
     git-test
     git-fame
     scripts.git-weekend
+    steam
   ]);
 }
