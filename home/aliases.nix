@@ -64,6 +64,7 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   gstp = "git stash pop";
   gsts = "git stash save";
   h = "history";
+  "480p" = "mpv '--ytdl-format=bestvideo[height<720]+bestaudio/best'";
   # hb = "hadrian/build -j$(($(${pkgs.coreutils}/bin/nproc) +1))";
   # hb = "hadrian/build -j$(($(nproc) +1))";
   hb = "hadrian/build -j";
