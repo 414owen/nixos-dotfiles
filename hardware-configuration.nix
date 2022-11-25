@@ -36,7 +36,7 @@
   #     fsType = "nfs";
   #   };
 
-  swapDevices = [ { device = "/swapfile"; size = 2048; } ];
+  swapDevices = [ { device = "/swapfile"; size = 2048; priority = 4; } ];
 
   nix.maxJobs = lib.mkDefault 24;
   # High-DPI console

@@ -24,6 +24,7 @@ in
     dateutils
     editorconfig-core-c
     expect
+    pidgin
     fira
     fira-mono
     font-awesome

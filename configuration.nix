@@ -21,6 +21,15 @@
   # virtualisation.docker.enable = true;
   # virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "owen" ];
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
 
   fonts.fonts = with pkgs; [
     noto-fonts
@@ -66,7 +75,7 @@
         libvdpau-va-gl
       ];
     };
-    pulseaudio.enable = true;
+    pulseaudio.enable = false;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -156,6 +165,12 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "audio" "video" "disk" "networkmanager" "adbusers" "tty" "dialout" ];
     shell = "/run/current-system/sw/bin/zsh";
+  };
+
+  zramSwap = {
+    enable = true;
+    priority = 5;
+    memoryPercent = 50;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
