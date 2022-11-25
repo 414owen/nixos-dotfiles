@@ -9,10 +9,6 @@
     ./nix.nix
     ./hardware-configuration.nix
     ./kernel-params.nix
-    <nixos-hardware/common/pc>
-    <nixos-hardware/common/pc/ssd>
-    <nixos-hardware/common/cpu/amd>
-    <home-manager/nixos>
   ];
 
   fonts.fontDir.enable = true;
@@ -173,8 +169,6 @@
     priority = 5;
     memoryPercent = 50;
   };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # services.cassandra.enable = true;
   # services.redis.enable = true;
