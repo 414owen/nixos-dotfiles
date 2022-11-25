@@ -1,6 +1,40 @@
 { pkgs, home, ... }:
 
 {
+  home.file.".config/helix/config.toml".text = ''
+    theme = "base16_terminal"
+
+    [keys.normal]
+    C-s = [
+      "save_selection",
+      "select_all",
+      # Delete trailing whitespace from end of each line
+      ":pipe sed 's/[ \t]*$//'",
+      # Delete trailing blank lines (including whitespace) from end of the buffer
+      ":pipe awk '/^\\s*$/ {b=b $0 \"\\n\"; next;} {printf \"%s\",b; b=\"\"; print;}'",
+      "collapse_selection",
+      "jump_backward",
+      "commit_undo_checkpoint",
+      ":write",
+    ]
+
+    [editor.indent-guides]
+    render = true
+
+
+    [editor.cursor-shape]
+    insert = "bar"
+    normal = "block"
+    select = "underline"
+
+    [editor.whitespace.characters]
+    # space = "·"
+    nbsp = "⍽"
+    tab = "→"
+    newline = "⏎"
+    tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+  '';
+
   home.file.".config/helix/languages.toml".text = ''
 
     [[language]]

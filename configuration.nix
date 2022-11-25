@@ -6,7 +6,7 @@
     ./boot.nix
     # ./cachix.nix
     ./games.nix
-    ./nixpkgs.nix
+    ./nix.nix
     ./hardware-configuration.nix
     ./kernel-params.nix
     <nixos-hardware/common/pc>
@@ -14,8 +14,6 @@
     <nixos-hardware/common/cpu/amd>
     <home-manager/nixos>
   ];
-
-  time.timeZone = "Europe/Dublin";
 
   fonts.fontDir.enable = true;
   # virtualisation.docker.enable = true;
@@ -78,8 +76,6 @@
     pulseaudio.enable = false;
   };
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnsupportedSystem = true;
   nix = {
     settings = {
       trusted-public-keys = [
@@ -125,6 +121,11 @@
   };
 
   sound.enable = true;
+  networking.hostName = "nixos";
+
+  services.localtimed.enable = true;
+  time.timeZone = "Europe/Paris";
+  i18n.defaultLocale = "en_GB.UTF-8";
 
   services = {
     xserver = {
@@ -182,5 +183,10 @@
   #   (builtins.toJSON { default-address-pools = [ { base = "192.168.128.0/18"; size = 24; } ]; });
   # in "--config-file=${file}";
 
-  system.stateVersion = "22.05";
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [ ];
+  };
+
+  system.stateVersion = "22.11"; # Did you read the comment?
 }

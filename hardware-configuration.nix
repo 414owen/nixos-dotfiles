@@ -38,7 +38,6 @@
 
   swapDevices = [ { device = "/swapfile"; size = 2048; priority = 4; } ];
 
-  nix.maxJobs = lib.mkDefault 24;
   # High-DPI console
   console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }

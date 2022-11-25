@@ -4,8 +4,6 @@ let
   lib = pkgs.lib;
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
   scripts = import ./scripts.nix { inherit pkgs; };
-  sources = import ./nix/sources.nix;
-  nixpkgs-update = import sources.nixpkgs-update {};
 in
 {
   home.packages = with pkgs; [
@@ -49,7 +47,6 @@ in
     gnumeric
     gnupg
     gparted
-    nixpkgs-update
     helix
     htop
     imagemagick
@@ -72,7 +69,6 @@ in
     nix-output-monitor
     nix-prefetch-git
     nix-prefetch-github
-    nixpkgs-update
     nnn
     gotop
     pciutils

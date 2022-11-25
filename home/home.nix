@@ -10,7 +10,6 @@ in
   imports = [
     ./alacritty.nix
     ./direnv.nix
-    ./dircolors.nix
     # ./emacs.nix
     ./firefox.nix
     # ./gdb.nix
@@ -20,6 +19,7 @@ in
     ./helix.nix
     ./gpg-agent.nix
     ./haskeline.nix
+    ./nushell.nix
     ./packages.nix
     # ./profile.nix
     ./readline.nix
