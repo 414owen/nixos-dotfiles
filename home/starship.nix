@@ -4,6 +4,7 @@
     enableBashIntegration = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
+    # enableNushellIntegration = true;
     settings = {
       character = {
         success_symbol = " [^_^](green)";

@@ -20,8 +20,8 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  services.localtime.enable = true;
-  time.timeZone = "Europe/Dublin";
+  services.localtimed.enable = true;
+  time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_GB.UTF-8";
 
   services = {
@@ -122,5 +122,5 @@
     ];
   };
 
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "22.11"; # Did you read the comment?
 }
