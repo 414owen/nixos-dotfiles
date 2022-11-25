@@ -4,7 +4,6 @@ let
   lib = pkgs.lib;
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
   scripts = import ./scripts.nix { inherit pkgs; };
-  unstable = import <unstable> {};
 in
 {
   home.packages = with pkgs; [
@@ -21,6 +20,7 @@ in
     coreutils
     dateutils
     editorconfig-core-c
+    helix
     fira
     fira-code
     font-awesome
@@ -40,7 +40,6 @@ in
     cgdb
     gimp
     gitAndTools.hub
-    unstable.helix
     htop
     imagemagick
     inkscape
