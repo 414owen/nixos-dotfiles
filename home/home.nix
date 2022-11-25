@@ -32,6 +32,7 @@ in
     # ./zoom.nix
     ./zoxide.nix
     ./zsh.nix
+    ./wezterm.nix
   ];
 
 
