@@ -4,17 +4,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-      # (import hardware.common.gpu.amd)
-      # (import hardware.common.pc.laptop)
-      # (import hardware.common.ps.laptop.ssd)
-
-      <nixos-hardware/common/cpu/amd>
-      <nixos-hardware/common/gpu/amd>
-      <nixos-hardware/common/pc/laptop>
-      <nixos-hardware/common/pc/laptop/ssd>
-    ];
+  imports = [];
 
   # services.tlp.enable = true;
   # services.power-profiles-daemon.enable = false;

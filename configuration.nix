@@ -5,12 +5,91 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./nix.nix
-      <home-manager/nixos>
-    ];
+  imports = [
+    # ./cachix.nix
+    ./nix.nix
+    ./hardware-configuration.nix
+  ];
+
+  fonts.fontDir.enable = true;
+  # virtualisation.docker.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "owen" ];
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
+
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-emoji
+    liberation_ttf
+    fira
+    fira-code
+    fira-code-symbols
+    ubuntu_font_family
+    roboto
+    inconsolata
+    cascadia-code
+    hermit
+    iosevka
+    jost
+    # monoid
+    # virtualbox
+    montserrat
+    mononoki
+    pecita
+    overpass
+  ];
+
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "curses";
+    enableSSHSupport = true;
+  };
+
+  networking = {
+    firewall.enable = false;
+    # nameservers = [ "1.0.0.1" "1.1.1.1" ];
+  };
+
+  hardware = {
+    bluetooth.enable = true;
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
+    pulseaudio.enable = false;
+  };
+
+  nix = {
+    settings = {
+      trusted-public-keys = [
+        "hydra.tiko.ch:q8EX+cmvjysdFOPttZEl30cMv5tnB2dddkwrC61qdA4="
+        "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+      ];
+      substituters = [
+        "https://cache.iog.io"
+        "http://hydra.tiko.ch/"
+      ];
+    };
+  };
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  environment = {
+    # for zsh completions of system packages
+    pathsToLink = [ "/share/zsh" ];
+  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -36,15 +115,6 @@
         updateResolvConf = true;
         autoStart = false;
       };
-    };
-
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      # alsa.support32Bit = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
     };
 
     xserver = {
@@ -81,7 +151,6 @@
   };
 
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
 
   users.users.owen = {
     isNormalUser = true;
@@ -97,29 +166,9 @@
     firefox
   ];
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  # fileSystems."/media/external-drive" = {
-  #   device = "192.168.0.65:/media/external-drive";
-  #   options = [ "x-systemd.automount" "noauto" "user" ];
-  #   fsType = "nfs";
-  # };
-
-  # fileSystems."/media/drive2" = {
-  #   device = "192.168.0.65:/media/drive2";
-  #   options = [ "x-systemd.automount" "noauto" "user" ];
-  #   fsType = "nfs";
-  # };
-
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [
-      (import <rust-overlay>)
-      (import ./overlays/hydra.nix)
-    ];
+    overlays = [ ];
   };
 
   system.stateVersion = "22.11"; # Did you read the comment?
