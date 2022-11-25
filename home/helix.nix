@@ -2,6 +2,8 @@
 
 {
   home.file.".config/helix/config.toml".text = ''
+    theme = "base16_terminal"
+
     [keys.normal]
     C-s = [
       "save_selection",
@@ -18,6 +20,19 @@
 
     [editor.indent-guides]
     render = true
+
+
+    [editor.cursor-shape]
+    insert = "bar"
+    normal = "block"
+    select = "underline"
+
+    [editor.whitespace.characters]
+    # space = "·"
+    nbsp = "⍽"
+    tab = "→"
+    newline = "⏎"
+    tabpad = "·" # Tabs will look like "→···" (depending on tab width)
   '';
   home.file.".config/helix/languages.toml".text = ''
 

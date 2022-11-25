@@ -5,7 +5,6 @@ let
   git-change-author = pkgs.writeShellScript "git-change-author" (builtins.readFile ./change-author.sh);
   scripts = import ./scripts.nix { inherit pkgs; };
   unstable = import <unstable> {};
-  sources = import ./nix/sources.nix;
 in
 {
   home.packages = with pkgs; [

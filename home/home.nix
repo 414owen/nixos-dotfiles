@@ -11,7 +11,6 @@ in
     ./alacritty.nix
     # ./bash.nix
     ./direnv.nix
-    ./dircolors.nix
     # ./emacs.nix
     ./firefox.nix
     # ./gdb.nix
@@ -21,6 +20,7 @@ in
     ./helix.nix
     ./gpg-agent.nix
     ./haskeline.nix
+    ./nushell.nix
     ./packages.nix
     # ./nix.nix
     # ./profile.nix
