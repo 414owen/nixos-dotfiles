@@ -8,6 +8,7 @@
   imports = [
     # ./cachix.nix
     ./nix.nix
+    ./games.nix
     ./hardware-configuration.nix
   ];
 
@@ -21,6 +22,7 @@
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
+    alsa.support32Bit = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
   };
