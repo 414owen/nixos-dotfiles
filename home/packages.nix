@@ -9,6 +9,7 @@ in
   home.packages = with pkgs; [
     any-nix-shell
     audio-recorder
+    prismlauncher
     asciinema
     bat
     chromium
