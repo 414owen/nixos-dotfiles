@@ -27,16 +27,18 @@ in
       # Only refresh completions once a day
       setopt extendedglob
       autoload -Uz compinit
-      for dump in ~/.zcompdump(N.mh+24); do
-        compinit
-      done
       compinit -C
+      # for dump in ~/.zcompdump(N.mh+24); do
+      #   compinit
+      # done
+      # compinit -C
     '';
     initExtra = ''
       . ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       ${builtins.readFile (./shell.sh)}
       ${import ./fns.nix { pkgs = pkgs; }}
       ${ if profile then "zprof" else "" }
+      source <(carapace _carapace)
     '';
     sessionVariables = import ./env.nix { pkgs = pkgs; };
     shellAliases = aliases;

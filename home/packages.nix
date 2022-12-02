@@ -12,11 +12,12 @@ in
     prismlauncher
     asciinema
     bat
+    carapace
     chromium
     choose
-      libreoffice
+    libreoffice
     cabal2nix
-    # cabal-install
+    cabal-install
     cachix
     coreutils
     dateutils
@@ -35,7 +36,7 @@ in
     fd
     gnupg
     gnomeExtensions.system-monitor
-    # ghc
+    ghc
     htop
     gnumake
     cgdb
