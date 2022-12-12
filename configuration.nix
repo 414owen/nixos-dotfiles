@@ -8,45 +8,26 @@
   imports = [
     # ./cachix.nix
     ./nix.nix
-    ./games.nix
     ./hardware-configuration.nix
   ];
 
   fonts.fontDir.enable = true;
   # virtualisation.docker.enable = true;
   # virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "owen" ];
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
-    alsa.support32Bit = true;
+    # alsa.support32Bit = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    # jack.enable = true;
   };
 
   fonts.fonts = with pkgs; [
-    noto-fonts
-    noto-fonts-emoji
-    liberation_ttf
-    fira
     fira-code
     fira-code-symbols
-    ubuntu_font_family
-    roboto
-    inconsolata
-    cascadia-code
-    hermit
-    iosevka
-    jost
-    # monoid
-    # virtualbox
-    montserrat
-    mononoki
-    pecita
-    overpass
   ];
 
   services.pcscd.enable = true;
@@ -73,8 +54,6 @@
     pulseaudio.enable = false;
   };
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
   environment = {
     # for zsh completions of system packages
     pathsToLink = [ "/share/zsh" ];
@@ -85,7 +64,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   services.gvfs.enable = true;
 
-  networking.hostName = "nixos";
+  networking.hostName = "nixos-arm";
   networking.networkmanager.enable = true;
 
   services.localtimed.enable = true;
@@ -96,14 +75,6 @@
     openssh = {
       enable = true;
       passwordAuthentication = true;
-    };
-
-    openvpn.servers = { 
-      officeVPN = {
-        config = '' config /home/owen/.sec/profile-162.ovpn '';
-        updateResolvConf = true;
-        autoStart = false;
-      };
     };
 
     xserver = {
@@ -118,25 +89,6 @@
       libinput.touchpad.tappingDragLock = true;
     };
 
-    hydra = {
-      enable = false;
-      hydraURL = "http://localhost:3000";
-      notificationSender = "hydra@localhost";
-      buildMachinesFiles = [];
-      useSubstitutes = true;
-      extraConfig = ''
-        <gitlab_authorization>
-        owen.shepherd@tiko.energy=glpat-Y19nsDS9oWjUxxksA88j
-        36=glpat-Y19nsDS9oWjUxxksA88j
-        </gitlab_authorization>
-      '';
-    };
-  };
-
-  programs.ssh.knownHosts = {
-    "gitlab.internal.tiko.ch" = {
-      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFFVew5uYF6vDHk6olO3cIfLzNQ1mqrSu33Zj68k2Awd";
-    };
   };
 
   sound.enable = true;
@@ -150,7 +102,7 @@
   home-manager.users.owen = import ./home/home.nix;
 
   environment.systemPackages = with pkgs; [
-    kakoune
+    helix
     wget
     firefox
   ];

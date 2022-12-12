@@ -4,23 +4,24 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  # services.tlp.enable = true;
-  # services.power-profiles-daemon.enable = false;
-  # services.thermald.enable = true;
-
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "usbhid" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b4443c16-86c1-42af-bc2c-349bf3165163";
+    { device = "/dev/disk/by-uuid/8f96ce87-a33a-4810-a8e0-d988f7ebd24a";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/d0a0c5ed-40d6-4dd0-a014-b2b89ce3be60";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/DB7B-76C2";
+      fsType = "vfat";
+    };
 
   swapDevices = [ ];
 
@@ -29,8 +30,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
 
-  hardware.enableRedistributableFirmware = true;
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }

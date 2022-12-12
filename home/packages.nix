@@ -8,19 +8,9 @@ in
 {
   home.packages = with pkgs; [
     any-nix-shell
-    audio-recorder
-    prismlauncher
     asciinema
     bat
-    carapace
-    chromium
-    choose
-    libreoffice
-    cabal2nix
-    cabal-install
-    cachix
     coreutils
-    dateutils
     editorconfig-core-c
     helix
     fira
@@ -29,55 +19,30 @@ in
     gnome.devhelp
     evince
     spot
-    spotify
     exa
     expect
     file
     fd
     gnupg
     gnomeExtensions.system-monitor
-    ghc
     htop
     gnumake
-    cgdb
-    gimp
-    gitAndTools.hub
     htop
-    imagemagick
-    inkscape
-    jq
     killall
     libsecret
-    # libreoffice-fresh
-    gotop
     lshw
     macchina
     mosh
     mpv
-    neofetch
-    nix-bundle
-    nnn
     niv
-    nix-index
     nix-output-monitor
-    nix-prefetch-git
-    nix-prefetch-github
-    nnn
-    pciutils
-    pidgin
-    q-text-as-data
-    remarshal
     ripgrep
     sd
     stdenv
     xclip
     scripts.copy
-    scripts.vpn
-    signal-desktop
     wl-clipboard
-    tup
     tree
-    transmission-gtk
     tmux
     tree
     usbutils
@@ -94,6 +59,5 @@ in
     git-test
     git-fame
     scripts.git-weekend
-    steam
   ]);
 }

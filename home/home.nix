@@ -28,7 +28,6 @@ in
     ./ssh.nix
     ./starship.nix
     # ./sway.nix
-    ./taskwarrior.nix
     ./theme.nix
     ./tmux.nix
     # ./zoom.nix
