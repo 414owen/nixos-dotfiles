@@ -25,7 +25,7 @@
       (system: { name = system.config.networking.hostName; value = system; })
       [
         (nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          system = "aarch64-linux";
           # Things in this set are passed to modules and accessible
           # in the top-level arguments (e.g. `{ pkgs, lib, inputs, ... }:`).
           specialArgs = {
@@ -34,9 +34,7 @@
           modules = [
             home-manager.nixosModules.home-manager
             nixos-hardware.nixosModules.dell-xps-13-9380
-            nixos-hardware.nixosModules.common-pc
-            nixos-hardware.nixosModules.common-pc-ssd
-            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.pine64-pinebook-pro
 
 
             ({ pkgs, ... }: {
