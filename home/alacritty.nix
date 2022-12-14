@@ -7,6 +7,12 @@ in
 {
   programs.alacritty = {
     settings = {
+      font = {
+        normal = {
+          family = "Ubuntu Mono";
+          style = "Regular";
+        };
+      };
       window = {
         decorations = "none";
         dynamic_title = true;

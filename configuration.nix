@@ -11,7 +11,10 @@
     ./hardware-configuration.nix
   ];
 
+  security.polkit.enable = true;
   fonts.fontDir.enable = true;
+  boot.loader.grub.enable = false;
+  boot.loader.generic-extlinux-compatible.enable = true;
   # virtualisation.docker.enable = true;
   # virtualisation.virtualbox.host.enable = true;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -25,11 +28,23 @@
     # jack.enable = true;
   };
 
-  fonts.fonts = with pkgs; [
-    fira-code
-    fira-code-symbols
-  ];
+  fonts = {
+     fonts = with pkgs; [
+      ubuntu_font_family
+      liberation_ttf
+      fira-code
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "Ubuntu Mono" ];
+        sansSerif = [ "Ubuntu" ];
+        serif     = [ "Liberation Serif" ];
+      };
+    };
+  };
 
+  programs.dconf.enable = true;
+  services.thermald.enable = false;
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
@@ -59,29 +74,18 @@
     pathsToLink = [ "/share/zsh" ];
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   services.gvfs.enable = true;
 
   networking.hostName = "nixos-arm";
   networking.networkmanager.enable = true;
 
-  services.localtimed.enable = true;
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_GB.UTF-8";
 
   services = {
-    openssh = {
-      enable = true;
-      passwordAuthentication = true;
-    };
-
     xserver = {
-      enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-
+      enable = false;
       layout = "gb";
       xkbOptions = "ctrl:nocaps";
 

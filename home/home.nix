@@ -13,6 +13,7 @@ in
     ./direnv.nix
     # ./emacs.nix
     ./firefox.nix
+    ./foot.nix
     # ./gdb.nix
     ./ghci.nix
     ./git.nix
@@ -27,7 +28,8 @@ in
     ./readline.nix
     ./ssh.nix
     ./starship.nix
-    # ./sway.nix
+    ./sway.nix
+    ./waybar.nix
     ./theme.nix
     ./tmux.nix
     # ./zoom.nix
@@ -51,7 +53,6 @@ in
 
   programs = {
     alacritty.enable = true;
-    # bash.enable = true;
     command-not-found.enable = true;
     direnv.enable = true;
     dircolors = enableZsh;
@@ -70,6 +71,4 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  # wayland.windowManager.sway.enable = true;
 }

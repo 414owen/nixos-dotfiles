@@ -33,7 +33,6 @@
           };
           modules = [
             home-manager.nixosModules.home-manager
-            nixos-hardware.nixosModules.dell-xps-13-9380
             nixos-hardware.nixosModules.pine64-pinebook-pro
 
 

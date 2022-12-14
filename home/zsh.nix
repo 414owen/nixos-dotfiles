@@ -38,7 +38,6 @@ in
       ${builtins.readFile (./shell.sh)}
       ${import ./fns.nix { pkgs = pkgs; }}
       ${ if profile then "zprof" else "" }
-      source <(carapace _carapace)
     '';
     sessionVariables = import ./env.nix { pkgs = pkgs; };
     shellAliases = aliases;

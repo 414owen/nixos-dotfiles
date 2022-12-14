@@ -62,15 +62,15 @@ in {
           # "privacy.trackingprotection.cryptomining.enabled" = true;
           # "privacy.trackingprotection.enabled" = true;
           # "privacy.trackingprotection.fingerprinting.enabled" = true;
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           # "toolkit.telemetry.enabled" = false;
           # "view_source.editor.args" = "${pkgs.gnome3.gnome-terminal}/bin/gnome-terminal ${(import ./defaults.nix).editor}";
           # "view_source.editor.external" = true;
           # "view_source.editor.path" = "${viewSource}/bin/view-source";
 
           "gnomeTheme.hideSingleTab" = true;
-          "gnomeTheme.systemIcons" = false;
-          "gnomeTheme.symbolicTabIcons" = true;
+          # "gnomeTheme.systemIcons" = false;
+          # "gnomeTheme.symbolicTabIcons" = true;
         };
       };
     };

@@ -10,13 +10,15 @@ in
     any-nix-shell
     asciinema
     bat
+    brightnessctl
+    bemenu
     coreutils
     editorconfig-core-c
     helix
     fira
+    foot
     fira-code
     font-awesome
-    gnome.devhelp
     evince
     spot
     exa
@@ -24,7 +26,6 @@ in
     file
     fd
     gnupg
-    gnomeExtensions.system-monitor
     htop
     gnumake
     htop
