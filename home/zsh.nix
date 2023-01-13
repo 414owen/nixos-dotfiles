@@ -22,6 +22,7 @@ in
       fi
     '';
     initExtra = ''
+      export __NIXOS_SET_ENVIRONMENT_DONE=1
       . ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       ${builtins.readFile (./shell.zsh)}
       ${import ./fns.nix { pkgs = pkgs; }}

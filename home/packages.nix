@@ -10,47 +10,45 @@ in
     any-nix-shell
     asciinema
     bat
-    # (retroarch.override { cores = with libretro; [ snes9x ]; })
-    chromium
-    choose
     cabal2nix
     cabal-install
     cachix
     calibre
+    choose
+    chromium
     coreutils
     darktable
     dateutils
+    duf
     editorconfig-core-c
+    evince
+    exa
     expect
-    pidgin
+    expect
+    fd
+    file
     fira
     fira-mono
     font-awesome
-    gnome.devhelp
-    jetbrains-mono
-    evince
-    # spot
-    exa
-    expect
-    file
-    signal-desktop
-    fd
-    ghc
-    htop
-    hub
-    gnumake
     gdb
+    ghc
     ghc
     gimp
     gitAndTools.hub
     gnome3.geary
+    gnome.devhelp
+    gnumake
     gnumeric
     gnupg
+    gotop
     gparted
     helix
     htop
+    htop
+    hub
     imagemagick
     inkscape
+    jetbrains-mono
     jq
     kak-lsp
     killall
@@ -59,42 +57,45 @@ in
     macchina
     mosh
     mpv
-    # newsflash
     neofetch
-    nix-bundle
-    nnn
-    non
+    # newsflash
     niv
+    nix-bundle
     nix-index
     nix-output-monitor
     nix-prefetch-git
     nix-prefetch-github
     nnn
-    gotop
+    nnn
+    non
     pciutils
+    pidgin
+    prismlauncher
+    # python39
+    # python39Pack
     q-text-as-data
     rawtherapee
     remarshal
+    # (retroarch.override { cores = with libretro; [ snes9x ]; })
     ripgrep
-    # waveform-pro
+    scripts.copy
     scripts.vpn
     sd
     shotwell
+    signal-desktop
+    # spot
     spotify
     stdenv
-    xclip
-    scripts.copy
-    wl-clipboard
-    tree
     tmux
-    tree
     transmission-gtk
+    tree
+    tree
     usbutils
-    duf
+    # waveform-pro
+    wl-clipboard
+    xclip
     zsh-history-substring-search
     zsh-syntax-highlighting
-    # python39
-    # python39Packages.pip
   ] ++ (with gitAndTools; [
     gh
     git-absorb
