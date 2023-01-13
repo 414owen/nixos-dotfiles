@@ -13,6 +13,7 @@ in
     ./direnv.nix
     # ./emacs.nix
     ./firefox.nix
+    ./foot.nix
     # ./gdb.nix
     ./ghci.nix
     ./git.nix
@@ -56,6 +57,7 @@ in
     command-not-found.enable = true;
     direnv.enable = true;
     dircolors = enableZsh;
+    foot.enable = true;
     firefox.enable = true;
     fzf = enableZsh;
     git.enable = true;
