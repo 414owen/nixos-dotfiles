@@ -3,7 +3,7 @@
 {
   home.file.".config/helix/config.toml".text = ''
     # theme = "base16_terminal"
-    # theme = "rose-pine"
+    theme = "rose_pine"
 
     [keys.normal]
     C-s = [
