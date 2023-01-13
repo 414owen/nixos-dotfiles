@@ -50,7 +50,6 @@ in
     inkscape
     jetbrains-mono
     jq
-    kak-lsp
     killall
     libsecret
     lshw

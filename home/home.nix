@@ -58,7 +58,6 @@ in
     fzf = enableZsh;
     git.enable = true;
     home-manager.enable = true;
-    kakoune.enable = true;
     readline.enable = true;
     starship.enable = true;
     ssh.enable = true;
