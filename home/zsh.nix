@@ -8,8 +8,8 @@ in
 {
   programs.zsh = {
     autocd = true;
-    enableAutosuggestions = true;
-    enableCompletion = false;
+    enableAutosuggestions = false;
+    enableCompletion = true;
     history = {
       ignoreDups = true;
       share = true;
@@ -23,15 +23,6 @@ in
       #     exit
       #   fi
       # fi
-
-      # Only refresh completions once a day
-      setopt extendedglob
-      autoload -Uz compinit
-      compinit -C
-      # for dump in ~/.zcompdump(N.mh+24); do
-      #   compinit
-      # done
-      # compinit -C
     '';
     initExtra = ''
       . ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

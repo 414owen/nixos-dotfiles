@@ -19,8 +19,9 @@
 
   inputs.home-manager.url = "github:nix-community/home-manager/master";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }: {
+  outputs = { self, nixpkgs, unstable, home-manager, nixos-hardware, ... }: {
     nixosConfigurations = builtins.listToAttrs (builtins.map
       (system: { name = system.config.networking.hostName; value = system; })
       [
@@ -33,6 +34,16 @@
           };
           modules = [
             home-manager.nixosModules.home-manager
+            ({
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              nixpkgs.overlays = [
+                (final: prev: {
+                  unstable = import unstable { system = final.system; };
+                })
+              ];
+            })
+
             nixos-hardware.nixosModules.pine64-pinebook-pro
 
 
@@ -46,8 +57,6 @@
               ];
 
               nix.settings.experimental-features = "nix-command flakes";
-
-              home-manager.useGlobalPkgs = true;
             })
 
             ./configuration.nix

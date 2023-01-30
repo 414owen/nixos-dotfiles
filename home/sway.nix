@@ -7,24 +7,22 @@ in
 {
   wayland.windowManager.sway = {
     enable = true;
-    config = {
-      bars = [
-        {
-          "command" = "${pkgs.waybar}/bin/waybar";
-        }
-      ];
+    systemdIntegration = true;
+    config = rec {
+      bars = [ ];
       fonts = {
         names = ["Ubuntu Mono"];
       };
-      terminal = "alacritty";
+      terminal = "foot";
       keybindings = {
         "${mod}+w" = "exec firefox";
         "${mod}+q" = "kill";
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
         "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
         "${mod}+space" = "exec bemenu-run";
-        "${mod}+return" = "exec alacritty";
-        "${mod}+shift+c" = "reload";
+        "${mod}+return" = "exec ${terminal}";
+        "${mod}+Shift+c" = "reload";
+        "${mod}+Shift+s" = "grimshot copy area";
 
         "${mod}+h" = "focus left";
         "${mod}+l" = "focus right";
@@ -75,6 +73,7 @@ in
         natural_scroll enabled
         dwt disabled
       }
+      workspace 1
     '';
   };
 }

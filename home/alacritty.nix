@@ -6,10 +6,11 @@ in
 
 {
   programs.alacritty = {
+    enable = false;
     settings = {
       font = {
         normal = {
-          family = "Ubuntu Mono";
+          family = "Roboto Mono Nerd Font";
           style = "Regular";
         };
       };

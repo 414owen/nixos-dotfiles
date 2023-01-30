@@ -30,6 +30,7 @@
 
   fonts = {
      fonts = with pkgs; [
+      (nerdfonts.override { fonts = ["FiraCode" "RobotoMono"]; })
       ubuntu_font_family
       liberation_ttf
       fira-code
@@ -100,10 +101,14 @@
   users.users.owen = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
   };
 
-  home-manager.users.owen = import ./home/home.nix;
+  home-manager = {
+    users.owen = import ./home/home.nix;
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
 
   environment.systemPackages = with pkgs; [
     helix

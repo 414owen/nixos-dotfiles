@@ -3,12 +3,10 @@
 let
   sysconfig = (import <nixpkgs/nixos> {}).system;
   callPackage = pkgs.callPackage;
-  enableZsh = { enable = true; enableZshIntegration = true; };
 in
 
 {
   imports = [
-    ./alacritty.nix
     # ./bash.nix
     ./direnv.nix
     # ./emacs.nix
@@ -34,7 +32,7 @@ in
     ./tmux.nix
     # ./zoom.nix
     ./zoxide.nix
-    ./zsh.nix
+    # ./zsh.nix
   ];
 
 
@@ -52,22 +50,19 @@ in
   };
 
   programs = {
-    alacritty.enable = true;
     command-not-found.enable = true;
     direnv.enable = true;
-    dircolors = enableZsh;
     firefox.enable = true;
-    fzf = enableZsh;
     git.enable = true;
-    home-manager.enable = true;
+    home-manager = {
+      enable = true;
+      # nixpkgs = { inherit (config.nixpkgs) config overlays; };
+    };
     kakoune.enable = true;
     readline.enable = true;
-    starship.enable = true;
     ssh.enable = true;
     taskwarrior.enable = true;
     tmux.enable = true;
-    zoxide.enable = true;
-    zsh.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;

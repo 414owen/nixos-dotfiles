@@ -2,9 +2,10 @@
 
 {
   programs.foot = {
+    enable = true;
     settings = {
       main = {
-        font = "Fira Code:size=12";
+        font = "Roboto Mono Nerd Font:size=7";
       };
     };
   };

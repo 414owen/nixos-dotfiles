@@ -13,10 +13,10 @@ in
     brightnessctl
     bemenu
     coreutils
+    duf
     editorconfig-core-c
     helix
     fira
-    foot
     fira-code
     font-awesome
     evince
@@ -39,16 +39,16 @@ in
     nix-output-monitor
     ripgrep
     sd
+    sway-contrib.grimshot
     stdenv
     xclip
     scripts.copy
-    wl-clipboard
     tree
     tmux
     tree
     usbutils
     vlc
-    duf
+    wl-clipboard
   ] ++ (with gitAndTools; [
     gh
     git-absorb
