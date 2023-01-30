@@ -1,22 +1,5 @@
 {
   "nodes": {
-    "dwl": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1675105130,
-        "narHash": "sha256-8BT3FxL9Ty5WsZJknZ8VYH0gjm5F1X0sbbcUtc4IjSc=",
-        "owner": "414owen",
-        "repo": "dwl",
-        "rev": "9d131f23bf6710223ec90b1024bc57ebcb7d9ba4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "414owen",
-        "ref": "os-configure-v0.3.1",
-        "repo": "dwl",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -71,7 +54,6 @@
     },
     "root": {
       "inputs": {
-        "dwl": "dwl",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs"

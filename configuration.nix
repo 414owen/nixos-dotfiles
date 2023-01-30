@@ -25,29 +25,22 @@
     #jack.enable = true;
   };
 
-  fonts.fonts = with pkgs; [
-    noto-fonts
-    noto-fonts-emoji
-    liberation_ttf
-    fira
-    fira-code
-    fira-code-symbols
-    ubuntu_font_family
-    roboto
-    inconsolata
-    cascadia-code
-    hermit
-    iosevka
-    jost
-    # monoid
-    # virtualbox
-    montserrat
-    mononoki
-    pecita
-    overpass
-  ];
+  fonts = {
+     fonts = with pkgs; [
+      (nerdfonts.override { fonts = ["FiraCode" "RobotoMono"]; })
+      ubuntu_font_family
+      liberation_ttf
+      fira-code
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "Ubuntu Mono" ];
+        sansSerif = [ "Ubuntu" ];
+        serif     = [ "Liberation Serif" ];
+      };
+    };
+  };
 
-  services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
     pinentryFlavor = "curses";
@@ -57,11 +50,10 @@
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
-    # nameservers = [ "1.0.0.1" "1.1.1.1" ];
   };
 
   hardware = {
-    bluetooth.enable = true;
+    bluetooth.enable = false;
     opengl = {
       enable = true;
       extraPackages = with pkgs; [
@@ -84,20 +76,15 @@
       ];
     };
   };
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   home-manager.users.owen = import ./home/home.nix;
 
   environment = {
 
-    # for zsh completions of system packages
-    pathsToLink = [ "/share/zsh" ];
-
     systemPackages = with pkgs; [
       bind
       bemenu
       dconf
-      dwl
       file
       firmwareLinuxNonfree
       ntfs3g
@@ -164,7 +151,7 @@
   users.users.owen = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "audio" "video" "disk" "networkmanager" "adbusers" "tty" "dialout" ];
-    shell = "/run/current-system/sw/bin/zsh";
+    shell = pkgs.zsh;
   };
 
   zramSwap = {

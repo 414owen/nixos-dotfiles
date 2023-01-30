@@ -6,7 +6,7 @@
     settings = {
       main = {
         term = "xterm-256color";
-        font = "Source Code Pro, Noto Color Emoji:size=9";
+        font = "FiraCode Nerd Font, Noto Color Emoji:size=9";
         dpi-aware = "yes";
       };
 

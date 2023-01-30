@@ -26,11 +26,12 @@ in
     ./readline.nix
     ./ssh.nix
     ./starship.nix
-    # ./sway.nix
+    ./sway.nix
     ./taskwarrior.nix
     ./theme.nix
     ./tmux.nix
     # ./zoom.nix
+    ./yambar.nix
     ./zoxide.nix
     ./zsh.nix
   ];
