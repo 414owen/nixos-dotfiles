@@ -95,6 +95,9 @@
 
     systemPackages = with pkgs; [
       bind
+      bemenu
+      dconf
+      dwl
       file
       firmwareLinuxNonfree
       ntfs3g
@@ -125,21 +128,21 @@
 
   services = {
     xserver = {
-      enable = true;
+      enable = false;
       layout = "gb";
-      desktopManager = {
-        gnome.enable = true;
-      };
-      displayManager = {
-        defaultSession = "gnome";
-        autoLogin = {
-          enable = true;
-          user = "owen";
-        };
-        gdm = {
-          enable = true;
-        };
-      };
+      # desktopManager = {
+      #   gnome.enable = true;
+      # };
+      # displayManager = {
+      #   defaultSession = "gnome";
+      #   autoLogin = {
+      #     enable = true;
+      #     user = "owen";
+      #   };
+      #   gdm = {
+      #     enable = true;
+      #   };
+      # };
       libinput.enable = true;
       xkbOptions = "ctrl:swapcaps";
       videoDrivers = [ "amdgpu" ];

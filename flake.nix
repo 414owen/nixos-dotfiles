@@ -19,10 +19,23 @@
 
   inputs.home-manager.url = "github:nix-community/home-manager/master";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.dwl = {
+    url = "github:414owen/dwl/os-configure-v0.3.1";
+    flake = false;
+  };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }: {
-    nixosConfigurations = builtins.listToAttrs (builtins.map
-      (system: { name = system.config.networking.hostName; value = system; })
+  outputs = { self, nixpkgs, dwl, home-manager, nixos-hardware, ... }:
+    let
+      dwl_overlay = (self: super: {
+        dwl = super.dwl.overrideAttrs (prev: {
+          version = "git";
+          src = dwl;
+        });
+      });
+      systemMapper = system: { name = system.config.networking.hostName; value = system; };
+    in
+    {
+      nixosConfigurations = builtins.listToAttrs (builtins.map systemMapper
       [
         (nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -38,10 +51,11 @@
             nixos-hardware.nixosModules.common-pc-ssd
             nixos-hardware.nixosModules.common-cpu-amd
 
-
             ({ pkgs, ... }: {
               environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
               environment.etc."nix/channels/home-manager".source = home-manager.outPath;
+
+              nixpkgs.overlays = [ dwl_overlay ];
 
               nix.nixPath = [ 
                 "nixpkgs=/etc/nix/channels/nixpkgs"

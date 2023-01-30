@@ -7,7 +7,7 @@ in
 {
   programs.zsh = {
     autocd = true;
-    enableAutosuggestions = true;
+    # enableAutosuggestions = true;
     enableCompletion = true;
     history = {
       ignoreDups = true;

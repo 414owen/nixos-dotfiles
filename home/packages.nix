@@ -90,6 +90,7 @@ in
     tree
     tree
     usbutils
+    vlc
     # waveform-pro
     wl-clipboard
     xclip
