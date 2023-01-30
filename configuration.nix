@@ -101,7 +101,7 @@
   users.users.owen = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
   };
 
   home-manager = {

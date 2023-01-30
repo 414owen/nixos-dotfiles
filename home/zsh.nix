@@ -7,6 +7,7 @@ in
 
 {
   programs.zsh = {
+    enable = true;
     autocd = true;
     enableAutosuggestions = false;
     enableCompletion = true;

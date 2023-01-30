@@ -2,7 +2,8 @@
 
 let
   sysconfig = (import <nixpkgs/nixos> {}).system;
-  callPackage = pkgs.callPackage;
+  callPackage = pkgs.callPackage; 
+  enableZsh = { enable = true; enableZshIntegration = true; };
 in
 
 {
@@ -19,7 +20,7 @@ in
     ./helix.nix
     ./gpg-agent.nix
     ./haskeline.nix
-    ./nushell.nix
+    # ./nushell.nix
     ./packages.nix
     # ./nix.nix
     # ./profile.nix
@@ -32,7 +33,7 @@ in
     ./tmux.nix
     # ./zoom.nix
     ./zoxide.nix
-    # ./zsh.nix
+    ./zsh.nix
   ];
 
 
@@ -54,6 +55,7 @@ in
     direnv.enable = true;
     firefox.enable = true;
     git.enable = true;
+    fzf = enableZsh;
     home-manager = {
       enable = true;
       # nixpkgs = { inherit (config.nixpkgs) config overlays; };
