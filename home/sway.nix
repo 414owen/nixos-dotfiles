@@ -9,6 +9,16 @@ in
     enable = true;
     systemdIntegration = true;
     config = rec {
+      input."type:keyboard" = {
+        xkb_layout = "gb";
+        xkb_options = "ctrl:nocaps";
+        xkb_numlock = "enabled";
+      };
+      input."type:touchpad" = {
+        tap = "enabled";
+        natural_scroll = "enabled";
+        scroll_method = "two_finger";
+      };
       bars = [ ];
       fonts = {
         names = ["Ubuntu Mono"];

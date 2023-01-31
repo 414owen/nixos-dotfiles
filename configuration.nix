@@ -31,6 +31,9 @@
       ubuntu_font_family
       liberation_ttf
       fira-code
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
     ];
     fontconfig = {
       defaultFonts = {
@@ -83,6 +86,7 @@
 
     systemPackages = with pkgs; [
       bind
+      pmutils
       bemenu
       dconf
       file

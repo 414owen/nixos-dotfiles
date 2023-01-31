@@ -31,7 +31,8 @@ in
     ./theme.nix
     ./tmux.nix
     # ./zoom.nix
-    ./yambar.nix
+    ./waybar.nix
+    # ./yambar.nix
     ./zoxide.nix
     ./zsh.nix
   ];
