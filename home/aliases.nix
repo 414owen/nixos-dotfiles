@@ -29,7 +29,9 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   gcf = "git commit --fixup";
   gcl = "git clone";
   gcm = "git commit --message";
+  gcmnv = "git commit --message --no-verify";
   gcne = "git commit --no-edit";
+  gcnenv = "git commit --no-edit --no-verify";
   gcob = "git checkout -b";
   gcod = "git checkout develop";
   gco = "git checkout";

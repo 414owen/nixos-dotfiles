@@ -26,22 +26,30 @@ add-rpaths() {
   done
 }
 
+withdir() {
+  d="$(basename "$1" "$2")"
+  mkdir "$d"
+  pushd "$d"
+  eval $3 "'../$1'"
+  popd
+}
+
 extract() {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.7z)        $SEVENZ x $1         ;;
+  if [ -f "$1" ] ; then
+    case "$1" in
+      *.7z)        withdir "$1" .7z "$SEVENZ x"      ;;
       *.Z)         ${pkgs.gzip}/bin/uncompress $1   ;;
-      *.bz2)       $BUSYBOX/bunzip2 $1      ;;
-      *.gz)        $BUSYBOX/gunzip $1       ;;
-      *.lzma)      $BUSYBOX/xz --decompress ;;
-      *.rar)       $SEVENZ x $1      ;;
-      *.tar)       $TAR xvf $1      ;;
-      *.tar.bz2)   $TAR xvjf $1     ;;
-      *.tar.gz)    $TAR xvzf $1     ;;
-      *.tbz2)      $TAR xvjf $1     ;;
-      *.tgz)       $TAR xvzf $1     ;;
-      *.xz)        $BUSYBOX/xz --decompress ;;
-      *.zip)       $BUSYBOX/unzip $1        ;;
+      *.bz2)       $BUSYBOX/bunzip2 $1              ;;
+      *.gz)        $BUSYBOX/gunzip $1               ;;
+      *.lzma)      $BUSYBOX/xz --decompress         ;;
+      *.rar)       $SEVENZ x $1                     ;;
+      *.tar)       $TAR --one-top-level xvf $1      ;;
+      *.tar.bz2)   $TAR --one-top-level xvjf $1     ;;
+      *.tar.gz)    $TAR --one-top-level xvzf $1     ;;
+      *.tbz2)      $TAR --one-top-level xvjf $1     ;;
+      *.tgz)       $TAR --one-top-level xvzf $1     ;;
+      *.xz)        withdir "$1" .xz "$BUSYBOX/xz --decompress" ;;
+      *.zip)       withdir "$1" .zip "$BUSYBOX/unzip" ;;
       *)           echo "'$1' cannot be extracted via >extract<" ;;
     esac
   else

@@ -15,7 +15,7 @@ in
     cachix
     calibre
     choose
-    chromium
+    ungoogled-chromium
     coreutils
     darktable
     dateutils

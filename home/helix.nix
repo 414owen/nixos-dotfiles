@@ -60,7 +60,7 @@
     file-types = ["hs"]
     roots = ["Setup.hs", "stack.yaml", "*.cabal", "cabal.project", "cabal.project.freeze"]
     comment-token = "--"
-    language-server = { command = "haskell-language-server" }
+    language-server = { command = "haskell-language-server", args = ["--lsp"] }
     indent = { tab-width = 2, unit = "  " }
   '';
 }

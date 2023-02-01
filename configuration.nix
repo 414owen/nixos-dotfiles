@@ -28,6 +28,7 @@
   fonts = {
      fonts = with pkgs; [
       (nerdfonts.override { fonts = ["FiraCode" "RobotoMono"]; })
+      dejavu_fonts
       ubuntu_font_family
       liberation_ttf
       fira-code
@@ -67,6 +68,8 @@
     pulseaudio.enable = false;
   };
 
+  services.udisks2.enable = true;
+
   nix = {
     settings = {
       trusted-public-keys = [
@@ -89,18 +92,26 @@
       pmutils
       bemenu
       dconf
+      gnome.gedit
+      udiskie
+      openmw
       file
+      gnome.file-roller
       firmwareLinuxNonfree
       ntfs3g
       patchelf
       python3Full
+      ranger
       service-wrapper
+      xfce.thunar
+      xfce.thunar-archive-plugin
       traceroute
       tree
       unzip
       wget
       wirelesstools
       xsel
+      xdg-utils
     ];
   };
 
@@ -163,7 +174,7 @@
     priority = 5;
     memoryPercent = 50;
   };
-
+  
   # services.cassandra.enable = true;
   # services.redis.enable = true;
   # services.apache-kafka.enable = true;
@@ -173,7 +184,9 @@
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [ ];
+    overlays = [
+      (import ./overlays/chrome.nix)
+    ];
   };
 
   system.stateVersion = "22.11"; # Did you read the comment?

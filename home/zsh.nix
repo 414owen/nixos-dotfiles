@@ -13,14 +13,6 @@ in
       ignoreDups = true;
       share = true;
     };
-    initExtraBeforeCompInit = ''
-      if [ "$TERM" = "alacritty" ]; then
-        if [ -z "$TMUX" ]; then
-          tmux
-          exit
-        fi
-      fi
-    '';
     initExtra = ''
       export __NIXOS_SET_ENVIRONMENT_DONE=1
       . ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

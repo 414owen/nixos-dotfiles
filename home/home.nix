@@ -70,5 +70,7 @@ in
     zsh.enable = true;
   };
 
+  services.udiskie.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 }
