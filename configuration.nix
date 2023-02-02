@@ -19,15 +19,6 @@
   # virtualisation.virtualbox.host.enable = true;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-    # alsa.support32Bit = true;
-    # If you want to use JACK applications, uncomment this
-    # jack.enable = true;
-  };
-
   fonts = {
      fonts = with pkgs; [
       (nerdfonts.override { fonts = ["FiraCode" "RobotoMono"]; })
@@ -45,8 +36,6 @@
   };
 
   programs.dconf.enable = true;
-  services.thermald.enable = false;
-  services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
     pinentryFlavor = "curses";
@@ -76,7 +65,6 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  services.gvfs.enable = true;
 
   networking.hostName = "nixos-arm";
   networking.networkmanager.enable = true;
@@ -85,6 +73,23 @@
   i18n.defaultLocale = "en_GB.UTF-8";
 
   services = {
+
+    gvfs.enable = true;
+
+    thermald.enable = false;
+    pcscd.enable = true;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+      # alsa.support32Bit = true;
+      # If you want to use JACK applications, uncomment this
+      # jack.enable = true;
+    };
+
+    udisks2.enable = true;
+
     xserver = {
       enable = false;
       layout = "gb";
@@ -113,6 +118,14 @@
   environment.systemPackages = with pkgs; [
     helix
     wget
+    udiskie
+    pmutils
+    libnotify
+    fuzzel
+    xfce.thunar
+    xfce.thunar-volman
+    ranger
+    joshuto
     firefox
   ];
 

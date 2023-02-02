@@ -13,7 +13,7 @@ in
       fonts = {
         names = ["Ubuntu Mono"];
       };
-      terminal = "foot";
+      terminal = "footclient";
       keybindings = {
         "${mod}+w" = "exec firefox";
         "${mod}+q" = "kill";

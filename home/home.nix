@@ -12,6 +12,7 @@ in
     ./direnv.nix
     # ./emacs.nix
     ./firefox.nix
+    ./fnott.nix
     ./foot.nix
     # ./gdb.nix
     ./ghci.nix
