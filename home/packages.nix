@@ -8,11 +8,9 @@ in
 {
   home.packages = with pkgs; [
     any-nix-shell
-    audio-recorder
     prismlauncher
     asciinema
     bat
-    carapace
     chromium
     choose
     libreoffice
@@ -68,6 +66,7 @@ in
     q-text-as-data
     remarshal
     ripgrep
+    retroarchFull
     sd
     stdenv
     xclip

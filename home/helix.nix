@@ -3,7 +3,7 @@
 {
   home.file.".config/helix/config.toml".text = ''
     # theme = "base16_terminal"
-    # theme = "rose-pine"
+    theme = "rose_pine"
 
     [keys.normal]
     C-s = [
@@ -61,5 +61,16 @@
     auto-format = false
     comment-token = "--"
     indent = { tab-width = 2, unit = "  " }
+
+    [[language]]
+    name = "nix"
+    scope = "source.nix"
+    injection-regex = "nix"
+    file-types = ["nix"]
+    shebangs = []
+    roots = []
+    comment-token = "#"
+    language-server = { command = "nil" }
+    indent = { tab-width = 2, unit = "  " } 
   '';
 }

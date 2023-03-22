@@ -33,10 +33,10 @@ in
     };
     extraConfig = {
       core = {
-        pager = "${delta}/bin/delta";
+        pager = "${delta}/bin/delta --side-by-side";
       };
       interactive = {
-        diffFilter = "${delta}/bin/delta --color-only";
+        diffFilter = "${delta}/bin/delta --color-only --side-by-side";
       };
       hub = {
         protocol = "https";

@@ -26,6 +26,7 @@ in
         hostname = "192.168.0.131";
         user = "owen";
       };
+      "sim-dev"          = mkTikoBox "simulator-be-dev";
       "hydra"            = mkTikoBox "hydra";
       "runner-1"         = mkTikoBox "nix-gitlab-runner-1.internal";
       "runner-2"         = mkTikoBox "nix-gitlab-runner-2.internal";

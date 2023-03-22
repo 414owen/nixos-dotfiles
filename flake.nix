@@ -15,12 +15,14 @@
 # sudo nix flake update --commit-lock-file /etc/nixos
 
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+  };
 
-  inputs.home-manager.url = "github:nix-community/home-manager/master";
-  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }: {
+  outputs = { self, nixpkgs, rust-overlay, home-manager, nixos-hardware, ... }: {
     nixosConfigurations = builtins.listToAttrs (builtins.map
       (system: { name = system.config.networking.hostName; value = system; })
       [
@@ -29,11 +31,10 @@
           # Things in this set are passed to modules and accessible
           # in the top-level arguments (e.g. `{ pkgs, lib, inputs, ... }:`).
           specialArgs = {
-            inherit self;
+            inherit self rust-overlay;
           };
           modules = [
             home-manager.nixosModules.home-manager
-            nixos-hardware.nixosModules.dell-xps-13-9380
             nixos-hardware.nixosModules.common-pc
             nixos-hardware.nixosModules.common-pc-ssd
             nixos-hardware.nixosModules.common-cpu-amd
@@ -42,15 +43,6 @@
             ({ pkgs, ... }: {
               environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
               environment.etc."nix/channels/home-manager".source = home-manager.outPath;
-
-              nix.nixPath = [ 
-                "nixpkgs=/etc/nix/channels/nixpkgs"
-                "home-manager=/etc/nix/channels/home-manager"
-              ];
-
-              nix.settings.experimental-features = "nix-command flakes";
-
-              home-manager.useGlobalPkgs = true;
             })
 
             ./configuration.nix

@@ -11,9 +11,9 @@
   # services.thermald.enable = true;
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/b4443c16-86c1-42af-bc2c-349bf3165163";

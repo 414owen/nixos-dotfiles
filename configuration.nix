@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, rust-overlay, ... }:
 
 {
   imports = [
@@ -12,11 +12,19 @@
     ./hardware-configuration.nix
   ];
 
+  nix.nixPath = [ 
+    "nixpkgs=/etc/nix/channels/nixpkgs"
+    "home-manager=/etc/nix/channels/home-manager"
+  ];
+
+  nix.settings.experimental-features = "nix-command flakes";
+
+  home-manager.useGlobalPkgs = true;
+
   fonts.fontDir.enable = true;
   # virtualisation.docker.enable = true;
   # virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "owen" ];
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.pipewire = {
     enable = true;
@@ -73,8 +81,6 @@
     pulseaudio.enable = false;
   };
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
   environment = {
     # for zsh completions of system packages
     pathsToLink = [ "/share/zsh" ];
@@ -82,7 +88,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_5_16;
   services.gvfs.enable = true;
 
   networking.hostName = "nixos";
@@ -143,7 +149,7 @@
 
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "plugdev" "docker" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -153,11 +159,13 @@
     kakoune
     wget
     firefox
+    pkgs.rust-bin.stable.latest.default
+    rust-analyzer
   ];
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [ ];
+    overlays = [ rust-overlay.overlays.default ];
   };
 
   system.stateVersion = "22.11"; # Did you read the comment?
