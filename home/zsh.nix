@@ -17,7 +17,6 @@ in
     initExtra = ''
       bindkey '^[[A' up-line-or-search
       bindkey '^[[B' down-line-or-search
-      setopt extendedglob
       ${builtins.readFile (./shell.sh)}
       ${import ./fns.nix { pkgs = pkgs; }}
     '';
