@@ -6,7 +6,7 @@ in
 
 {
   wayland.windowManager.sway = {
-    enable = true;
+    enable = false;
     systemdIntegration = true;
     config = rec {
       input."type:keyboard" = {

@@ -92,11 +92,9 @@
       pmutils
       bemenu
       dconf
-      gnome.gedit
       udiskie
       openmw
       file
-      gnome.file-roller
       firmwareLinuxNonfree
       ntfs3g
       patchelf
@@ -124,27 +122,26 @@
   sound.enable = true;
   networking.hostName = "nixos";
 
-  services.localtimed.enable = true;
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_GB.UTF-8";
 
   services = {
     xserver = {
-      enable = false;
+      enable = true;
       layout = "gb";
-      # desktopManager = {
-      #   gnome.enable = true;
-      # };
-      # displayManager = {
-      #   defaultSession = "gnome";
-      #   autoLogin = {
-      #     enable = true;
-      #     user = "owen";
-      #   };
-      #   gdm = {
-      #     enable = true;
-      #   };
-      # };
+      desktopManager = {
+        gnome.enable = true;
+      };
+      displayManager = {
+        defaultSession = "gnome";
+        # autoLogin = {
+        #   enable = true;
+        #   user = "owen";
+        # };
+        gdm = {
+          enable = true;
+        };
+      };
       libinput.enable = true;
       xkbOptions = "ctrl:swapcaps";
       videoDrivers = [ "amdgpu" ];
