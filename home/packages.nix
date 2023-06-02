@@ -37,6 +37,7 @@ in
     gitAndTools.hub
     gnome3.geary
     gnome.devhelp
+    gnomeExtensions.material-shell
     gnumake
     gnumeric
     gnupg
@@ -90,6 +91,7 @@ in
     tree
     tree
     usbutils
+    wine
     vlc
     # waveform-pro
     wl-clipboard

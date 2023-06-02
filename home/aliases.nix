@@ -8,6 +8,7 @@ let
   mkgraph = extra: "git lg --color=always ${extra} | gitlogprettify | less";
   mkgraphall = extra: mkgraph "--all ${extra}";
 in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
+  awssh = "ssh -i ~/.ssh/aws-prod-keypair.pem -l root";
   cat = cat;
   c  =  "clear";
   cf = "cd $(fd -t d | fzf)";

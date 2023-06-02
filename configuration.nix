@@ -129,19 +129,8 @@
     xserver = {
       enable = true;
       layout = "gb";
-      desktopManager = {
-        gnome.enable = true;
-      };
-      displayManager = {
-        defaultSession = "gnome";
-        # autoLogin = {
-        #   enable = true;
-        #   user = "owen";
-        # };
-        gdm = {
-          enable = true;
-        };
-      };
+      desktopManager.gnome.enable = true;
+      displayManager.gdm.enable = true;
       libinput.enable = true;
       xkbOptions = "ctrl:swapcaps";
       videoDrivers = [ "amdgpu" ];
@@ -157,6 +146,8 @@
   };
   hardware.enableRedistributableFirmware = true;
   hardware.cpu.amd.updateMicrocode = true;
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
 
   console.useXkbConfig = true;
 
