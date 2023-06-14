@@ -95,14 +95,13 @@
       udiskie
       openmw
       file
+      file-roller
       firmwareLinuxNonfree
       ntfs3g
       patchelf
       python3Full
       ranger
       service-wrapper
-      xfce.thunar
-      xfce.thunar-archive-plugin
       traceroute
       tree
       unzip
