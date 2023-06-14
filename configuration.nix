@@ -104,10 +104,12 @@
   i18n.defaultLocale = "en_GB.UTF-8";
 
   services = {
-    openssh = {
-      enable = true;
-      passwordAuthentication = true;
-    };
+    # openssh = {
+    #   enable = true;
+    #   settings = {
+    #     PasswordAuthentication = true;
+    #   };
+    # };
 
     openvpn.servers = { 
       officeVPN = {

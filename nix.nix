@@ -2,8 +2,6 @@
 
 {
   nix = {
-    registry.nixpkgs.flake = pkgs;
-
     extraOptions = ''
       allowed-uris = https://github.com
       auto-optimise-store = true
