@@ -36,7 +36,10 @@
   };
 
   fonts.fonts = with pkgs; [
+    comic-relief
+    comic-mono
     noto-fonts
+    xkcd-font
     noto-fonts-emoji
     liberation_ttf
     fira
@@ -86,6 +89,8 @@
     pathsToLink = [ "/share/zsh" ];
   };
 
+  programs.zsh.enable = true;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # boot.kernelPackages = pkgs.linuxPackages_5_16;
@@ -122,20 +127,6 @@
 
       libinput.touchpad.tapping = true;
       libinput.touchpad.tappingDragLock = true;
-    };
-
-    hydra = {
-      enable = false;
-      hydraURL = "http://localhost:3000";
-      notificationSender = "hydra@localhost";
-      buildMachinesFiles = [];
-      useSubstitutes = true;
-      extraConfig = ''
-        <gitlab_authorization>
-        owen.shepherd@tiko.energy=glpat-Y19nsDS9oWjUxxksA88j
-        36=glpat-Y19nsDS9oWjUxxksA88j
-        </gitlab_authorization>
-      '';
     };
   };
 

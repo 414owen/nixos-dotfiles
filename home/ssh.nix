@@ -34,6 +34,12 @@ in
       "runner-4"         = mkTikoBox "nix-gitlab-runner-4.internal";
       "mgmt1"            = mkTikoBox "mgmt1";
       "backend1-staging" = mkTikoBox "backend1-staging.internal";
+      "backend-fr-6" = mkTikoBox "backend-fr-6.internal";
+      "backend-fr-5" = mkTikoBox "backend-fr-5.internal";
+      "backend-fr-4" = mkTikoBox "backend-fr-4.internal";
+      "backend-fr-3" = mkTikoBox "backend-fr-3.internal";
+      "backend-fr-2" = mkTikoBox "backend-fr-2.internal";
+      "backend-fr-1" = mkTikoBox "backend-fr-1.internal";
     };
   };
 }
