@@ -35,6 +35,7 @@
     newline = "⏎"
     tabpad = "·" # Tabs will look like "→···" (depending on tab width)
   '';
+
   home.file.".config/helix/languages.toml".text = ''
 
     [[language]]
@@ -61,16 +62,5 @@
     comment-token = "--"
     language-server = { command = "haskell-language-server", args = ["--lsp"] }
     indent = { tab-width = 2, unit = "  " }
-
-    [[language]]
-    name = "nix"
-    scope = "source.nix"
-    injection-regex = "nix"
-    file-types = ["nix"]
-    shebangs = []
-    roots = []
-    comment-token = "#"
-    language-server = { command = "nil" }
-    indent = { tab-width = 2, unit = "  " } 
   '';
 }
