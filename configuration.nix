@@ -17,6 +17,14 @@
   users.extraGroups.vboxusers.members = [ "owen" ];
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.ovmf = {
+      enable = true;
+      packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
+    };
+  };
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -70,19 +78,6 @@
 
   services.udisks2.enable = true;
 
-  nix = {
-    settings = {
-      trusted-public-keys = [
-        "hydra.tiko.ch:q8EX+cmvjysdFOPttZEl30cMv5tnB2dddkwrC61qdA4="
-        "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-      ];
-      substituters = [
-        "https://cache.iog.io"
-        "http://hydra.tiko.ch/"
-      ];
-    };
-  };
-
   home-manager.users.owen = import ./home/home.nix;
 
   environment = {
@@ -95,16 +90,19 @@
       udiskie
       openmw
       file
-      file-roller
+      gnome.file-roller
       firmwareLinuxNonfree
       ntfs3g
       patchelf
-      python3Full
+      # python3Full
       ranger
       service-wrapper
       traceroute
       tree
       unzip
+      OVMF
+      qemu
+      virtmanager
       wget
       wirelesstools
       xsel
@@ -152,7 +150,7 @@
 
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "audio" "video" "disk" "networkmanager" "adbusers" "tty" "dialout" ];
+    extraGroups = [ "wheel" "libvirt" "libvirtd" "docker" "audio" "video" "disk" "networkmanager" "adbusers" "tty" "dialout" ];
     shell = pkgs.zsh;
   };
 

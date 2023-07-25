@@ -8,7 +8,7 @@
         user = "owen";
       };
       "pi" = {
-        hostname = "192.168.0.241";
+        hostname = "192.168.1.26";
         user = "pi";
       };
       "work" = {

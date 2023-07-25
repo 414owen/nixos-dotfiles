@@ -3,7 +3,7 @@
 let
   defaults = import ./defaults.nix;
   find = defaults.find;
-  fzf-command = "${pkgs."${find}"}/bin/${find} --type file --color=always";
+  fzf-command = "${pkgs."${find}"}/bin/${find} -type f --color=always";
 in
 
 {
@@ -18,6 +18,7 @@ in
   MAKEFLAGS = "-j$(nproc)";
   TERMINAL = "${pkgs.st}/bin/st";
   NIX_PATH = ''$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH'';
+  LIBVIRT_DEFAULT_URI = "qemu:///system";
 
   # force all generic backend to use wayland backend
   # GDK_BACKEND = "wayland";

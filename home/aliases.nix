@@ -11,7 +11,7 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   awssh = "ssh -i ~/.ssh/aws-prod-keypair.pem -l root";
   cat = cat;
   c  =  "clear";
-  cf = "cd $(fd -t d | fzf)";
+  cf = "cd $(${find} -t d | fzf)";
   cs = "clear;ls";
   debug = "set -o nounset; set -o xtrace";
   e = editor;

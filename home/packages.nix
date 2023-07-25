@@ -25,7 +25,7 @@ in
     exa
     expect
     expect
-    fd
+    bfs
     file
     fira
     fira-mono
