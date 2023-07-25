@@ -150,7 +150,7 @@
 
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirt" "libvirtd" "docker" "audio" "video" "disk" "networkmanager" "adbusers" "tty" "dialout" ];
+    extraGroups = [ "wheel" "libvirt" "libvirtd" "docker" "audio" "video" "render" "disk" "networkmanager" "adbusers" "tty" "dialout" ];
     shell = pkgs.zsh;
   };
 

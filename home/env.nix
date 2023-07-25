@@ -3,7 +3,7 @@
 let
   defaults = import ./defaults.nix;
   find = defaults.find;
-  fzf-command = "${pkgs."${find}"}/bin/${find} -type f --color=always";
+  fzf-command = "${pkgs."${find}"}/bin/${find} -type f -color";
 in
 
 {
