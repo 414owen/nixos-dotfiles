@@ -8,80 +8,83 @@ in
 {
   home.packages = with pkgs; [
     any-nix-shell
-    prismlauncher
     asciinema
     bat
-    chromium
-    choose
-    libreoffice
     cabal2nix
     cabal-install
     cachix
+    cgdb
+    choose
+    chromium
     coreutils
     dateutils
+    diskonaut
+    duf
     editorconfig-core-c
-    helix
+    evince
+    exa
+    expect
+    fd
+    file
     fira
     fira-code
     font-awesome
-    gnome.devhelp
-    evince
-    spot
-    spotify
-    exa
-    expect
-    file
-    fd
-    gnupg
-    gnomeExtensions.system-monitor
     ghc
-    htop
-    gnumake
-    cgdb
     gimp
     gitAndTools.hub
+    gnome.devhelp
+    gnomeExtensions.system-monitor
+    gnumake
+    gnupg
+    gotop
+    helix
+    htop
     htop
     imagemagick
     inkscape
     jq
     killall
-    libsecret
+    libreoffice
     # libreoffice-fresh
-    gotop
+    libsecret
     lshw
     macchina
     mosh
     mpv
     neofetch
-    nix-bundle
-    nnn
     niv
+    nix-bundle
     nix-index
     nix-output-monitor
     nix-prefetch-git
     nix-prefetch-github
     nnn
+    nnn
+    obsidian
     pciutils
     pidgin
+    prismlauncher
     q-text-as-data
     remarshal
-    ripgrep
     retroarchFull
-    sd
-    stdenv
-    xclip
+    ripgrep
     scripts.copy
     scripts.vpn
+    sd
+    shotwell
     signal-desktop
-    wl-clipboard
-    tup
-    tree
-    transmission-gtk
+    spot
+    spotify
+    stdenv
     tmux
+    transmission-gtk
     tree
+    tree
+    tup
     usbutils
     vlc
-    duf
+    wl-clipboard
+    xclip
   ] ++ (with gitAndTools; [
     gh
     git-absorb
