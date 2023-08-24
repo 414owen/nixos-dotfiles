@@ -43,6 +43,7 @@ in
       };
       push = {
         default = "current";
+        autoSetupRemote = true;
       };
       # blame = {
       #   ignoreRevsFile = ".git-blame-ignore-revs";
