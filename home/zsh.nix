@@ -12,9 +12,14 @@ in
     enableSyntaxHighlighting = true;
     history = {
       ignoreDups = true;
+      # ignoreAllDups = true;
+      expireDuplicatesFirst = true;
       share = true;
     };
     initExtra = ''
+      setopt HIST_REDUCE_BLANKS
+      setopt HIST_SAVE_NO_DUPS
+
       bindkey '^[[A' up-line-or-search
       bindkey '^[[B' down-line-or-search
       autoload -z edit-command-line

@@ -41,6 +41,7 @@
 
 
             ({ pkgs, ... }: {
+              nixpkgs.overlays = [ (final: prev: {}) ];
               nix.registry.nixpkgs.flake = nixpkgs;
               environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
               environment.etc."nix/channels/home-manager".source = home-manager.outPath;
