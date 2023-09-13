@@ -20,6 +20,7 @@ in
     dateutils
     diskonaut
     duf
+    dua
     editorconfig-core-c
     evince
     exa

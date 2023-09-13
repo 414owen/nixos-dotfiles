@@ -139,10 +139,11 @@
   };
 
   sound.enable = true;
+  programs.adb.enable = true;
 
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "plugdev" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "plugdev" "docker" "adbusers" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
