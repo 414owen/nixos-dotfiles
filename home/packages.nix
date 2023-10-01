@@ -83,6 +83,7 @@ in
     tree
     tup
     usbutils
+    vault
     vlc
     wl-clipboard
     xclip
