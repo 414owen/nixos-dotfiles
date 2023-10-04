@@ -17,12 +17,13 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nix-std.url = "github:chessai/nix-std";
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
-  outputs = { self, nixpkgs, rust-overlay, home-manager, nixos-hardware, ... }: {
+  outputs = { self, nixpkgs, rust-overlay, nix-std, home-manager, nixos-hardware, ... }: {
     nixosConfigurations = builtins.listToAttrs (builtins.map
       (system: { name = system.config.networking.hostName; value = system; })
       [
@@ -35,10 +36,14 @@
           };
           modules = [
             home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = {
+                inherit nix-std;
+              };
+            }
             nixos-hardware.nixosModules.common-pc
             nixos-hardware.nixosModules.common-pc-ssd
             nixos-hardware.nixosModules.common-cpu-amd
-
 
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ (final: prev: {}) ];

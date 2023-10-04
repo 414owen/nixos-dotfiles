@@ -32,6 +32,7 @@ in
     font-awesome
     ghc
     gimp
+    git-crypt
     gitAndTools.hub
     gnome.devhelp
     gnomeExtensions.system-monitor
