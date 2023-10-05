@@ -43,7 +43,6 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   ggp = mkgraph "-p --simplify-by-decoration";
   ggpa = "ggp --all";
   ghs = grep + " -g '*.hs'";
-  gi = "git init";
   gitlogprettify = "sed ${sedexprs}";
   gld = "git log --pretty = format:\"%h %ad %s\" --date = short --all";
   gma = "git merge --abort";
