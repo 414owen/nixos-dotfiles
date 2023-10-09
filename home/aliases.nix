@@ -10,11 +10,11 @@ let
 in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
   cat = cat;
   c  =  "clear";
-  cf = "cd $(fd -t d | fzf)";
+  cf = "cd \"$(fd -t d | fzf)\"";
   cs = "clear;ls";
   debug = "set -o nounset; set -o xtrace";
   e = editor;
-  ef = "file=$(${fuzzy}); [ ! -z \"$file\" ] && echo \"$file\" && teehist \"e $file\"";
+  ef = "file=$(${fuzzy}); [ ! -z \"$file\" ] && echo \"$file\" && teehist \"e '$file'\"";
   ff = fuzzy;
   f = find;
   gaaa = "git add --all";
