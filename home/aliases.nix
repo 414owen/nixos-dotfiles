@@ -7,7 +7,10 @@ let
   sedexprs = lib.concatMapStrings tosed ["second" "minute" "hour" "day" "week" "month" "year"];
   mkgraph = extra: "git lg --color=always ${extra} | gitlogprettify | less";
   mkgraphall = extra: mkgraph "--all ${extra}";
-in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([{
+  histIgnore = ["ls" "mv" "cp" "reboot" "poweroff"];
+in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([
+(builtins.listToAttrs (map (cmd: {name = cmd; value = " ${cmd}";}) histIgnore))
+{
   cat = cat;
   c  =  "clear";
   cf = "cd \"$(fd -t d | fzf)\"";
