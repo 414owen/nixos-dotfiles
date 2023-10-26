@@ -26,6 +26,9 @@ in
         hostname = "192.168.0.131";
         user = "owen";
       };
+      "mboxproxy-0"      = mkTikoBox "mboxproxy-0.internal";
+      "mboxproxy-1"      = mkTikoBox "mboxproxy-1.internal";
+      "mboxproxy-2"      = mkTikoBox "mboxproxy-2.internal";
       "sim-dev"          = mkTikoBox "simulator-be-dev";
       "hydra"            = mkTikoBox "hydra";
       "runner-1"         = mkTikoBox "nix-gitlab-runner-1.internal";

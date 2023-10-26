@@ -11,10 +11,11 @@ in
     ./alacritty.nix
     # ./bash.nix
     ./direnv.nix
+    ./dconf.nix
     # ./emacs.nix
     ./firefox.nix
     ./foot.nix
-    # ./gdb.nix
+    ./gdb.nix
     ./ghci.nix
     ./git.nix
     ./theme.nix

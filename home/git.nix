@@ -12,6 +12,8 @@ in
       lg1 = "${base-log} %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all";
       lg2 = "${base-log} %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all";
       lg = "lg1";
+      pl = "!git pull $(git remote) $(git branch --show-current)";
+      up = "!git branch --set-upstream-to=$(git remote)/$(git branch --show-current) $(git branch --show-current)";
     };
     ignores = [
       "dist/"
@@ -40,6 +42,9 @@ in
       };
       hub = {
         protocol = "https";
+      };
+      branch = {
+        autoSetupMerge = "always";
       };
       push = {
         default = "current";

@@ -54,6 +54,7 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([
   gp = "git pull";
   gpr = "git pull --rebase";
   gpu = "git push";
+  gpuu = "git push -u $(git remote)";
   gr = "git rebase";
   gra = "git rebase --abort";
   grc = "git rebase --continue";
