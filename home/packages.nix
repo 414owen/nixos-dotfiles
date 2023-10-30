@@ -26,6 +26,10 @@ in
     expect
     expect
     bfs
+    # (factorio.override {
+    #   username = "414owen";
+    #   token = builtins.readFile ../secrets/factorio.key;
+    # })
     file
     fira
     fira-mono

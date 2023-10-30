@@ -14,6 +14,8 @@
   fonts.fontDir.enable = true;
   users.extraGroups.vboxusers.members = [ "owen" ];
 
+  services.tailscale.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
