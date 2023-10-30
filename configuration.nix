@@ -12,25 +12,12 @@
   ];
 
   fonts.fontDir.enable = true;
-  # virtualisation.docker.enable = true;
-  # virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "owen" ];
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.ovmf = {
-      enable = true;
-      packages = [ pkgs.OVMFFull.fd pkgs.pkgsCross.aarch64-multiplatform.OVMF.fd ];
-    };
-  };
 
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
   };
 
   fonts = {
@@ -134,7 +121,10 @@
     };
     openvpn.servers = {
       officeVPN = {
-        config = '' config /home/owen/.sec/profile-162.ovpn '';
+        config = ''
+          config /home/owen/.sec/profile-162.ovpn
+          auth-user-pass /home/owen/.sec/vpn.creds
+        '';
         updateResolvConf = true;
         autoStart = false;
       };
@@ -160,13 +150,6 @@
     memoryPercent = 50;
   };
   
-  # services.cassandra.enable = true;
-  # services.redis.enable = true;
-  # services.apache-kafka.enable = true;
-  # virtualisation.docker.extraOptions = let file = pkgs.writeText "daemon.json"
-  #   (builtins.toJSON { default-address-pools = [ { base = "192.168.128.0/18"; size = 24; } ]; });
-  # in "--config-file=${file}";
-
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [

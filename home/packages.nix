@@ -79,7 +79,6 @@ in
     # (retroarch.override { cores = with libretro; [ snes9x ]; })
     ripgrep
     scripts.copy
-    scripts.vpn
     sd
     shotwell
     signal-desktop
