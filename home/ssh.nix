@@ -9,7 +9,7 @@
       };
       "pi" = {
         hostname = "192.168.1.26";
-        user = "pi";
+        user = "dietpi";
       };
       "work" = {
         hostname = "192.168.0.131";
