@@ -15,6 +15,7 @@ in
       lg = "lg1";
       pl = "!git pull $(git remote) $(git branch --show-current)";
       up = "!git branch --set-upstream-to=$(git remote)/$(git branch --show-current) $(git branch --show-current)";
+      yeet = "!git clean -dfx; git reset --hard; git submodule update --init";
     };
     ignores = [
       "dist/"
