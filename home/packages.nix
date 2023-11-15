@@ -10,44 +10,50 @@ in
     any-nix-shell
     asciinema
     bat
+    bfs
     cabal2nix
     cabal-install
     cachix
+    calibre
     cgdb
     choose
-    chromium
     coreutils
+    darktable
     dateutils
     diskonaut
-    duf
     dua
+    duf
     editorconfig-core-c
     evince
-    exa
+    eza
     expect
-    fd
     file
     fira
     fira-code
+    fira-mono
     font-awesome
+    gdb
     ghc
     gimp
-    git-crypt
     gitAndTools.hub
+    git-crypt
+    gnome3.geary
     gnome.devhelp
+    gnomeExtensions.material-shell
     gnomeExtensions.system-monitor
     gnumake
+    gnumeric
     gnupg
     gotop
+    gparted
     helix
     htop
-    htop
+    hub
     imagemagick
     inkscape
+    jetbrains-mono
     jq
     killall
-    libreoffice
-    # libreoffice-fresh
     libsecret
     lshw
     macchina
@@ -61,8 +67,7 @@ in
     nix-prefetch-git
     nix-prefetch-github
     nnn
-    nnn
-    obsidian
+    non
     pciutils
     pidgin
     prismlauncher
@@ -71,7 +76,6 @@ in
     retroarchFull
     ripgrep
     scripts.copy
-    scripts.vpn
     sd
     shotwell
     signal-desktop
@@ -81,17 +85,19 @@ in
     tmux
     transmission-gtk
     tree
-    tree
     tup
+    ungoogled-chromium
     usbutils
     vault
     vlc
+    wine
     wl-clipboard
     xclip
+    zsh-history-substring-search
+    zsh-syntax-highlighting
   ] ++ (with gitAndTools; [
     gh
     git-absorb
-    # git-change-author
     git-gone
     git-open
     git-recent
@@ -99,6 +105,5 @@ in
     git-test
     git-fame
     scripts.git-weekend
-    steam
   ]);
 }

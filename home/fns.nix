@@ -27,6 +27,14 @@ add-rpaths() {
   done
 }
 
+withdir() {
+  d="$(basename "$1" "$2")"
+  mkdir "$d"
+  pushd "$d"
+  eval $3 "'../$1'"
+  popd
+}
+
 extract() {
   if [ -f $1 ] ; then
     case $1 in
@@ -133,10 +141,5 @@ function bd(){
       popd > /dev/null
     done
   fi
-}
-
-function git-personal() {
-  git config user.email "owen@owen.cafe"
-  git config user.signingkey "2C9161B9AB61BD1502F9011F426D621DB5732F0A"
 }
 ''

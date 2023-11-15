@@ -17,13 +17,9 @@ let
       echo "Can't copy. Please set XDG_SESSION_TYPE." >&2
     fi
   '';
-  vpn = writeScript "vpn" ''
-    sudo expect /home/owen/.sec/vpn.exp
-  '';
 in
 
 {
   inherit copy;
   inherit git-weekend;
-  inherit vpn;
 }

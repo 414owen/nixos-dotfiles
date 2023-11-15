@@ -11,15 +11,17 @@ let
 in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([
 (builtins.listToAttrs (map (cmd: {name = cmd; value = " ${cmd}";}) histIgnore))
 {
+  awssh = "ssh -i ~/.ssh/aws-prod-keypair.pem -l root";
   cat = cat;
   c  =  "clear";
   cf = "cd \"$(fd -t d | fzf)\"";
   cs = "clear;ls";
   debug = "set -o nounset; set -o xtrace";
   e = editor;
-  ef = "file=$(${fuzzy}); [ ! -z \"$file\" ] && echo \"$file\" && teehist \"e '$file'\"";
+  ef = "file=$(${fuzzy}); [ ! -z \"$file\" ] && echo \"$file\" && teehist \"e $file\"";
   ff = fuzzy;
   f = find;
+  find = find;
   gaaa = "git add --all";
   gaa = "git add .";
   ga = "git add";
@@ -32,6 +34,8 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([
   gcl = "git clone";
   gcm = "git commit --message";
   gcne = "git commit --no-edit";
+  gcmnv = "git commit --message --no-verify";
+  gcnenv = "git commit --no-edit --no-verify";
   gcob = "git checkout -b";
   gcod = "git checkout develop";
   gco = "git checkout";
@@ -67,9 +71,6 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([
   gstp = "git stash pop";
   gsts = "git stash save";
   h = "history";
-  "480p" = "mpv '--ytdl-format=bestvideo[height<720]+bestaudio/best'";
-  # hb = "hadrian/build -j$(($(${pkgs.coreutils}/bin/nproc) +1))";
-  # hb = "hadrian/build -j$(($(nproc) +1))";
   hb = "hadrian/build -j";
   hbq = "hb --flavour=quick";
   hbqs = "hbq --skip='//*.mk' --skip='stage1:lib:rts'";

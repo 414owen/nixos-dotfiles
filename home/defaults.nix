@@ -2,7 +2,7 @@
   cat = "bat";
   editor = "hx";
   fuzzy = "fzf";
-  find = "fd";
-  grep = "grep";
+  find = "bfs";
+  grep = "rg";
   ls = "exa";
 }

@@ -1,6 +1,8 @@
 { ... }:
+
 {
   programs.readline = {
+    enable = true;
     variables = {
       # Show filetype in completions by colorisation
       colored-stats = true;

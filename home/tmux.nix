@@ -5,6 +5,7 @@ in
 
 {
   programs.tmux = {
+    enable = true;
     keyMode = "vi";
     baseIndex = 1;
     extraConfig = ''

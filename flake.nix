@@ -1,61 +1,39 @@
-# https://www.tweag.io/blog/2020-07-31-nixos-flakes/
-
-# To switch from channels to flakes execute:
-# cd /etc/nixos
-# sudo wget -O flake.nix https://gist.githubusercontent.com/misuzu/80af74212ba76d03f6a7a6f2e8ae1620/raw/flake.nix
-# sudo git init
-# sudo git add . # won't work without this
-# nix-shell -p nixFlakes --run "sudo nix --experimental-features 'flakes nix-command' build .#nixosConfigurations.$(hostname).config.system.build.toplevel"
-# sudo ./result/bin/switch-to-configuration switch
-
-# Now nixos-rebuild can use flakes:
-# sudo nixos-rebuild switch --flake /etc/nixos
-
-# To update flake.lock run:
-# sudo nix flake update --commit-lock-file /etc/nixos
-
 {
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
-    nix-std.url = "github:chessai/nix-std";
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    rust-overlay.url = "github:oxalica/rust-overlay";
-  };
+  inputs.nixpkgs.url        = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.home-manager.url   = "github:nix-community/home-manager/master";
+  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+  inputs.nix-std.url        = "github:chessai/nix-std";
+  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = { self, nixpkgs, rust-overlay, nix-std, home-manager, nixos-hardware, ... }: {
-    nixosConfigurations = builtins.listToAttrs (builtins.map
-      (system: { name = system.config.networking.hostName; value = system; })
-      [
-        (nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          # Things in this set are passed to modules and accessible
-          # in the top-level arguments (e.g. `{ pkgs, lib, inputs, ... }:`).
-          specialArgs = {
-            inherit self rust-overlay;
-          };
-          modules = [
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = {
-                inherit nix-std;
-              };
-            }
-            nixos-hardware.nixosModules.common-pc
-            nixos-hardware.nixosModules.common-pc-ssd
-            nixos-hardware.nixosModules.common-cpu-amd
+  outputs = args@{ nixpkgs, nix-std, home-manager, nixos-hardware, ... }: {
 
-            ({ pkgs, ... }: {
-              nixpkgs.overlays = [ (final: prev: {}) ];
-              nix.registry.nixpkgs.flake = nixpkgs;
-              environment.etc."nix/channels/nixpkgs".source = nixpkgs.outPath;
-              environment.etc."nix/channels/home-manager".source = home-manager.outPath;
-            })
+    nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = args;
 
-            ./configuration.nix
-          ];
-        })
-      ]
-    );
+      modules = [
+        home-manager.nixosModules.home-manager
+        nixos-hardware.nixosModules.common-pc
+        nixos-hardware.nixosModules.common-pc-ssd
+        nixos-hardware.nixosModules.common-cpu-amd
+        nixos-hardware.nixosModules.common-gpu-amd
+        ./modules/common.nix
+        ./machines/desktop
+      ];
+    };
+
+    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = args;
+
+      modules = [
+        home-manager.nixosModules.home-manager
+        nixos-hardware.nixosModules.common-cpu-amd
+        nixos-hardware.nixosModules.common-pc-laptop
+        nixos-hardware.nixosModules.common-pc-laptop-ssd
+        ./modules/common.nix
+        ./machines/laptop
+      ];
+    };
   };
 }

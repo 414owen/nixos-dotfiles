@@ -25,7 +25,6 @@
       render = true;
     };
 
-
     editor.cursor-shape = {
       insert = "bar";
       normal = "block";
@@ -43,6 +42,10 @@
   };
 
   home.file.".config/helix/languages.toml".text = nix-std.lib.serde.toTOML {
+    language-server.haskell-language-server = {
+      command = "haskell-language-server";
+      args = ["--lsp"];
+    };
     language = [
       {
         name = "rust";
@@ -52,20 +55,10 @@
         roots = [];
         auto-format = true;
         comment-token = "//";
-        language-server = {
-          command = "rust-analyzer";
-        };
+        language-servers = ["rust-analyzer"];
         indent = {
           tab-width = 2;
           unit = "  ";
-        };
-        config = {
-          cargo = {
-            loadoutdirsfromcheck = true;
-          };
-          procmacro = {
-            enable = false;
-          };
         };
       }
       {
@@ -75,10 +68,9 @@
         file-types = ["hs"];
         roots = ["Setup.hs" "stack.yaml" "*.cabal" "cabal.project" "cabal.project.freeze"];
         comment-token = "--";
-        language-server = {
-          command = "haskell-language-server";
-          args = ["--lsp"];
-        };
+        language-servers = [
+          "haskell-language-server"
+        ];
         indent = {
           tab-width = 2;
           unit = "  ";

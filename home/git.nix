@@ -8,6 +8,7 @@ in
 
 {
   programs.git = {
+    enable = true;
     aliases = {
       lg1 = "${base-log} %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all";
       lg2 = "${base-log} %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all";
@@ -46,13 +47,18 @@ in
       branch = {
         autoSetupMerge = "always";
       };
+      merge = {
+        conflictstyle = "diff3";
+      };
       push = {
         default = "current";
         autoSetupRemote = true;
       };
-      # blame = {
-      #   ignoreRevsFile = ".git-blame-ignore-revs";
-      # };
+      url = {
+        "https://github.com/" = {
+          insteadOf = "git://github.com/";
+        };
+      };
     };
   };
 }

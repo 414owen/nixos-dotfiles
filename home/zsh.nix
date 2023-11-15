@@ -6,13 +6,13 @@ in
 
 {
   programs.zsh = {
+    enable = true;
     autocd = true;
     # enableAutosuggestions = true;
     enableCompletion = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     history = {
       ignoreDups = true;
-      # ignoreAllDups = true;
       expireDuplicatesFirst = true;
       share = true;
     };
