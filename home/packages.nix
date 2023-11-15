@@ -39,6 +39,7 @@ in
     ghc
     gimp
     gitAndTools.hub
+    git-crypt
     gnome3.geary
     gnome.devhelp
     gnomeExtensions.material-shell
