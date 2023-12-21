@@ -1,6 +1,6 @@
 {
-  inputs.nixpkgs.url        = "github:NixOS/nixpkgs/nixos-unstable";
-  inputs.home-manager.url   = "github:nix-community/home-manager/master";
+  inputs.nixpkgs.url        = "github:NixOS/nixpkgs/nixos-23.11";
+  inputs.home-manager.url   = "github:nix-community/home-manager/release-23.11";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   inputs.nix-std.url        = "github:chessai/nix-std";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";

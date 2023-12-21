@@ -7,6 +7,11 @@ let
 in
 {
   home.packages = with pkgs; [
+    postgresql
+    xh
+    (pkgs.python3.withPackages (ps: with ps; [
+      requests
+    ]))
     any-nix-shell
     asciinema
     bat
@@ -70,14 +75,14 @@ in
     non
     pciutils
     pidgin
-    prismlauncher
+    # prismlauncher
     q-text-as-data
     remarshal
-    retroarchFull
+    # retroarchFull
     ripgrep
     scripts.copy
     sd
-    shotwell
+    # shotwell
     signal-desktop
     spot
     spotify
@@ -86,7 +91,7 @@ in
     transmission-gtk
     tree
     tup
-    ungoogled-chromium
+    chromium
     usbutils
     vault
     vlc

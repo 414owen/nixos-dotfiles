@@ -10,5 +10,6 @@
 
   networking.hostName = "laptop";
   hardware.bluetooth.enable = true;
+  services.printing.enable = true;
 }
 
