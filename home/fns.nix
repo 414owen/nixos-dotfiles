@@ -125,7 +125,7 @@ function cd() {
   if [ "$#" = "0" ]; then
     pushd "$HOME" > /dev/null
   elif [ -f "$1" ]; then
-    command cd "$(dirname "$1")"
+    builtin cd "$(dirname "$1")"
   else
     pushd "$1" > /dev/null
   fi
