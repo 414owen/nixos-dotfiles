@@ -73,7 +73,7 @@
 
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "plugdev" ];
+    extraGroups = [ "wheel" "plugdev" "render" "video" ];
     shell = pkgs.zsh;
   };
 
