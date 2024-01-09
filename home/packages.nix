@@ -23,10 +23,7 @@ in
     cgdb
     choose
     coreutils
-    darktable
     dateutils
-    diskonaut
-    dua
     duf
     editorconfig-core-c
     evince
@@ -44,8 +41,6 @@ in
     git-crypt
     gnome3.geary
     gnome.devhelp
-    gnomeExtensions.material-shell
-    gnomeExtensions.system-monitor
     gnumake
     gnumeric
     gnupg
@@ -75,14 +70,11 @@ in
     non
     pciutils
     pidgin
-    # prismlauncher
     q-text-as-data
     remarshal
-    # retroarchFull
     ripgrep
     scripts.copy
     sd
-    # shotwell
     signal-desktop
     spot
     spotify
