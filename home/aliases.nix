@@ -87,6 +87,8 @@ pts += -ticky' > _ticky/hadrian.settings; hb --flavour=validate --build-root=_ti
   hsdl = "nix-shell -E 'let pkgs = import <nixpkgs> {}; in pkgs.haskellPackages.developPackage {root = ./.; modifier = drv: pkgs.haskell.lib.addBuildTools drv (with pkgs.haskellPackages; [ haskell-language-server ]);}'";
   json = "jq -Rr 'try fromjson // .'";
   k = "kill";
+  kubs = "kubectl -n backend-staging";
+  kubp = "kubectl -n backend-production";
   ll = ls + " -alF";
   l = ls + " -lah";
   lsl = ls + " -lah";
