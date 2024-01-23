@@ -42,6 +42,10 @@
   };
 
   home.file.".config/helix/languages.toml".text = nix-std.lib.serde.toTOML {
+    language-server.haskell-language-server-wrapper = {
+      command = "haskell-language-server-wrapper";
+      args = ["--lsp"];
+    };
     language-server.haskell-language-server = {
       command = "haskell-language-server";
       args = ["--lsp"];
@@ -70,6 +74,7 @@
         comment-token = "--";
         language-servers = [
           "haskell-language-server"
+          "haskell-language-server-wrapper"
         ];
         indent = {
           tab-width = 2;

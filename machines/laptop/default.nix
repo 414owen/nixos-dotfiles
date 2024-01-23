@@ -6,6 +6,8 @@
     ./../../modules/efi.nix
     ./../../modules/tiko.nix
     ./../../modules/no-mitigations.nix
+    ./../../modules/factorio
+    ./../../modules/steam.nix
   ];
 
   networking.hostName = "laptop";
