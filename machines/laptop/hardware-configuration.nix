@@ -4,7 +4,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [];
+  imports = [
+    # ../../games.nix
+  ];
 
   # services.tlp.enable = true;
   # services.power-profiles-daemon.enable = false;
