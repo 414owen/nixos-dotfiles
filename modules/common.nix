@@ -5,11 +5,6 @@
     ./nix.nix
   ];
 
-  nix.nixPath = [ 
-    "nixpkgs=/etc/nix/channels/nixpkgs"
-    "home-manager=/etc/nix/channels/home-manager"
-  ];
-
   nix.settings.experimental-features = "nix-command flakes";
 
   # update microcode
@@ -83,5 +78,11 @@
     memoryPercent = 50;
   };
   
-  system.stateVersion = "22.11";
+  system = {
+    stateVersion = "22.11";
+
+    extraSystemBuilderCmds = ''
+      ln -sv ${pkgs.path} $out/nixpkgs
+    '';
+  };
 }

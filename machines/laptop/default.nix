@@ -6,7 +6,7 @@
     ./../../modules/efi.nix
     ./../../modules/tiko.nix
     ./../../modules/no-mitigations.nix
-    ./../../modules/factorio
+    # ./../../modules/factorio
     ./../../modules/steam.nix
   ];
 
