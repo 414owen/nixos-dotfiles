@@ -10,8 +10,7 @@
     '';
 
     nixPath = [ 
-      "nixpkgs=/etc/nix/channels/nixpkgs"
-      "home-manager=/etc/nix/channels/home-manager"
+      "nixpkgs=/run/current-system/nixpkgs"
     ];
 
     settings = {
