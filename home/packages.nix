@@ -29,6 +29,7 @@ in
     evince
     eza
     expect
+    fd
     file
     fira
     fira-code
@@ -83,7 +84,7 @@ in
     transmission-gtk
     tree
     tup
-    chromium
+    ungoogled-chromium
     usbutils
     vault
     vlc
