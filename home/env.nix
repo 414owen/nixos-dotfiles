@@ -3,7 +3,7 @@
 let
   defaults = import ./defaults.nix;
   find = defaults.find;
-  fzf-command = "${find} -type f -color";
+  fzf-command = "fd -t f -c always";
 in
 
 {
