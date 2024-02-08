@@ -2,7 +2,7 @@
 
 export HISTCONTROL=ignoreboth:erasedups
 
-any-nix-shell zsh --info-right | source /dev/stdin
+any-nix-shell zsh | source /dev/stdin
 
 function zle-line-init zle-keymap-select {
   zle reset-prompt
