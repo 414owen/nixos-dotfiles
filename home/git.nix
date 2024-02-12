@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  delta = pkgs.gitAndTools.delta;
+  riff = pkgs.gitAndTools.riffdiff;
   base-log = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) -";
   common = import ./common.nix;
 in
@@ -37,10 +37,17 @@ in
     };
     extraConfig = {
       core = {
-        pager = "${delta}/bin/delta --side-by-side";
+        pager = "${riff}/bin/riff";
+        fsmonitor = true;
+        untrackedCache = true;
+      };
+      fetch = {
+        writeCommitGraph = true;
+        recurseSubmodules = true;
+        parallel = 0;
       };
       interactive = {
-        diffFilter = "${delta}/bin/delta --color-only --side-by-side";
+        diffFilter = "${riff}/bin/riff --color-only";
       };
       hub = {
         protocol = "https";
@@ -55,6 +62,7 @@ in
         default = "current";
         autoSetupRemote = true;
       };
+      rerere.enabled = true;
       url = {
         "https://github.com/" = {
           insteadOf = "git://github.com/";
