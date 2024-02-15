@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{homeDirectory, stateVersion}: { config, lib, pkgs, ... }:
 
 let
   sysconfig = (import <nixpkgs/nixos> {}).system;
@@ -9,23 +9,23 @@ in
 {
   imports = [
     # ./bash.nix
-    ./dconf.nix
-    ./direnv.nix
-    ./firefox.nix
-    ./foot.nix
-    ./gdb.nix
-    ./ghci.nix
-    ./git.nix
-    ./gpg-agent.nix
+    # ./dconf.nix
+    # ./direnv.nix
+    # ./firefox.nix
+    # ./foot.nix
+    # ./gdb.nix
+    # ./ghci.nix
+    # ./git.nix
+    # ./gpg-agent.nix
     ./haskeline.nix
     ./helix.nix
-    ./nushell.nix
+    # ./nushell.nix
     ./packages.nix
     ./readline.nix
-    ./ssh.nix
+    # ./ssh.nix
     ./starship.nix
     # ./sway.nix
-    ./theme.nix
+    # ./theme.nix
     ./tmux.nix
     # ./waybar.nix
     # ./yambar.nix
@@ -35,12 +35,18 @@ in
     ./zsh.nix
   ];
 
+  home.packages = with pkgs; [
+    any-nix-shell
+  ];
+
+  # TODO reenable
+  manual.manpages.enable = false;
 
   home = {
     username = "owen";
-    homeDirectory = "/home/owen";
     sessionVariables = import ./env.nix { pkgs = pkgs; };
-    stateVersion = "22.05";
+    homeDirectory = "${homeDirectory}/owen";
+    inherit stateVersion;
     keyboard = {
       layout = "gb";
       options = [

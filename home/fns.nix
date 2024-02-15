@@ -7,8 +7,6 @@ let tee = "${pkgs.coreutils}/bin/tee";
 in
 
 ''
-BUSYBOX="${pkgs.busybox}/bin"
-TAR=$BUSYBOX/tar
 SEVENZ="${pkgs.p7zip}/bin/7z"
 CURL="${pkgs.curlFull}/bin/curl"
 JSON="${jq}"
@@ -38,11 +36,11 @@ withdir() {
 extract() {
   if [ -f $1 ] ; then
     case $1 in
-      *.7z)        $SEVENZ x $1         ;;
-      *.Z)         ${pkgs.gzip}/bin/uncompress $1   ;;
-      *.bz2)       $BUSYBOX/bunzip2 $1      ;;
-      *.gz)        $BUSYBOX/gunzip $1       ;;
-      *.lzma)      $BUSYBOX/xz --decompress ;;
+      *.7z)        $SEVENZ x $1    ;;
+      *.Z)         uncompress $1   ;;
+      *.bz2)       bunzip2 $1      ;;
+      *.gz)        gunzip $1       ;;
+      *.lzma)      xz --decompress ;;
       *.rar)       $SEVENZ x $1      ;;
       *.tar)       $TAR xvf $1      ;;
       *.tar.bz2)   $TAR xvjf $1     ;;

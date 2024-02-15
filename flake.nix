@@ -5,7 +5,7 @@
   inputs.nix-std.url        = "github:chessai/nix-std";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = args@{ nixpkgs, nix-std, home-manager, nixos-hardware, ... }: {
+  outputs = args@{ self, nixpkgs, nix-std, nix-darwin, home-manager, nixos-hardware, ... }: {
 
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -35,5 +35,20 @@
         ./machines/laptop
       ];
     };
+
+    # Build darwin flake using:
+    # $ darwin-rebuild build --flake .#bsd-nix
+    darwinConfigurations."bsd-nix" = nix-darwin.lib.darwinSystem {
+      specialArgs = args;
+      modules = [
+        home-manager.darwinModule
+        ./machines/mbp
+      ];
+    };
+
+    # Expose the package set, including overlays, for convenience.
+    darwinPackages = self.darwinConfigurations."bsd-nix".pkgs;
+
+
   };
 }

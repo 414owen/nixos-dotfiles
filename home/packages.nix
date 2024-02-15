@@ -7,98 +7,39 @@ let
 in
 {
   home.packages = with pkgs; [
-    postgresql
+    alacritty
     xh
-    (pkgs.python3.withPackages (ps: with ps; [
-      requests
-    ]))
     any-nix-shell
-    asciinema
     bat
-    bfs
+    bzip2
     cabal2nix
     cabal-install
     cachix
-    calibre
-    cgdb
-    choose
     coreutils
     dateutils
-    duf
-    editorconfig-core-c
-    evince
-    eza
-    expect
+    exa
     fd
     file
-    fira
-    fira-code
-    fira-mono
-    font-awesome
-    gdb
     ghc
-    gimp
-    gitAndTools.hub
-    git-crypt
-    gnome3.geary
-    gnome.devhelp
-    gnumake
-    gnumeric
-    gnupg
-    gotop
-    gparted
     helix
     htop
-    hub
-    imagemagick
-    inkscape
-    jetbrains-mono
+    # some systems *cough* darwin *cough* don't have terminfo for tmux
+    ncurses
     jq
-    killall
-    libsecret
-    lshw
-    macchina
-    mosh
-    mpv
-    neofetch
     niv
-    nix-bundle
-    nix-index
     nix-output-monitor
-    nix-prefetch-git
-    nix-prefetch-github
-    nnn
-    non
-    pciutils
-    pidgin
-    q-text-as-data
-    remarshal
+    nurl
     ripgrep
-    scripts.copy
     sd
-    signal-desktop
-    spot
-    spotify
     stdenv
     tmux
-    transmission-gtk
-    tree
-    tup
-    ungoogled-chromium
-    usbutils
-    vault
-    vlc
-    wine
-    wl-clipboard
-    xclip
-    zsh-history-substring-search
-    zsh-syntax-highlighting
   ] ++ (with gitAndTools; [
-    gh
     git-absorb
     git-gone
-    git-open
-    git-recent
+    # Requires pandoc
+    # git-open
+    # Requires util-linux
+    # git-recent
     git-standup
     git-test
     git-fame

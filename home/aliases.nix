@@ -15,6 +15,7 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([
   cat = cat;
   c  =  "clear";
   cf = "cd \"$(fd -t d | fzf)\"";
+  copy = "pbcopy";
   cs = "clear;ls";
   debug = "set -o nounset; set -o xtrace";
   e = editor;
@@ -104,8 +105,14 @@ pts += -ticky' > _ticky/hadrian.settings; hb --flavour=validate --build-root=_ti
   sudo = "sudo ";
   tree = "exa --tree";
   t = "time";
-}] ++ map (i: let a = toString i; in {
+}] ++ (map (i: let a = toString i; in {
   "gd${a}" = "git diff HEAD~${a}";
   "gr${a}" = "git rebase --interactive HEAD~${a}";
   ".${mylib.repeatStr "." i}" = "cd ${mylib.repeatStr "../" i}";
 }) (lib.range 1 9))
+  ++ (if pkgs.stdenv.isDarwin
+  then [{
+    nproc = "sysctl -n hw.logicalcpu";
+  }]
+  else [])
+)

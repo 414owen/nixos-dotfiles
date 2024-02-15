@@ -15,7 +15,7 @@ in
   FZF_CTRL_T_COMMAND = "${fzf-command}";
   FZF_DEFAULT_COMMAND = "${fzf-command}";
   FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview '${pkgs.bat}/bin/bat --color=always --style=header,grid --line-range :300 {}'";
-  MAKEFLAGS = "-j$(nproc)";
+  MAKEFLAGS = "-j$(${if pkgs.stdenv.isDarwin then "sysctl -n hw.logicalcpu" else "nproc"})";
   TERMINAL = "${pkgs.st}/bin/st";
   LIBVIRT_DEFAULT_URI = "qemu:///system";
 }
