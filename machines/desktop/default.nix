@@ -10,5 +10,6 @@
 
   networking.hostName = "desktop";
   hardware.bluetooth.enable = false;
+  services.openssh.enable = true;
 }
 
