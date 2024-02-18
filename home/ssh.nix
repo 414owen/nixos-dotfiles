@@ -14,6 +14,9 @@
         setEnv = {
           TERM = "xterm-256color";
         };
+      "gitlab.internal.tiko.ch" = {
+        user = "owen.shepherd@tiko.energy";
+        identityFile = "~/.ssh/id_ed";
       };
     };
   };

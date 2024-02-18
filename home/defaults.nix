@@ -4,5 +4,5 @@
   fuzzy = "fzf";
   find = "bfs";
   grep = "rg";
-  ls = "exa";
+  ls = "eza";
 }

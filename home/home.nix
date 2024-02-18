@@ -8,6 +8,7 @@ in
 
 {
   imports = [
+    ./alacritty.nix
     # ./bash.nix
     # ./dconf.nix
     # ./direnv.nix
@@ -17,12 +18,13 @@ in
     # ./ghci.nix
     # ./git.nix
     # ./gpg-agent.nix
+    ./gpg.nix
     ./haskeline.nix
     ./helix.nix
     # ./nushell.nix
     ./packages.nix
     ./readline.nix
-    # ./ssh.nix
+    ./ssh.nix
     ./starship.nix
     # ./sway.nix
     # ./theme.nix
@@ -63,4 +65,5 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
+  targets.darwin.defaults.NSGlobalDomain.AppleLocale = "en_GB";
 }

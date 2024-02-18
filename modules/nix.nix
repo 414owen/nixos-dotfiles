@@ -2,8 +2,6 @@
 
 {
   nix = {
-    package = pkgs.nixUnstable;
-
     extraOptions = ''
       allowed-uris = https://github.com
       auto-optimise-store = true

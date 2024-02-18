@@ -59,7 +59,8 @@
         roots = [];
         auto-format = true;
         comment-token = "//";
-        language-servers = ["rust-analyzer"];
+        # language-servers = ["rust-analyzer"];
+        language-server = { command = "rust-analyzer"; };
         indent = {
           tab-width = 2;
           unit = "  ";
@@ -72,10 +73,14 @@
         file-types = ["hs"];
         roots = ["Setup.hs" "stack.yaml" "*.cabal" "cabal.project" "cabal.project.freeze"];
         comment-token = "--";
-        language-servers = [
-          "haskell-language-server"
-          "haskell-language-server-wrapper"
-        ];
+        language-server = {
+          command = "haskell-language-server-wrapper";
+          args = ["--lsp"];
+        };
+        # language-servers = [
+        #   "haskell-language-server"
+        #   "haskell-language-server-wrapper"
+        # ];
         indent = {
           tab-width = 2;
           unit = "  ";

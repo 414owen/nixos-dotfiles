@@ -1,0 +1,26 @@
+From 1d45b144611a65f25ae40b101badcd19061cadf0 Mon Sep 17 00:00:00 2001
+From: K900 <me@0upti.me>
+Date: Tue, 13 Feb 2024 10:45:01 +0300
+Subject: [PATCH] alacritty: only depend on xdg-utils on Linux
+
+This is technically not entirely correct (for BSDs etc), but there are other
+isLinux checks in the file so let's just do this to unblock Darwin users for now.
+
+Fixes #288468.
+---
+ pkgs/applications/terminal-emulators/alacritty/default.nix | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pkgs/applications/terminal-emulators/alacritty/default.nix b/pkgs/applications/terminal-emulators/alacritty/default.nix
+index 4bcc6ee72b60c4..2141d9246daeb2 100644
+--- a/pkgs/applications/terminal-emulators/alacritty/default.nix
++++ b/pkgs/applications/terminal-emulators/alacritty/default.nix
+@@ -83,7 +83,7 @@ rustPlatform.buildRustPackage rec {
+ 
+   outputs = [ "out" "terminfo" ];
+ 
+-  postPatch = lib.optionalString (!xdg-utils.meta.broken) ''
++  postPatch = lib.optionalString stdenv.isLinux ''
+     substituteInPlace alacritty/src/config/ui_config.rs \
+       --replace xdg-open ${xdg-utils}/bin/xdg-open
+   '';

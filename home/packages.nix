@@ -7,27 +7,26 @@ let
 in
 {
   home.packages = with pkgs; [
-    alacritty
     xh
     any-nix-shell
     bat
     bzip2
-    cabal2nix
-    cabal-install
-    cachix
+    # cabal2nix
+    # cabal-install
+    # cachix
     coreutils
     dateutils
-    exa
+    # eza
     fd
     file
-    ghc
+    # ghc
     helix
     htop
     # some systems *cough* darwin *cough* don't have terminfo for tmux
     ncurses
     jq
     niv
-    nix-output-monitor
+    # nix-output-monitor
     nurl
     ripgrep
     sd
