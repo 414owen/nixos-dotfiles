@@ -3,6 +3,7 @@
     ../../modules/yabai.nix
     ../../modules/skhd.nix
     ../../modules/fonts.nix
+    ../../modules/nix.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
