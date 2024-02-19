@@ -3,7 +3,6 @@
     ../../modules/yabai.nix
     ../../modules/skhd.nix
     ../../modules/fonts.nix
-    ../../modules/nix.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
@@ -29,10 +28,27 @@
   # TODO extract this out to its own module
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
-  home-manager.users.owen = (import ./../../home/home.nix) {
-    homeDirectory = "/Users";
+  home-manager.users.owen = (import ./../../home/home.nix {
     stateVersion = "23.11";
-  };
+    imports = [
+      ../../home/alacritty.nix
+      ../../home/direnv.nix
+      ../../home/ghci.nix
+      ../../home/git.nix
+      ../../home/gpg.nix
+      ../../home/haskeline.nix
+      ../../home/helix.nix
+      ../../home/packages.nix
+      ../../home/readline.nix
+      ../../home/ssh.nix
+      ../../home/starship.nix
+      ../../home/tmux.nix
+      ../../home/tiko.nix
+      ../../home/zoxide.nix
+      ../../home/zsh.nix
+    ];
+    targets.darwin.defaults.NSGlobalDomain.AppleLocale = "en_GB";
+  });
   home-manager.extraSpecialArgs = {
     inherit nix-std;
   };

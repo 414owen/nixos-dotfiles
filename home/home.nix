@@ -1,36 +1,14 @@
-{homeDirectory, stateVersion}: { config, lib, pkgs, ... }:
+args@{stateVersion, ...}: { config, lib, pkgs, ... }:
 
 let
+  rest = builtins.removeAttrs args ["stateVersion"];
   sysconfig = (import <nixpkgs/nixos> {}).system;
   callPackage = pkgs.callPackage;
   enableZsh = { enable = true; enableZshIntegration = true; };
+  homeDirectory = if pkgs.stdenv.isDarwin then "/Users" else "/home";
 in
 
-{
-  imports = [
-    ./alacritty.nix
-    ./direnv.nix
-    ./ghci.nix
-    ./git.nix
-    ./gpg.nix
-    ./haskeline.nix
-    ./helix.nix
-    ./packages.nix
-    ./readline.nix
-    ./ssh.nix
-    ./starship.nix
-    ./tmux.nix
-    ./tiko.nix
-    ./zoxide.nix
-    ./zsh.nix
-  ] ++ if pkgs.stdenv.isLinux [
-    ./firefox.nix
-    ./foot.nix
-    ./theme.nix
-    ./gdb.nix
-    ./gpg-agent.nix
-  ];
-
+({
   home.packages = with pkgs; [
     any-nix-shell
   ];
@@ -59,5 +37,4 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
-  targets.darwin.defaults.NSGlobalDomain.AppleLocale = "en_GB";
-}
+} // rest)

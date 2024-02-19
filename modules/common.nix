@@ -1,12 +1,6 @@
 { config, pkgs, options, nix-std, ... }:
 
 {
-  imports = [
-    ./nix.nix
-  ];
-
-  nix.settings.experimental-features = "nix-command flakes";
-
   # update microcode
   hardware.enableRedistributableFirmware = true;
   home-manager.useUserPackages = true;
@@ -37,7 +31,6 @@
   };
 
   services.localtimed.enable = true;
-  home-manager.users.owen = import ./../home/home.nix;
 
   environment = {
     systemPackages = with pkgs; [
