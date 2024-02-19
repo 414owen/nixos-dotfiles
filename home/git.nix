@@ -56,7 +56,7 @@ in
         autoSetupMerge = "always";
       };
       merge = {
-        conflictstyle = "diff3";
+        conflictstyle = "zdiff3";
       };
       push = {
         default = "current";
