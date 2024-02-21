@@ -7,7 +7,7 @@
     settings = {
       main = {
         term = "foot";
-        font = "FiraCode Nerd Font, Noto Color Emoji:size=9";
+        font = "FiraMono Nerd Font, Noto Color Emoji:size=9";
         dpi-aware = "yes";
       };
 
