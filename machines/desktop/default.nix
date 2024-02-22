@@ -12,10 +12,10 @@
   hardware.bluetooth.enable = false;
   services.openssh.enable = true;
 
-  home-manager.users.owen = (import ../../home/home.nix {
-    stateVersion = "22.11";
-
+  home-manager.users.owen = {
+    home.stateVersion = "22.11";
     imports = [
+      ../../home/home.nix
       ../../home/alacritty.nix
       ../../home/direnv.nix
       ../../home/ghci.nix
@@ -38,6 +38,6 @@
       ../../home/gdb.nix
       ../../home/gpg-agent.nix
     ];
-  });
+  };
 }
 

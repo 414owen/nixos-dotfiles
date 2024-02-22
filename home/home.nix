@@ -1,14 +1,14 @@
-args@{stateVersion, ...}: { config, lib, pkgs, ... }:
+# TODO rename this midule, or get rid of it.
+{ config, lib, pkgs, ... }:
 
 let
-  rest = builtins.removeAttrs args ["stateVersion"];
   sysconfig = (import <nixpkgs/nixos> {}).system;
   callPackage = pkgs.callPackage;
   enableZsh = { enable = true; enableZshIntegration = true; };
   homeDirectory = if pkgs.stdenv.isDarwin then "/Users" else "/home";
 in
 
-({
+{
   home.packages = with pkgs; [
     any-nix-shell
   ];
@@ -20,7 +20,6 @@ in
     username = "owen";
     sessionVariables = import ./env.nix { pkgs = pkgs; };
     homeDirectory = "${homeDirectory}/owen";
-    inherit stateVersion;
     keyboard = {
       layout = "gb";
       options = [
@@ -37,4 +36,4 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
-} // rest)
+}

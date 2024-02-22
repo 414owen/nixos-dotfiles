@@ -43,5 +43,9 @@ in
     git-test
     git-fame
     scripts.git-weekend
-  ]);
+  ] ++ (if pkgs.stdenv.isLinux then [
+    spotify
+    spot
+    ungoogled-chromium
+  ] else []));
 }
