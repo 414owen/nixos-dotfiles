@@ -36,6 +36,7 @@ in
       signByDefault = true;
     };
     extraConfig = {
+      init.defaultBranch = "main";
       core = {
         pager = "${riff}/bin/riff";
         fsmonitor = true;
