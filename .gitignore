@@ -1,5 +1,3 @@
 *.log
 .gitsecret/keys/random_seed
 !*.secret
-secrets/factorio.key
-modules/factorio/default.nix

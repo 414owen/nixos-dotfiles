@@ -2,6 +2,8 @@
 
 let
   aliases = import ./aliases.nix { pkgs = pkgs; };
+  darwinAliases = import ./aliases-darwin.nix;
+  linuxAliases = import ./aliases-linux.nix;
 in
 
 {
@@ -29,6 +31,7 @@ in
       ${import ./fns.nix { pkgs = pkgs; }}
     '';
     sessionVariables = import ./env.nix { pkgs = pkgs; };
-    shellAliases = aliases;
+    shellAliases = aliases
+      // (if pkgs.stdenv.isDarwin then darwinAliases else linuxAliases);
   };
 }

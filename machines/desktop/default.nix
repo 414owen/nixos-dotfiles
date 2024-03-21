@@ -24,6 +24,7 @@
       ../../home/haskeline.nix
       ../../home/helix.nix
       ../../home/packages.nix
+      ../../home-packages-linux.nix
       ../../home/readline.nix
       ../../home/ssh.nix
       ../../home/starship.nix

@@ -6,7 +6,7 @@
     ./../../modules/efi.nix
     ./../../modules/tiko.nix
     ./../../modules/no-mitigations.nix
-    # ./../../modules/factorio
+    ./../../modules/factorio
     ./../../modules/steam.nix
   ];
 
@@ -25,6 +25,7 @@
       ../../home/haskeline.nix
       ../../home/helix.nix
       ../../home/packages.nix
+      ../../home/packages-linux.nix
       ../../home/readline.nix
       ../../home/ssh.nix
       ../../home/starship.nix
