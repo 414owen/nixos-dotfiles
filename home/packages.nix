@@ -20,6 +20,7 @@ in
     fd
     file
     ghc
+    git-crypt
     helix
     htop
     # some systems *cough* darwin *cough* don't have terminfo for tmux
