@@ -18,7 +18,7 @@ in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([
   cs = "clear;ls";
   debug = "set -o nounset; set -o xtrace";
   e = editor;
-  ef = "file=$(${fuzzy}); [ ! -z \"$file\" ] && echo \"$file\" && teehist \"e $file\"";
+  ef = "file=\"$(${fuzzy})\"; [ ! -z \"$file\" ] && echo \"$file\" && teehist \"e '$file'\"";
   ff = fuzzy;
   f = find;
   find = find;
