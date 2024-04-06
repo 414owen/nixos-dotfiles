@@ -10,21 +10,28 @@ in
   programs.zsh = {
     enable = true;
     autocd = true;
-    # enableAutosuggestions = true;
+    # autosuggestion = {
+    #   enable = true;
+    #   highlight = true;
+    # };
     enableCompletion = true;
+    enableVteIntegration = true;
     syntaxHighlighting.enable = true;
     history = {
-      ignoreDups = true;
+      extended = true;
+      ignoreAllDups = true;
+      ignoreSpace = true;
       expireDuplicatesFirst = true;
       share = true;
+      ignorePatterns = [
+        "cd *"
+        "rm *"
+      ];
     };
     initExtra = ''
-      setopt HIST_REDUCE_BLANKS
-      setopt HIST_SAVE_NO_DUPS
-
       bindkey '^[[A' up-line-or-search
       bindkey '^[[B' down-line-or-search
-      autoload -z edit-command-line
+      autoload -z edit-command-line.
       zle -N edit-command-line
       bindkey "^X^E" edit-command-line
       ${builtins.readFile (./shell.sh)}

@@ -17,10 +17,6 @@
     ln -sv ${pkgs.path} $out/nixpkgs
   '';
 
-  nix.nixPath = [ 
-    "nixpkgs=/run/current-system/sw/nixpkgs"
-  ];
-
   nixpkgs.overlays = [
     (import ./../../overlays/git.nix)
   ];
@@ -60,10 +56,22 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-  nix.package = pkgs.nix;
-
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
+  nix = {
+    linux-builder = {
+      enable = false;
+      ephemeral = true;
+      package = pkgs.darwin.linux-builder;
+    };
+    package = pkgs.nixVersions.nix_2_19;
+    nixPath = [ 
+      "nixpkgs=/run/current-system/sw/nixpkgs"
+    ];
+    # Necessary for using flakes on this system.
+    settings = {
+      trusted-users = [ "@admin" ];
+      experimental-features = "nix-command flakes";
+    };
+  };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina

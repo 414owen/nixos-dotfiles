@@ -33,7 +33,7 @@ in
     userEmail = common.email;
      signing = {
       key = common.email;
-      signByDefault = true;
+      # signByDefault = true;
     };
     extraConfig = {
       init.defaultBranch = "main";
