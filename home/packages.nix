@@ -23,6 +23,7 @@ in
     git-crypt
     helix
     htop
+    hub
     # some systems *cough* darwin *cough* don't have terminfo for tmux
     ncurses
     jq

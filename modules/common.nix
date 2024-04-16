@@ -15,7 +15,7 @@
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
+    pinentryPackage = pkgs.pinentry-tty;
     enableSSHSupport = true;
   };
 
