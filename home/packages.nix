@@ -7,6 +7,7 @@ let
 in
 {
   home.packages = with pkgs; [
+    agda
     xh
     any-nix-shell
     bat
@@ -22,6 +23,7 @@ in
     ghc
     git-crypt
     helix
+    vscodium
     htop
     hub
     # some systems *cough* darwin *cough* don't have terminfo for tmux

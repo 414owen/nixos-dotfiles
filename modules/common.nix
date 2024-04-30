@@ -1,4 +1,4 @@
-{ config, pkgs, options, nix-std, ... }:
+{ config, pkgs, options, nix-std, nixpkgs-stable, ... }:
 
 {
   # update microcode
@@ -7,7 +7,7 @@
   home-manager.useGlobalPkgs = true;
 
   home-manager.extraSpecialArgs = {
-    inherit nix-std;
+    inherit nix-std nixpkgs-stable;
   };
 
   hardware.cpu.intel.updateMicrocode = true;

@@ -2,7 +2,7 @@
   imports = [
     ../../modules/yabai.nix
     ../../modules/skhd.nix
-    ../../modules/fonts.nix
+    ../../modules/fonts-darwin.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
@@ -16,10 +16,6 @@
   environment.postBuild = ''
     ln -sv ${pkgs.path} $out/nixpkgs
   '';
-
-  nixpkgs.overlays = [
-    (import ./../../overlays/git.nix)
-  ];
 
   # TODO extract this out to its own module
   home-manager.useUserPackages = true;
