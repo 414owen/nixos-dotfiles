@@ -8,7 +8,6 @@
     ./../../modules/tiko.nix
     ./../../modules/no-mitigations.nix
     ./../../modules/steam.nix
-    ./../../modules/factorio
   ];
 
   networking.hostName = "laptop";
@@ -23,6 +22,7 @@
       ../../home/ghci.nix
       ../../home/git.nix
       ../../home/gpg.nix
+      ../../home/factorio
       ../../home/haskeline.nix
       ../../home/helix.nix
       ../../home/packages.nix
