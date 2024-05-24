@@ -1,3 +1,4 @@
+{ ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -6,8 +7,8 @@
     ./../../modules/efi.nix
     ./../../modules/tiko.nix
     ./../../modules/no-mitigations.nix
-    ./../../modules/factorio
     ./../../modules/steam.nix
+    ./../../modules/factorio
   ];
 
   networking.hostName = "laptop";

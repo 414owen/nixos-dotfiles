@@ -58,7 +58,6 @@
         file-types = ["rs"];
         roots = [];
         auto-format = true;
-        comment-token = "//";
         language-servers = ["rust-analyzer"];
         indent = {
           tab-width = 2;
@@ -71,7 +70,6 @@
         injection-regex = "haskell";
         file-types = ["hs"];
         roots = ["Setup.hs" "stack.yaml" "*.cabal" "cabal.project" "cabal.project.freeze"];
-        comment-token = "--";
         language-servers = [
           "haskell-language-server"
           "haskell-language-server-wrapper"

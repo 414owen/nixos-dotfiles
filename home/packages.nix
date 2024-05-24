@@ -48,6 +48,6 @@ in
   ] ++ (if pkgs.stdenv.isLinux then [
     spotify
     spot
-    ungoogled-chromium
+    chromium
   ] else []));
 }
