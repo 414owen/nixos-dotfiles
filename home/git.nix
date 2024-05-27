@@ -69,6 +69,10 @@ in
           insteadOf = "git://github.com/";
         };
       };
+      sendemail = {
+        smtpencryption = "tls";
+        smtpserverport = 587;
+      } // import ../secrets/git.nix;
     };
   };
 }
