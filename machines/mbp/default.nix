@@ -58,7 +58,6 @@
       ephemeral = true;
       package = pkgs.darwin.linux-builder;
     };
-    package = pkgs.nixVersions.nix_2_19;
     nixPath = [ 
       "nixpkgs=/run/current-system/sw/nixpkgs"
     ];

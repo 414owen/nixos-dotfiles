@@ -8,6 +8,8 @@ in
 {
   home.packages = with pkgs; [
     agda
+    lean4
+
     xh
     any-nix-shell
     bat
