@@ -43,11 +43,11 @@
   services = {
     xserver = {
       enable = true;
-      layout = "gb";
+      xkb.layout = "gb";
+      xkb.options = "ctrl:swapcaps";
       desktopManager.gnome.enable = true;
       displayManager.gdm.enable = true;
       libinput.enable = true;
-      xkbOptions = "ctrl:swapcaps";
 
       libinput.touchpad.tapping = true;
       libinput.touchpad.tappingDragLock = true;

@@ -38,6 +38,11 @@
       ../../home/theme.nix
       ../../home/gdb.nix
       ../../home/gpg-agent.nix
+      ({pkgs, ...}: {
+        home.packages = [
+          pkgs.steam
+        ];
+      })
     ];
   };
 }
