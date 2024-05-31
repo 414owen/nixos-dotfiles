@@ -1,4 +1,4 @@
-{ config, pkgs, options, nix-std, nixpkgs-stable, ... }:
+{ config, pkgs, options, nix-std, ... }:
 
 {
   # update microcode

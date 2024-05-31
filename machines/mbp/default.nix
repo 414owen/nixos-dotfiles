@@ -23,6 +23,7 @@
   home-manager.users.owen = (import ./../../home/home.nix {
     stateVersion = "23.11";
     imports = [
+      ../../home/add-mac-apps.nix
       ../../home/alacritty.nix
       ../../home/direnv.nix
       ../../home/ghci.nix

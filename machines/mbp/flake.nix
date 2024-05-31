@@ -12,7 +12,6 @@
   };
   inputs = {
     nixpkgs.url        = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
     home-manager.url   = "github:nix-community/home-manager/master";
     nix-std.url        = "github:chessai/nix-std";
     nix-darwin.url     = "github:LnL7/nix-darwin";
