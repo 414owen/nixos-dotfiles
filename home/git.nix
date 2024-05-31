@@ -47,6 +47,7 @@ in
         recurseSubmodules = true;
         parallel = 0;
       };
+      commit.gpgsign = true;
       interactive = {
         diffFilter = "${riff}/bin/riff --color-only";
       };
