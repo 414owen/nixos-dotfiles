@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "betterfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1716574980,
+        "narHash": "sha256-i6fxW6hOOUWjWJ7lhX5qjEh9tyE2JyD6vwPEsfov7fY=",
+        "owner": "yokoffing",
+        "repo": "Betterfox",
+        "rev": "9756922ee951f9c0dd09f1e7037b93089a661963",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yokoffing",
+        "repo": "Betterfox",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -144,6 +160,7 @@
     },
     "root": {
       "inputs": {
+        "betterfox": "betterfox",
         "home-manager": "home-manager",
         "lix": "lix",
         "lix-module": "lix-module",

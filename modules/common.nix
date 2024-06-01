@@ -1,4 +1,4 @@
-{ config, pkgs, options, nix-std, ... }:
+{ config, pkgs, options, betterfox, nix-std, ... }:
 
 {
   # update microcode
@@ -7,7 +7,7 @@
   home-manager.useGlobalPkgs = true;
 
   home-manager.extraSpecialArgs = {
-    inherit nix-std nixpkgs-stable;
+    inherit nix-std betterfox;
   };
 
   hardware.cpu.intel.updateMicrocode = true;

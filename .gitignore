@@ -2,3 +2,4 @@
 .gitsecret/keys/random_seed
 !*.secret
 result
+result/

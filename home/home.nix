@@ -1,4 +1,4 @@
-# TODO rename this midule, or get rid of it.
+# TODO rename this module, or get rid of it.
 args@{stateVersion, ...}: { pkgs, ... }:
 
 let
@@ -35,6 +35,7 @@ in
     fzf = enableZsh;
     home-manager.enable = true;
   };
+
 
   nixpkgs.config.allowUnfree = true;
 } // rest)

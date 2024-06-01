@@ -47,10 +47,10 @@
       xkb.options = "ctrl:swapcaps";
       desktopManager.gnome.enable = true;
       displayManager.gdm.enable = true;
-      libinput.enable = true;
 
-      libinput.touchpad.tapping = true;
-      libinput.touchpad.tappingDragLock = true;
     };
+    libinput.enable = true;
+    libinput.touchpad.tapping = true;
+    libinput.touchpad.tappingDragLock = true;
   };
 }

@@ -4,6 +4,10 @@
     home-manager.url   = "github:nix-community/home-manager/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-std.url        = "github:chessai/nix-std";
+    betterfox = {
+      url = "github:yokoffing/Betterfox";
+      flake = false;
+    };
     lix = {
       url = "git+https://git@git.lix.systems/lix-project/lix";
       flake = false;

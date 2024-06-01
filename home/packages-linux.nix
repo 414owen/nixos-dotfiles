@@ -6,5 +6,6 @@
     pkgs.transmission-gtk
     pkgs.gimp
     pkgs.signal-desktop
+    pkgs.inkscape
   ];
 }
