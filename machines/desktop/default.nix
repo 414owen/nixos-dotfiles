@@ -10,6 +10,7 @@ in
     ./../../modules/common.nix
     ./../../modules/graphical.nix
     ./../../modules/efi.nix
+    ./../../modules/steam.nix
     ./../../modules/tiko.nix
     ./../../modules/no-mitigations.nix
   ];

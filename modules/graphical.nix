@@ -18,6 +18,7 @@
     packages = with pkgs; [
       (nerdfonts.override { fonts = ["FiraMono"]; })
       dejavu_fonts
+      vistafonts
       ubuntu_font_family
       liberation_ttf
       noto-fonts
