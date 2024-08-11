@@ -104,6 +104,8 @@ pts += -ticky' > _ticky/hadrian.settings; hb --flavour=validate --build-root=_ti
   sudo = "sudo ";
   tree = "eza --tree";
   t = "time";
+  ytdl720 = "yt-dlp -f '(mkv,mp4)[height<=720]'";
+  ytdl1080 = "yt-dlp -f '(mkv,mp4)[height<=1080]'";
 }] ++ (map (i: let a = toString i; in {
   "gd${a}" = "git diff HEAD~${a}";
   "gr${a}" = "git rebase --interactive HEAD~${a}";
