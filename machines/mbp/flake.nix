@@ -16,8 +16,8 @@
     nix-std.url        = "github:chessai/nix-std";
     nix-darwin.url     = "github:LnL7/nix-darwin";
 
-    nix-darwin.inputs.nixpkgs.follows   = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.inputs.nixpkgs.follows   = "nixpkgs";
   };
 
   outputs = args@{ self, nixpkgs, nix-std, nix-darwin, home-manager, ... }: {
