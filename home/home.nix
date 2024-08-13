@@ -9,10 +9,6 @@ let
 in
 
 ({
-  home.packages = with pkgs; [
-    any-nix-shell
-  ];
-
   # TODO reenable
   manual.manpages.enable = false;
 

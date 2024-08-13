@@ -9,6 +9,7 @@ in
   home.packages = with pkgs; [
     devenv
     lean4
+    c3c
 
     xh
     any-nix-shell

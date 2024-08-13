@@ -50,9 +50,6 @@ in
 
     home = {
       stateVersion = "22.11";
-      packages = with pkgs; [
-        any-nix-shell
-      ];
       username = "owen";
       sessionVariables = import ../../home/env.nix { pkgs = pkgs; };
       homeDirectory = "/home/owen";
