@@ -17,18 +17,6 @@ in
       up = "!git branch --set-upstream-to=$(git remote)/$(git branch --show-current) $(git branch --show-current)";
       yeet = "!git clean -dfx; git reset --hard; git submodule update --init";
     };
-    ignores = [
-      "dist/"
-      "dist-newstyle/"
-      "ignore"
-      ".local.sh"
-      "result/"
-      ".stack-work/"
-      "stack.yaml.lock"
-      "tags"
-      "TAGS"
-      ".c-lang-serv"
-    ];
     userName  = common.name;
     userEmail = common.email;
      signing = {

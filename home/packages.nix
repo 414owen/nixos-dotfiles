@@ -28,12 +28,14 @@ in
     helix
     htop
     hub
+    jujutsu
+    jq
     # some systems *cough* darwin *cough* don't have terminfo for tmux
     ncurses
-    jq
     niv
     nix-output-monitor
     nurl
+    prismlauncher
     ripgrep
     sd
     stdenv

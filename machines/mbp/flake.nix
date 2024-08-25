@@ -28,7 +28,6 @@
       specialArgs = args;
       modules = [
         home-manager.darwinModule
-        ../../modules/nix.nix
         ./default.nix
       ];
     };

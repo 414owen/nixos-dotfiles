@@ -7,7 +7,7 @@ let
   sedexprs = lib.concatMapStrings tosed ["second" "minute" "hour" "day" "week" "month" "year"];
   mkgraph = extra: "git lg --color=always ${extra} | gitlogprettify | less";
   mkgraphall = extra: mkgraph "--all ${extra}";
-  histIgnore = ["ls" "mv" "cp" "reboot" "poweroff"];
+  histIgnore = ["ls" "mv" "reboot" "poweroff"];
 in with (import ./defaults.nix); builtins.foldl' (a: b: a // b) {} ([
 (builtins.listToAttrs (map (cmd: {name = cmd; value = " ${cmd}";}) histIgnore))
 {
