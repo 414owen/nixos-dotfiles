@@ -4,25 +4,21 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [
-    # ../../games.nix
-  ];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  # services.tlp.enable = true;
-  # services.power-profiles-daemon.enable = false;
-  # services.thermald.enable = true;
-
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b4443c16-86c1-42af-bc2c-349bf3165163";
+    { device = "/dev/disk/by-uuid/a4c20a5a-a417-4102-bc2e-e927a08faa23";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/d0a0c5ed-40d6-4dd0-a014-b2b89ce3be60";
+  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/d2ae00d3-eafc-4a51-a386-3bd5983bce17";
 
   swapDevices = [ ];
 
@@ -31,7 +27,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp9s0f0.useDHCP = lib.mkDefault true;
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

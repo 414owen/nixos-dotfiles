@@ -73,7 +73,7 @@
         nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
         ./modules/common.nix
         ./modules/nix.nix
-        ./machines/laptop
+        ./machines/think
       ];
     };
   };
