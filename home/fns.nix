@@ -140,4 +140,9 @@ function bd(){
     done
   fi
 }
+
+function yt() {
+  url="$1"
+  open -a"quicktime player" "$(yt-dlp -g -f '(mkv,mp4)[height<=720]' "$url")"
+}
 ''

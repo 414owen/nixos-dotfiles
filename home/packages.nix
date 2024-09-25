@@ -37,6 +37,11 @@ in
     nurl
     prismlauncher
     ripgrep
+
+    rust-analyzer
+    cargo 
+    rustc
+
     sd
     stdenv
     tmux

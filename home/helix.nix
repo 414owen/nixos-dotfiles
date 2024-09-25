@@ -22,7 +22,7 @@
     };
 
     editor.indent-guides = {
-      render = true;
+      render = false;
     };
 
     editor.cursor-shape = {
@@ -50,13 +50,18 @@
       command = "haskell-language-server";
       args = ["--lsp"];
     };
+    language-server.pylsp = { command = "pylsp"; };
+    language-server.pylyzer = {
+      command = "pylyzer";
+      args = ["--server"];
+    };
     language = [
       {
         name = "rust";
         scope = "source.rust";
         injection-regex = "rust";
         file-types = ["rs"];
-        roots = [];
+        roots = ["Cargo.toml" "Cargo.lock"];
         auto-format = true;
         language-servers = ["rust-analyzer"];
         indent = {
@@ -78,6 +83,22 @@
           tab-width = 2;
           unit = "  ";
         };
+      }
+      {
+        name = "python";
+        scope = "source.python";
+        injection-regex = "py(thon)?";
+        file-types = ["py" "pyi" "py3" "pyw" "ptl" "rpy" "cpy" "ipy" "pyt"
+          { glob = ".python_history"; }
+          { glob = ".pythonstartup"; }
+          { glob = ".pythonrc"; }
+          { glob = "SConstruct"; }
+          { glob = "SConscript"; }];
+        shebangs = ["python"];
+        roots = ["pyproject.toml" "setup.py" "poetry.lock" "pyrightconfig.json"];
+        comment-token = "#";
+        language-servers = ["pylsp"];
+        indent = { tab-width = 4; unit = "    "; };
       }
     ];
   };
