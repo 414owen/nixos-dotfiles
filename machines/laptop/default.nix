@@ -21,7 +21,6 @@
       ../../home/ghci.nix
       ../../home/git.nix
       ../../home/gpg.nix
-      ../../home/factorio
       ../../home/haskeline.nix
       ../../home/helix.nix
       ../../home/packages.nix

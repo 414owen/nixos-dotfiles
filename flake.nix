@@ -64,5 +64,17 @@
         ./machines/laptop
       ];
     };
+    nixosConfigurations.think = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = args;
+
+      modules = [
+        home-manager.nixosModules.home-manager
+        nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
+        ./modules/common.nix
+        ./modules/nix.nix
+        ./machines/laptop
+      ];
+    };
   };
 }

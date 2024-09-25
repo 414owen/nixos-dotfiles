@@ -49,5 +49,5 @@ in
     git-test
     git-fame
     scripts.git-weekend
-  ];
+  ]);
 }

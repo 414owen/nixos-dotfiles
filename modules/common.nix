@@ -50,7 +50,6 @@
     mosh.enable = true;
   };
 
-  sound.enable = true;
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_GB.UTF-8";
 
