@@ -1,27 +1,33 @@
 {
   disko.devices = {
     disk = {
-      my-disk = {
-        device = "/dev/sda";
+      main = {
         type = "disk";
+        device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              type = "EF00";
               size = "500M";
+              type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
               };
             };
-            root = {
+            luks = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
+                type = "luks";
+                name = "crypted";
+                settings.allowDiscards = true;
+                passwordFile = "/tmp/secret.key";
+                content = {
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/";
+                };
               };
             };
           };
