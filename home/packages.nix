@@ -8,8 +8,6 @@ in
 {
   home.packages = with pkgs; [
     devenv
-    lean4
-    c3c
 
     xh
     any-nix-shell
@@ -35,12 +33,7 @@ in
     niv
     nix-output-monitor
     nurl
-    prismlauncher
     ripgrep
-
-    rust-analyzer
-    cargo 
-    rustc
 
     sd
     stdenv
@@ -56,9 +49,5 @@ in
     git-test
     git-fame
     scripts.git-weekend
-  ] ++ (if pkgs.stdenv.isLinux then [
-    spotify
-    spot
-    chromium
-  ] else []));
+  ];
 }

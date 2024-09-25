@@ -61,7 +61,8 @@ in
       sendemail = {
         smtpencryption = "tls";
         smtpserverport = 587;
-      } // import ../secrets/git.nix;
+      };
+      # // import ../secrets/git.nix;
     };
   };
 }
