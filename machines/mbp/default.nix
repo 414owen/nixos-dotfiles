@@ -36,7 +36,6 @@
       ../../home/ssh.nix
       ../../home/starship.nix
       ../../home/tmux.nix
-      ../../home/tiko.nix
       ../../home/zoxide.nix
       ../../home/zsh.nix
     ];

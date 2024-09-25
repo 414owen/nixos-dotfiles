@@ -6,7 +6,6 @@
     ./../../modules/graphical.nix
     ./../../modules/efi.nix
     ./../../modules/no-mitigations.nix
-    ./../../modules/steam.nix
   ];
 
   networking.hostName = "laptop";
@@ -14,7 +13,7 @@
   services.printing.enable = true;
 
   home-manager.users.owen = (import ../../home/home.nix {
-    stateVersion = "22.11";
+    stateVersion = "24.05";
     imports = [
       ../../home/alacritty.nix
       ../../home/direnv.nix
