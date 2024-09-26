@@ -16,12 +16,12 @@
       experimental-features = "nix-command flakes";
       trusted-users = ["owen"];
       extra-substituters = [
-        "https://cache.lix.systems"
-        "https://nixcache.reflex-frp.org"
+        # "https://cache.lix.systems"
+        # "https://nixcache.reflex-frp.org"
       ];
       trusted-public-keys = [
-        "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
-        "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI="
+        # "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
+        # "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI="
       ];
     };
   };
