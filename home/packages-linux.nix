@@ -2,8 +2,9 @@
 
 {
   home.packages = [
+    pkgs.chromium
     pkgs.wl-clipboard
-    pkgs.transmission-gtk
+    pkgs.transmission_4-gtk
     pkgs.gimp
     pkgs.signal-desktop
     pkgs.inkscape

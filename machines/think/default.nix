@@ -8,8 +8,12 @@
     ./../../modules/no-mitigations.nix
   ];
 
+  hardware.bluetooth.enable = false;
+  hardware.brillo.enable = true;
+  hardware.i2c.enable = true;
   networking.hostName = "laptop";
-  hardware.bluetooth.enable = true;
+  programs.light.enable = true;
+  services.acpid.enable = true;
   services.printing.enable = true;
 
   home-manager.users.owen = (import ../../home/home.nix {

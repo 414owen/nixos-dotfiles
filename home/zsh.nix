@@ -34,7 +34,7 @@ in
       autoload -z edit-command-line.
       zle -N edit-command-line
       bindkey "^X^E" edit-command-line
-      ${builtins.readFile (./shell.sh)}
+      ${builtins.readFile (./shell.zsh)}
       ${import ./fns.nix { pkgs = pkgs; }}
     '';
     sessionVariables = import ./env.nix { pkgs = pkgs; };

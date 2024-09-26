@@ -5,6 +5,7 @@
     ./fonts.nix
   ];
 
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -35,9 +36,9 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [
-      dconf
-      gnome.file-roller
+    systemPackages = [
+      pkgs.dconf
+      pkgs.file-roller
     ];
   };
 

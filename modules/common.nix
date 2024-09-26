@@ -60,7 +60,7 @@
 
   users.users.owen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "plugdev" "render" "video" ];
+    extraGroups = [ "wheel" "plugdev" "render" "audio" "video" ];
     shell = pkgs.zsh;
   };
 
@@ -69,6 +69,8 @@
     priority = 5;
     memoryPercent = 50;
   };
+
+  services.fwupd.enable = true;
   
   system = {
     stateVersion = "22.11";

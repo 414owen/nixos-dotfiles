@@ -9,6 +9,7 @@ in
   home.packages = with pkgs; [
     devenv
 
+    macchina
     xh
     any-nix-shell
     bat
